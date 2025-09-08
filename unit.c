@@ -1,48 +1,10 @@
+//
+// Created by BottomWeb on 08.09.2025.
+//
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "dynamicArray.h"
-
-int FindMaxLessThenNumber(int _array[], int size, int _upNumber, int *flag);
-
-int InputFromFile(int **array1, int **array2, int **array3, int *upNumber,
-                  int *size1, int *size2, int *size3);
-
-int InputFromConsole(int **array1, int **array2, int **array3, int *upNumber,
-                     int *size1, int *size2, int *size3);
-
-void OutMax(int max1, int max2, int max3, int flag1, int flag2, int flag3);
-
-int main(void) {
-
-    int *array1;
-    int *array2;
-    int *array3;
-
-    DynamicArray arr;
-    initArray(&arr, 2);
-    pushBack(&arr, 10);
-    freeArray(&arr);
-
-    int size1, size2, size3;
-    int flag1 = 0, flag2 = 0, flag3 = 0;
-
-    int upNumber;
-
-    int max1 = 0, max2 = 0, max3 = 0, temp;
-
-    temp = InputFromConsole(&array1, &array2, &array3, &upNumber, &size1, &size2, &size3);
-
-    if (temp == 0) {
-        max1 = FindMaxLessThenNumber(array1, size1, upNumber, &flag1);
-        max2 = FindMaxLessThenNumber(array2, size2, upNumber, &flag2);
-        max3 = FindMaxLessThenNumber(array3, size3, upNumber, &flag3);
-
-        OutMax(max1, max2, max3, flag1, flag2, flag3);
-    }
-    return 0;
-}
+#include "unit.h"
 
 int InputFromFile(int **array1, int **array2, int **array3, int *upNumber,
                   int *size1, int *size2, int *size3) {
