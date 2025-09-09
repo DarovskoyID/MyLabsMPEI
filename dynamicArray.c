@@ -26,14 +26,14 @@ void popBack(DynamicArray *arr) {
 }
 
 int getAt(DynamicArray *arr, int index) {
-    if (index >= 0 || index < arr->size) {
+    if (index >= 0 && index < arr->size) {
         return arr->data[index];
     }
 
 }
 
 void setAt(DynamicArray *arr, int index, int value) {
-    if (index >= 0 || index < arr->size) {
+    if (index >= 0 && index < arr->size) {
         arr->data[index] = value;
     }
 
