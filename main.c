@@ -32,7 +32,7 @@ int main(void) {
 
     int max1 = 0, max2 = 0, max3 = 0, temp;
 
-    temp = InputFromConsole(&array1, &array2, &array3, &upNumber, &size1, &size2, &size3);
+    temp = InputFromFile(&array1, &array2, &array3, &upNumber, &size1, &size2, &size3);
 
     if (temp == 0) {
         max1 = FindMaxLessThenNumber(array1, size1, upNumber, &flag1);
