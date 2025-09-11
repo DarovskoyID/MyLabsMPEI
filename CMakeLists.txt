@@ -5,11 +5,12 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(untitled3
 
-        main4.c
-        unitdyn.c
-        unitdyn.h
+#        main4.c
+#        unitdyn.c
+#        unitdyn.h
+        main1-1.c
 
-#        main3.c
+        #        main3.c
 #        unit.c
 #        unit.h
 
