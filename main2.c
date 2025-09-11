@@ -1,9 +1,48 @@
-//
-// Created by BottomWeb on 08.09.2025.
-//
 
+#include <stdio.h>
 
-#include "unit.h"
+int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber);
+int FindMaxFromIf(int array[10], int size, int *flag, int upNumber);
+void inputArrayFromFile(int array[10], int *size, FILE *file);
+void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3);
+
+int main(void) {
+
+    int array1[10];
+    int array2[10];
+    int array3[10];
+
+    FILE *file;
+
+    int size1, size2, size3, max1, max2, max3, upNumber;
+    int flag1 = 0, flag2 = 0, flag3 = 0;
+
+    char filename[100];
+
+    printf("Enter filename: ");
+    scanf("%99s", filename);
+
+    file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("file not exists");
+    }
+    else {
+        inputArrayFromFile(array1, &size1, file);
+        inputArrayFromFile(array2, &size2, file);
+        inputArrayFromFile(array3, &size3, file);
+
+        fscanf(file, "%d", &upNumber);
+
+        max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);
+        max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);
+        max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);
+
+        Out(max1, max2, max3, flag1, flag2, flag3);
+
+        fclose(file);
+    }
+    return 0;
+}
 
 int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {
     int elem;

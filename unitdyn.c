@@ -1,11 +1,6 @@
-//
-// Created by BottomWeb on 08.09.2025.
-//
+#include "unitdyn.h"
 
-
-#include "unit.h"
-
-int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {
+int FirstElemForMaxIf(int *array, int size, int *flag, int upNumber) {
     int elem;
     int i = 0;
 
@@ -21,7 +16,7 @@ int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {
 }
 
 
-int FindMaxFromIf(int array[10], int size, int *flag, int upNumber) {
+int FindMaxFromIf(int *array, int size, int *flag, int upNumber) {
     int max;
     max = FirstElemForMaxIf(array, size, flag, upNumber);
     if (*flag) {
@@ -34,14 +29,10 @@ int FindMaxFromIf(int array[10], int size, int *flag, int upNumber) {
     return max;
 }
 
-void inputArrayFromFile(int array[10], int *size, FILE *file) {
+void inputArrayFromFile(int **array, int *size, FILE *file) {
     fscanf(file, "%d", size);
-    if (*size > 10) {
-        printf("wrond length");
-    }
-    else {
-        for (int i = 0; i < *size; i++) fscanf(file, "%d", &array[i]);
-    }
+    *array = (int*) malloc(*size * sizeof(int));
+    for (int i = 0; i < *size; i++) fscanf(file, "%d", &(*array)[i]);
 }
 
 void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){

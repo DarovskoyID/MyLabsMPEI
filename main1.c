@@ -1,9 +1,5 @@
-//
-// Created by BottomWeb on 08.09.2025.
-//
 
-
-#include "unit.h"
+#include <stdio.h>
 
 int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {
     int elem;
@@ -17,6 +13,7 @@ int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {
             i++;
         }
     }
+
     return elem;
 }
 
@@ -34,13 +31,13 @@ int FindMaxFromIf(int array[10], int size, int *flag, int upNumber) {
     return max;
 }
 
-void inputArrayFromFile(int array[10], int *size, FILE *file) {
-    fscanf(file, "%d", size);
+void inputArrayFromConsole(int array[10], int *size) {
+    scanf("%d", size);
     if (*size > 10) {
         printf("wrond length");
     }
     else {
-        for (int i = 0; i < *size; i++) fscanf(file, "%d", &array[i]);
+        for (int i = 0; i < *size; i++) scanf("%d", &array[i]);
     }
 }
 
@@ -93,3 +90,28 @@ void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){
         printf("Maximum3 are %d", max3);
     }
 }
+
+int main(void) {
+
+    int array1[10];
+    int array2[10];
+    int array3[10];
+
+
+    int size1, size2, size3, max1, max2, max3, upNumber;
+    int flag1 = 0, flag2 = 0, flag3 = 0;
+
+    inputArrayFromConsole(array1, &size1);
+    inputArrayFromConsole(array2, &size2);
+    inputArrayFromConsole(array3, &size3);
+
+    scanf("%d", &upNumber);
+
+    max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);
+    max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);
+    max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);
+
+    Out(max1, max2, max3, flag1, flag2, flag3);
+    return 0;
+}
+
