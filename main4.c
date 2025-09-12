@@ -14,6 +14,8 @@ int main(void) {
     int *array1;
     int *array2;
 
+    int flag1, flag2;
+
     FILE *file;
 
     int sizeX1, sizeY1, sizeX2, sizeY2;
@@ -30,23 +32,35 @@ int main(void) {
     else {
         inputMatrixFromFile(&matrix1, &sizeX1, &sizeY1, file);
         inputMatrixFromFile(&matrix2, &sizeX2, &sizeY2, file);
-
-        if(FindZero(matrix1, sizeX1, sizeY1)) {
+        flag1 = FindZero(matrix1, sizeX1, sizeY1);
+        flag2 = FindZero(matrix2, sizeX2, sizeY2);
+        if(flag1) {
             array1 = (int*) malloc((sizeY1) * sizeof(int));
             for (int i = 0; i < sizeY1; i++) {
                 array1[i] = findMinArray(matrix1[i], sizeX1);
             }
         }
 
-        if(FindZero(matrix2, sizeX2, sizeY2)) {
+        if(flag2) {
             array2 = (int*) malloc((sizeY2) * sizeof(int));
             for (int i = 0; i < sizeY2; i++) {
                 array2[i] = findMinArray(matrix2[i], sizeX2);
             }
         }
 
-        free(array1);
-        free(array2);
+        if(flag1) {
+            for (int i = 0; i < sizeY1; i++) {
+                printf("%d", array1[i]);
+            }
+        }
+        if(flag2) {
+            for (int i = 0; i < sizeY2; i++) {
+                printf("%d", array2[i]);
+            }
+        }
+
+        if (flag1) free(array1);
+        if (flag2) free(array2);
         free(matrix1);
         free(matrix2);
         fclose(file);
