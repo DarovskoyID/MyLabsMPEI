@@ -11,13 +11,12 @@ int main(void) {
     int **matrix1;
     int **matrix2;
 
+    int *array1;
+    int *array2;
+
     FILE *file;
 
     int sizeX1, sizeY1, sizeX2, sizeY2;
-    int *mins1;
-    int *mins2;
-
-    int flag1 = 0, flag2 = 0;
 
     char filename[100];
 
@@ -29,21 +28,27 @@ int main(void) {
         printf("file not exists");
     }
     else {
-        inputArrayFromFile(&array1, &size1, file);
-        inputArrayFromFile(&array2, &size2, file);
-        inputArrayFromFile(&array3, &size3, file);
+        inputMatrixFromFile(&matrix1, &sizeX1, &sizeY1, file);
+        inputMatrixFromFile(&matrix2, &sizeX2, &sizeY2, file);
 
-        fscanf(file, "%d", &upNumber);
+        if(FindZero(matrix1, sizeX1, sizeY1)) {
+            array1 = (int*) malloc((sizeY1) * sizeof(int));
+            for (int i = 0; i < sizeY1; i++) {
+                array1[i] = findMinArray(matrix1[i], sizeX1);
+            }
+        }
 
-        max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);
-        max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);
-        max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);
-
-        Out(max1, max2, max3, flag1, flag2, flag3);
+        if(FindZero(matrix2, sizeX2, sizeY2)) {
+            array2 = (int*) malloc((sizeY2) * sizeof(int));
+            for (int i = 0; i < sizeY2; i++) {
+                array2[i] = findMinArray(matrix2[i], sizeX2);
+            }
+        }
 
         free(array1);
         free(array2);
-        free(array3);
+        free(matrix1);
+        free(matrix2);
         fclose(file);
     }
     return 0;
