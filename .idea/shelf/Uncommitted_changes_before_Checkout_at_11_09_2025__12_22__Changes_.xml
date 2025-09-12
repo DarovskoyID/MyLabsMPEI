@@ -1,9 +1,0 @@
-<changelist name="Uncommitted_changes_before_Checkout_at_11_09_2025,_12_22_[Changes]" date="1757582534625" recycled="true" deleted="true">
-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_09_2025,_12_22_[Changes]/shelved.patch" />
-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 11.09.2025, 12:22 [Changes]" />
-  <binary>
-    <option name="BEFORE_PATH" value="cmake-build-debug/.ninja_deps" />
-    <option name="AFTER_PATH" value="cmake-build-debug/.ninja_deps" />
-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_09_2025,_12_22_[Changes]/.ninja_deps" />
-  </binary>
-</changelist>
