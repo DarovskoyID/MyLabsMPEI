@@ -9,12 +9,12 @@
 //поменять местами две записи и вывести содержимое
 int main(void) {
     char filename[100];
-    char bfilename[100] = "binarnichek";
+    char bfilename[100] = "binarnichek.bin";
 
     FILE *fileText;
     FILE *fileBinary;
 
-    printf("Enter filename: ");
+    printf("Enter filename: \n");
     scanf("%99s", filename);
 
     fileText = fopen(filename, "r");
@@ -24,7 +24,8 @@ int main(void) {
     }
     else {
         transferFileToBFile(fileText, fileBinary);
-        ChageRecordPosition(fileBinary, 2, 5);
+        OutFile(fileBinary);
+        ChageRecordPosition(fileBinary, 2, 3);
         OutFile(fileBinary);
 
         fclose(fileBinary);

@@ -5,6 +5,7 @@
 #ifndef TRANSFER_H
 #define TRANSFER_H
 #include <stdio.h>
+#include <stdlib.h>
 
 void transferFileToBFile(FILE *fileText, FILE *fileBinary);
 

@@ -3,8 +3,10 @@
 
 void transferFileToBFile(FILE *fileText, FILE *fileBinary) {
     struct record rec;
+    char buffer[10];
     while (!feof(fileText)) {
-        fscanf(fileText, "%c %c %c", &rec.a, &rec.b, &rec.c);
+        fgets(buffer, sizeof(buffer), fileText);
+        sscanf(buffer, "%c %c %c", &rec.a, &rec.b, &rec.c);
         fwrite(&rec, sizeof(struct record), 1, fileBinary);
     }
 }

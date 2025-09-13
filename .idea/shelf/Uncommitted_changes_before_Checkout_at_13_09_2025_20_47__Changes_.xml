@@ -1,0 +1,29 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_13_09_2025_20_47_[Changes]" date="1757785679205" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_09_2025_20_47_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 13.09.2025 20:47 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/untitled3.pdb" />
+    <option name="AFTER_PATH" value="cmake-build-debug/untitled3.pdb" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_09_2025_20_47_[Changes]/untitled3.pdb" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/untitled3.ilk" />
+    <option name="AFTER_PATH" value="cmake-build-debug/untitled3.ilk" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_09_2025_20_47_[Changes]/untitled3.ilk" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/CMakeFiles/untitled3.dir/vc140.pdb" />
+    <option name="AFTER_PATH" value="cmake-build-debug/CMakeFiles/untitled3.dir/vc140.pdb" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_09_2025_20_47_[Changes]/vc140.pdb" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/untitled3.exe" />
+    <option name="AFTER_PATH" value="cmake-build-debug/untitled3.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_09_2025_20_47_[Changes]/untitled3.exe" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/.ninja_deps" />
+    <option name="AFTER_PATH" value="cmake-build-debug/.ninja_deps" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_09_2025_20_47_[Changes]/.ninja_deps" />
+  </binary>
+</changelist>
