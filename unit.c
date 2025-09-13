@@ -40,7 +40,9 @@ void inputArrayFromFile(int array[10], int *size, FILE *file) {
         printf("wrond length");
     }
     else {
-        for (int i = 0; i < *size; i++) fscanf(file, "%d", &array[i]);
+        for (int i = 0; i < *size; i++){
+            if (!feo)
+        } fscanf(file, "%d", &array[i]);
     }
 }
 
