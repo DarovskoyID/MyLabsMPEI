@@ -20,17 +20,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c046ea-41cc-4f81-8bfc-7ace97d82db0" name="Changes" comment="start1">
-      <change afterPath="$PROJECT_DIR$/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main4.c" beforeDir="false" afterPath="$PROJECT_DIR$/main4.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record.h" beforeDir="false" afterPath="$PROJECT_DIR$/record.h" afterDir="false" />
+    <list default="true" id="14c046ea-41cc-4f81-8bfc-7ace97d82db0" name="Changes" comment="start">
       <change beforePath="$PROJECT_DIR$/transfer.c" beforeDir="false" afterPath="$PROJECT_DIR$/transfer.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transfer.h" beforeDir="false" afterPath="$PROJECT_DIR$/transfer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit.c" beforeDir="false" afterPath="$PROJECT_DIR$/unit.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757682944322</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="start">
+      <option name="closed" value="true" />
+      <created>1757792656475</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1757792656475</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,8 +278,8 @@
     <MESSAGE value="1 update" />
     <MESSAGE value="2 update" />
     <MESSAGE value="binary update" />
-    <MESSAGE value="start" />
     <MESSAGE value="start1" />
-    <option name="LAST_COMMIT_MESSAGE" value="start1" />
+    <MESSAGE value="start" />
+    <option name="LAST_COMMIT_MESSAGE" value="start" />
   </component>
 </project>
