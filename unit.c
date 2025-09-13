@@ -41,8 +41,8 @@ void inputArrayFromFile(int array[10], int *size, FILE *file) {
     }
     else {
         for (int i = 0; i < *size; i++){
-            if (!feo)
-        } fscanf(file, "%d", &array[i]);
+            if (!feof(file)) fscanf(file, "%d", &array[i]);
+        }
     }
 }
 
