@@ -5,7 +5,10 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(untitled3
         main4.c
-        unit.c
+        record.h
+        transfer.h
+        transfer.c
         unit.h
+        unit.c
 
 )
