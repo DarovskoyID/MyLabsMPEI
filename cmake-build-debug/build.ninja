@@ -49,7 +49,14 @@ cmake_ninja_workdir = C$:\Users\BottomWeb\Desktop\MyLabsMPEI\cmake-build-debug\
 
 build cmake_object_order_depends_target_untitled3: phony || .
 
-build CMakeFiles\untitled3.dir\main1-1.c.obj: C_COMPILER__untitled3_unscanned_Debug C$:\Users\BottomWeb\Desktop\MyLabsMPEI\main1-1.c || cmake_object_order_depends_target_untitled3
+build CMakeFiles\untitled3.dir\main4.c.obj: C_COMPILER__untitled3_unscanned_Debug C$:\Users\BottomWeb\Desktop\MyLabsMPEI\main4.c || cmake_object_order_depends_target_untitled3
+  FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -std:c11 -MDd -Zi
+  OBJECT_DIR = CMakeFiles\untitled3.dir
+  OBJECT_FILE_DIR = CMakeFiles\untitled3.dir
+  TARGET_COMPILE_PDB = CMakeFiles\untitled3.dir\
+  TARGET_PDB = untitled3.pdb
+
+build CMakeFiles\untitled3.dir\unitdyn.c.obj: C_COMPILER__untitled3_unscanned_Debug C$:\Users\BottomWeb\Desktop\MyLabsMPEI\unitdyn.c || cmake_object_order_depends_target_untitled3
   FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -std:c11 -MDd -Zi
   OBJECT_DIR = CMakeFiles\untitled3.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled3.dir
@@ -64,7 +71,7 @@ build CMakeFiles\untitled3.dir\main1-1.c.obj: C_COMPILER__untitled3_unscanned_De
 #############################################
 # Link the executable untitled3.exe
 
-build untitled3.exe: C_EXECUTABLE_LINKER__untitled3_Debug CMakeFiles\untitled3.dir\main1-1.c.obj
+build untitled3.exe: C_EXECUTABLE_LINKER__untitled3_Debug CMakeFiles\untitled3.dir\main4.c.obj CMakeFiles\untitled3.dir\unitdyn.c.obj
   FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
