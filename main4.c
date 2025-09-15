@@ -50,12 +50,13 @@ int main(void) {
 
         if(flag1) {
             for (int i = 0; i < sizeY1; i++) {
-                printf("%d", array1[i]);
+                printf("%d ", array1[i]);
             }
         }
+        printf("\n");
         if(flag2) {
             for (int i = 0; i < sizeY2; i++) {
-                printf("%d", array2[i]);
+                printf("%d ", array2[i]);
             }
         }
 

@@ -15,6 +15,7 @@ int FindZero(int **matrix, int sizeX, int sizeY) {
     int j = 0;
     int flag = 0;
     while (i < sizeY && !flag) {
+        j = 0;
         while (j < sizeX && !flag) {
             if (matrix[i][j] == 0) {
                 flag = 1;
@@ -30,7 +31,7 @@ int FindZero(int **matrix, int sizeX, int sizeY) {
     return flag;
 }
 
-void inputMatrixFromFile(int ***matrix, int *sizeX, int*sizeY, FILE *file) {
+void inputMatrixFromFile(int ***matrix, int *sizeX, int *sizeY, FILE *file) {
     fscanf(file, "%d %d", sizeY, sizeX);
 
     *matrix = (int**) malloc((*sizeY) * sizeof(int*));
