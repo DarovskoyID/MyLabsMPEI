@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "unitdyn.h"
 
 int main(void) {
