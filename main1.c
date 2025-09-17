@@ -1,37 +1,33 @@
 
 #include <stdio.h>
 
-int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {
-    int elem;
+void FirstElemForMaxIf(int array[], int size, int *flag, int*elem, int upNumber) {
     int i = 0;
 
     while (!*flag && i < size) {
         if (array[i] < upNumber) {
-            elem = array[i];
+            *elem = array[i];
             *flag = 1;
         } else {
             i++;
         }
     }
-
-    return elem;
+return;
 }
 
 
-int FindMaxFromIf(int array[10], int size, int *flag, int upNumber) {
+int FindMaxFromIf(int array[], int size, int upNumber, int firstmax) {
     int max;
-    max = FirstElemForMaxIf(array, size, flag, upNumber);
-    if (*flag) {
+    max = firstmax;
         for (int j = 0; j < size; j++) {
             if (max < array[j] && array[j] < upNumber) {
                 max = array[j];
             }
         }
-    }
     return max;
 }
 
-void inputArrayFromConsole(int array[10], int *size) {
+void inputArrayFromConsole(int array[], int *size) {
     scanf("%d", size);
     if (*size > 10) {
         printf("wrond length");
@@ -39,9 +35,32 @@ void inputArrayFromConsole(int array[10], int *size) {
     else {
         for (int i = 0; i < *size; i++) scanf("%d", &array[i]);
     }
+    return;
 }
+int main(void) {
 
-void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){
+    int array1[10];
+    int array2[10];
+    int array3[10];
+
+
+    int size1, size2, size3, max1, max2, max3, fmax1, fmax2, fmax3, upNumber;
+    int flag1 = 0, flag2 = 0, flag3 = 0;
+
+    inputArrayFromConsole(array1, &size1);
+    inputArrayFromConsole(array2, &size2);
+    inputArrayFromConsole(array3, &size3);
+
+    scanf("%d", &upNumber);
+
+    FirstElemForMaxIf(array1, size1, &flag1, &fmax1, upNumber);
+    FirstElemForMaxIf(array2, size2, &flag2, &fmax2, upNumber);
+    FirstElemForMaxIf(array3, size3, &flag3, &fmax3, upNumber);
+
+    if(flag1) max1 = FindMaxFromIf(array1, size1, upNumber, fmax1);
+    if(flag2) max2 = FindMaxFromIf(array2, size2, upNumber, fmax2);
+    if(flag3) max3 = FindMaxFromIf(array3, size3, upNumber, fmax3);
+
     if (flag1 && flag2 && flag3) {
         if (max1 == max2 && max2 == max3) {
             printf("All maximum are %d", max1);
@@ -89,29 +108,6 @@ void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){
     } else if (flag3) {
         printf("Maximum3 are %d", max3);
     }
-}
-
-int main(void) {
-
-    int array1[10];
-    int array2[10];
-    int array3[10];
-
-
-    int size1, size2, size3, max1, max2, max3, upNumber;
-    int flag1 = 0, flag2 = 0, flag3 = 0;
-
-    inputArrayFromConsole(array1, &size1);
-    inputArrayFromConsole(array2, &size2);
-    inputArrayFromConsole(array3, &size3);
-
-    scanf("%d", &upNumber);
-
-    max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);
-    max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);
-    max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);
-
-    Out(max1, max2, max3, flag1, flag2, flag3);
     return 0;
 }
 
