@@ -14,6 +14,12 @@ void findMinArray(int **mat, int **array, int sizeX, int sizeY) {
     return;
 }
 
+void OutputArray(int *array, int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+    }
+}
+
 
 int FindZero(int **matrix, int sizeX, int sizeY) {
     int i = 0;

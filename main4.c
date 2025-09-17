@@ -15,22 +15,26 @@ int main(void) {
 
     int flag1, flag2;
 
-    FILE *file;
+    FILE *file1;
+    FILE *file2;
 
     int sizeX1, sizeY1, sizeX2, sizeY2;
 
-    char filename[100];
+    char filename1[100];
+    char filename2[100];
 
     printf("Enter filename: ");
-    scanf("%99s", filename);
+    scanf("%99s", filename1);
+    scanf("%99s", filename2);
 
-    file = fopen(filename, "r");
-    if (file == NULL) {
+    file1 = fopen(filename1, "r");
+    file2 = fopen(filename2, "r");
+    if (file1 == NULL && file2 == NULL) {
         printf("file not exists");
     }
     else {
-        inputMatrixFromFile(&matrix1, &sizeX1, &sizeY1, file);
-        inputMatrixFromFile(&matrix2, &sizeX2, &sizeY2, file);
+        inputMatrixFromFile(&matrix1, &sizeX1, &sizeY1, file1);
+        inputMatrixFromFile(&matrix2, &sizeX2, &sizeY2, file2);
         flag1 = FindZero(matrix1, sizeX1, sizeY1);
         flag2 = FindZero(matrix2, sizeX2, sizeY2);
         if(flag1) {
@@ -42,22 +46,19 @@ int main(void) {
         }
 
         if(flag1) {
-            for (int i = 0; i < sizeY1; i++) {
-                printf("%d ", array1[i]);
-            }
+            OutputArray(array1, sizeY1);
         }
         printf("\n");
         if(flag2) {
-            for (int i = 0; i < sizeY2; i++) {
-                printf("%d ", array2[i]);
-            }
+            OutputArray(array2, sizeY2);
         }
 
         if (flag1) free(array1);
         if (flag2) free(array2);
         free(matrix1);
         free(matrix2);
-        fclose(file);
+        fclose(file1);
+        fclose(file2);
     }
     return 0;
 }
