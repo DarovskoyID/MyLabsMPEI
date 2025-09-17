@@ -1,14 +1,19 @@
 #include "unit.h"
 
-int findMinArray(int *array, int sizeX) {
-    int min = array[0];
-    for (int i = 1; i < sizeX; i++) {
-        if (min > array[i]) {
-            min = array[i];
+void findMinArray(int **mat, int **array, int sizeX, int sizeY) {
+    *array = (int*) malloc(sizeY * sizeof(int));
+    for (int i = 0; i < sizeY; i++) {
+        int min = mat[i][0];
+        for (int j = 1; j < sizeX; j++) {
+            if (min > mat[i][j]) {
+                min = mat[i][j];
+            }
         }
+        (*array)[i] = min;
     }
-    return min;
+    return;
 }
+
 
 int FindZero(int **matrix, int sizeX, int sizeY) {
     int i = 0;

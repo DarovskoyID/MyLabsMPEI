@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int findMinArray(int *array, int sizeX);
+void findMinArray(int **mat, int **array, int sizeX, int sizeY) ;
 int FindZero(int **matrix, int sizeX, int sizeY);
 void inputMatrixFromFile(int ***matrix, int *sizeX, int*sizeY, FILE *file);
 #endif //UNTITLED3_UNIT_H

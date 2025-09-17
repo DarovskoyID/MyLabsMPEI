@@ -1,6 +1,5 @@
 
 #include <stdio.h>
-#include <stdlib.h>
 #include "unit.h"
 
 // Даны две матрицы разного размера. Для той из матриц,
@@ -35,17 +34,11 @@ int main(void) {
         flag1 = FindZero(matrix1, sizeX1, sizeY1);
         flag2 = FindZero(matrix2, sizeX2, sizeY2);
         if(flag1) {
-            array1 = (int*) malloc((sizeY1) * sizeof(int));
-            for (int i = 0; i < sizeY1; i++) {
-                array1[i] = findMinArray(matrix1[i], sizeX1);
-            }
+            findMinArray(matrix1, &array1, sizeX1, sizeY1);
         }
 
         if(flag2) {
-            array2 = (int*) malloc((sizeY2) * sizeof(int));
-            for (int i = 0; i < sizeY2; i++) {
-                array2[i] = findMinArray(matrix2[i], sizeX2);
-            }
+            findMinArray(matrix2, &array2, sizeX2, sizeY2);
         }
 
         if(flag1) {
