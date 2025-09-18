@@ -23,8 +23,7 @@ void ChageRecordPosition(FILE *bfile, int pos1, int pos2) {
     else{
         printf("wrong position \n");
     }
-
-
+    return;
 }
 
 void OutFile(FILE *bfile) {
@@ -34,4 +33,5 @@ void OutFile(FILE *bfile) {
     while (fread(&temp, sizeof(record), 1, bfile) == 1) {
         printf("%c %c %c\n", temp[0], temp[1], temp[2]);
     }
+    return;
 }

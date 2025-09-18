@@ -20,4 +20,5 @@ void transferFileToBFile(FILE *fileText, FILE *fileBinary, int *flag) {
             *flag = 1;
         }
     }
+    return;
 }

@@ -1,4 +1,7 @@
-a 1 2 b d $ d d 5 *
-e 1 2 3 4 e * * @ e
-e * d f
-f * f
+f a b
+e * e # f
+a b 2 2 2 1 4 * c
+e r
+t
+e r t
+u * * u 1 u
