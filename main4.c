@@ -11,6 +11,8 @@ int main(void) {
     char filename[100];
     char bfilename[100] = "binarnichek.bin";
 
+    int flag;
+
     FILE *fileText;
     FILE *fileBinary;
 
@@ -23,13 +25,19 @@ int main(void) {
         printf("one or all files not exists");
     }
     else {
-        transferFileToBFile(fileText, fileBinary);
-        OutFile(fileBinary);
-        ChageRecordPosition(fileBinary, 2, 3);
-        OutFile(fileBinary);
+        transferFileToBFile(fileText, fileBinary, &flag);
+        if (flag) {
+            OutFile(fileBinary);
+            ChageRecordPosition(fileBinary, 2, 3);
+            printf("\n");
+            OutFile(fileBinary);
 
-        fclose(fileBinary);
-        fclose(fileText);
+            fclose(fileBinary);
+            fclose(fileText);
+        }
+        else {
+            printf("bad data in file");
+        }
     }
 
     return 0;

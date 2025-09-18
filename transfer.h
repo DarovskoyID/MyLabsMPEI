@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void transferFileToBFile(FILE *fileText, FILE *fileBinary);
+void transferFileToBFile(FILE *fileText, FILE *fileBinary, int *flag);
 
 
 #endif //TRANSFER_H

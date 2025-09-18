@@ -1,8 +1,4 @@
 #ifndef RECORD_H
 #define RECORD_H
-struct record {
-    char a;
-    char b;
-    char c;
-};
+typedef char record[3];
 #endif //RECORD_H

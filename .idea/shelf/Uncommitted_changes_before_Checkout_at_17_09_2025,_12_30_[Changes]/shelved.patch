@@ -1,0 +1,943 @@
+Index: CMakeLists.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>cmake_minimum_required(VERSION 3.28)\nproject(untitled3 C)\n\nset(CMAKE_C_STANDARD 11)\n\nadd_executable(untitled3\n\n        main4.c\n        unitdyn.c\n        unitdyn.h\n#        main1-1.c\n\n        #        main3.c\n#        unit.c\n#        unit.h\n\n#        main2.c\n#        main1.c\n)\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	(revision 064e41e5e93cf2d6d3224fc527bc61e48eb3fc87)
++++ b/CMakeLists.txt	(date 1758100381167)
+@@ -1,19 +1,19 @@
+ cmake_minimum_required(VERSION 3.28)
+-project(untitled3 C)
++project(untitled C)
+ 
+ set(CMAKE_C_STANDARD 11)
+ 
+-add_executable(untitled3
++add_executable(untitled
+ 
+         main4.c
+         unitdyn.c
+         unitdyn.h
+ #        main1-1.c
+-
+-        #        main3.c
++#
++#                main3.c
+ #        unit.c
+ #        unit.h
+-
+-#        main2.c
+-#        main1.c
++#
++#       main2.c
++#       main1.c
+ )
+Index: main4.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#include <stdio.h>\n#include <stdlib.h>\n#include \"unitdyn.h\"\n\nint main(void) {\n\n    int *array1;\n    int *array2;\n    int *array3;\n\n    FILE *file;\n\n    int size1, size2, size3, max1, max2, max3, upNumber;\n    int flag1 = 0, flag2 = 0, flag3 = 0;\n\n    char filename[100];\n\n    printf(\"Enter filename: \");\n    scanf(\"%99s\", filename);\n\n    file = fopen(filename, \"r\");\n    if (file == NULL) {\n        printf(\"file not exists\");\n    }\n    else {\n        inputArrayFromFile(&array1, &size1, file);\n        inputArrayFromFile(&array2, &size2, file);\n        inputArrayFromFile(&array3, &size3, file);\n\n        fscanf(file, \"%d\", &upNumber);\n\n        max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);\n        max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);\n        max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);\n\n        Out(max1, max2, max3, flag1, flag2, flag3);\n\n        free(array1);\n        free(array2);\n        free(array3);\n        fclose(file);\n    }\n    return 0;\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main4.c b/main4.c
+--- a/main4.c	(revision 064e41e5e93cf2d6d3224fc527bc61e48eb3fc87)
++++ b/main4.c	(date 1758100691673)
+@@ -8,37 +8,97 @@
+     int *array2;
+     int *array3;
+ 
+-    FILE *file;
++    FILE *file1;
++    FILE *file2;
++    FILE *file3;
+ 
+-    int size1, size2, size3, max1, max2, max3, upNumber;
++    int size1, size2, size3, max1, max2, max3, fmax1, fmax2, fmax3, upNumber;
+     int flag1 = 0, flag2 = 0, flag3 = 0;
+ 
+-    char filename[100];
++    char filename1[100];
++    char filename2[100];
++    char filename3[100];
+ 
+     printf("Enter filename: ");
+-    scanf("%99s", filename);
++    scanf("%99s", filename1);
++    scanf("%99s", filename2);
++    scanf("%99s", filename3);
+ 
+-    file = fopen(filename, "r");
+-    if (file == NULL) {
++    file1 = fopen(filename1, "r");
++    file2 = fopen(filename2, "r");
++    file3 = fopen(filename3, "r");
++    if (file1 == NULL && file2 == NULL && file3 == NULL) {
+         printf("file not exists");
+     }
+     else {
+-        inputArrayFromFile(&array1, &size1, file);
+-        inputArrayFromFile(&array2, &size2, file);
+-        inputArrayFromFile(&array3, &size3, file);
++        inputArrayFromFile(&array1, &size1, file1);
++        inputArrayFromFile(&array2, &size2, file2);
++        inputArrayFromFile(&array3, &size3, file3);
+ 
+-        fscanf(file, "%d", &upNumber);
++        scanf("%d", &upNumber);
+ 
+-        max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);
+-        max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);
+-        max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);
++        FirstElemForMaxIf(array1, size1, &flag1, upNumber, &fmax1);
++        FirstElemForMaxIf(array2, size2, &flag2, upNumber, &fmax2);
++        FirstElemForMaxIf(array3, size3, &flag3, upNumber, &fmax3);
+ 
+-        Out(max1, max2, max3, flag1, flag2, flag3);
++        if(flag1) max1 = FindMaxFromIf(array1, size1, upNumber, fmax1);
++        if(flag2) max2 = FindMaxFromIf(array2, size2, upNumber, fmax2);
++        if(flag3) max3 = FindMaxFromIf(array3, size3, upNumber, fmax3);
++
++        if (flag1 && flag2 && flag3) {
++            if (max1 == max2 && max2 == max3) {
++                printf("All maximum are %d", max1);
++            } else if (max1 == max2 && max1 < max3) {
++                printf("Maximum1 and maximum2 are %d", max1);
++            } else if (max1 == max3 && max1 < max2) {
++                printf("Maximum1 and maximum3 are %d", max1);
++            } else if (max2 == max3 && max2 < max1) {
++                printf("Maximum2 and maximum3 are %d", max2);
++            } else if (max1 < max2 && max1 < max3) {
++                printf("Maximum1 are %d", max1);
++            } else if (max2 < max1 && max2 < max3) {
++                printf("Maximum2 are %d", max2);
++            } else if (max3 < max1 && max3 < max2) {
++                printf("Maximum3 are %d", max3);
++            }
++        } else if (flag1 && flag2) {
++            if (max1 == max2) {
++                printf("Maximum1 and maximum2 are %d", max1);
++            } else if (max1 < max2) {
++                printf("Maximum1 are %d", max1);
++            } else {
++                printf("Maximum2 are %d", max2);
++            }
++        } else if (flag1 && flag3) {
++            if (max1 == max3) {
++                printf("Maximum1 and maximum3 are %d", max1);
++            } else if (max1 < max3) {
++                printf("Maximum1 are %d", max1);
++            } else {
++                printf("Maximum3 are %d", max3);
++            }
++        } else if (flag2 && flag3) {
++            if (max2 == max3) {
++                printf("Maximum2 and maximum3 are %d", max2);
++            } else if (max2 < max3) {
++                printf("Maximum2 are %d", max2);
++            } else {
++                printf("Maximum3 are %d", max3);
++            }
++        } else if (flag1) {
++            printf("Maximum1 are %d", max1);
++        } else if (flag2) {
++            printf("Maximum2 are %d", max2);
++        } else if (flag3) {
++            printf("Maximum3 are %d", max3);
++        }
+ 
+         free(array1);
+         free(array2);
+         free(array3);
+-        fclose(file);
++        fclose(file1);
++        fclose(file2);
++        fclose(file3);
+     }
+     return 0;
+ }
+Index: unitdyn.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#include \"unitdyn.h\"\n\nint FirstElemForMaxIf(int *array, int size, int *flag, int upNumber) {\n    int elem;\n    int i = 0;\n\n    while (!*flag && i < size) {\n        if (array[i] < upNumber) {\n            elem = array[i];\n            *flag = 1;\n        } else {\n            i++;\n        }\n    }\n    return elem;\n}\n\n\nint FindMaxFromIf(int *array, int size, int *flag, int upNumber) {\n    int max;\n    max = FirstElemForMaxIf(array, size, flag, upNumber);\n    if (*flag) {\n        for (int j = 0; j < size; j++) {\n            if (max < array[j] && array[j] < upNumber) {\n                max = array[j];\n            }\n        }\n    }\n    return max;\n}\n\nvoid inputArrayFromFile(int **array, int *size, FILE *file) {\n    fscanf(file, \"%d\", size);\n    *array = (int*) malloc(*size * sizeof(int));\n    for (int i = 0; i < *size; i++) {\n        if (!feof(file)) fscanf(file, \"%d\", &(*array)[i]);\n    }\n}\n\nvoid Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){\n    if (flag1 && flag2 && flag3) {\n        if (max1 == max2 && max2 == max3) {\n            printf(\"All maximum are %d\", max1);\n        } else if (max1 == max2 && max1 < max3) {\n            printf(\"Maximum1 and maximum2 are %d\", max1);\n        } else if (max1 == max3 && max1 < max2) {\n            printf(\"Maximum1 and maximum3 are %d\", max1);\n        } else if (max2 == max3 && max2 < max1) {\n            printf(\"Maximum2 and maximum3 are %d\", max2);\n        } else if (max1 < max2 && max1 < max3) {\n            printf(\"Maximum1 are %d\", max1);\n        } else if (max2 < max1 && max2 < max3) {\n            printf(\"Maximum2 are %d\", max2);\n        } else if (max3 < max1 && max3 < max2) {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag1 && flag2) {\n        if (max1 == max2) {\n            printf(\"Maximum1 and maximum2 are %d\", max1);\n        } else if (max1 < max2) {\n            printf(\"Maximum1 are %d\", max1);\n        } else {\n            printf(\"Maximum2 are %d\", max2);\n        }\n    } else if (flag1 && flag3) {\n        if (max1 == max3) {\n            printf(\"Maximum1 and maximum3 are %d\", max1);\n        } else if (max1 < max3) {\n            printf(\"Maximum1 are %d\", max1);\n        } else {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag2 && flag3) {\n        if (max2 == max3) {\n            printf(\"Maximum2 and maximum3 are %d\", max2);\n        } else if (max2 < max3) {\n            printf(\"Maximum2 are %d\", max2);\n        } else {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag1) {\n        printf(\"Maximum1 are %d\", max1);\n    } else if (flag2) {\n        printf(\"Maximum2 are %d\", max2);\n    } else if (flag3) {\n        printf(\"Maximum3 are %d\", max3);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/unitdyn.c b/unitdyn.c
+--- a/unitdyn.c	(revision 064e41e5e93cf2d6d3224fc527bc61e48eb3fc87)
++++ b/unitdyn.c	(date 1758100378196)
+@@ -1,31 +1,28 @@
+ #include "unitdyn.h"
+ 
+-int FirstElemForMaxIf(int *array, int size, int *flag, int upNumber) {
+-    int elem;
++void FirstElemForMaxIf(int *array, int size, int *flag, int upNumber, int*elem) {
+     int i = 0;
+ 
+     while (!*flag && i < size) {
+         if (array[i] < upNumber) {
+-            elem = array[i];
++            *elem = array[i];
+             *flag = 1;
+         } else {
+             i++;
+         }
+     }
+-    return elem;
++    return;
+ }
+ 
+ 
+-int FindMaxFromIf(int *array, int size, int *flag, int upNumber) {
++int FindMaxFromIf(int *array, int size, int upNumber, int firstmax) {
+     int max;
+-    max = FirstElemForMaxIf(array, size, flag, upNumber);
+-    if (*flag) {
++    max = firstmax;
+         for (int j = 0; j < size; j++) {
+             if (max < array[j] && array[j] < upNumber) {
+                 max = array[j];
+             }
+         }
+-    }
+     return max;
+ }
+ 
+@@ -35,54 +32,5 @@
+     for (int i = 0; i < *size; i++) {
+         if (!feof(file)) fscanf(file, "%d", &(*array)[i]);
+     }
++    return;
+ }
+-
+-void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){
+-    if (flag1 && flag2 && flag3) {
+-        if (max1 == max2 && max2 == max3) {
+-            printf("All maximum are %d", max1);
+-        } else if (max1 == max2 && max1 < max3) {
+-            printf("Maximum1 and maximum2 are %d", max1);
+-        } else if (max1 == max3 && max1 < max2) {
+-            printf("Maximum1 and maximum3 are %d", max1);
+-        } else if (max2 == max3 && max2 < max1) {
+-            printf("Maximum2 and maximum3 are %d", max2);
+-        } else if (max1 < max2 && max1 < max3) {
+-            printf("Maximum1 are %d", max1);
+-        } else if (max2 < max1 && max2 < max3) {
+-            printf("Maximum2 are %d", max2);
+-        } else if (max3 < max1 && max3 < max2) {
+-            printf("Maximum3 are %d", max3);
+-        }
+-    } else if (flag1 && flag2) {
+-        if (max1 == max2) {
+-            printf("Maximum1 and maximum2 are %d", max1);
+-        } else if (max1 < max2) {
+-            printf("Maximum1 are %d", max1);
+-        } else {
+-            printf("Maximum2 are %d", max2);
+-        }
+-    } else if (flag1 && flag3) {
+-        if (max1 == max3) {
+-            printf("Maximum1 and maximum3 are %d", max1);
+-        } else if (max1 < max3) {
+-            printf("Maximum1 are %d", max1);
+-        } else {
+-            printf("Maximum3 are %d", max3);
+-        }
+-    } else if (flag2 && flag3) {
+-        if (max2 == max3) {
+-            printf("Maximum2 and maximum3 are %d", max2);
+-        } else if (max2 < max3) {
+-            printf("Maximum2 are %d", max2);
+-        } else {
+-            printf("Maximum3 are %d", max3);
+-        }
+-    } else if (flag1) {
+-        printf("Maximum1 are %d", max1);
+-    } else if (flag2) {
+-        printf("Maximum2 are %d", max2);
+-    } else if (flag3) {
+-        printf("Maximum3 are %d", max3);
+-    }
+-}
+\ No newline at end of file
+Index: cmake-build-debug/input3.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cmake-build-debug/input3.txt b/cmake-build-debug/input3.txt
+new file mode 100644
+--- /dev/null	(date 1758100478508)
++++ b/cmake-build-debug/input3.txt	(date 1758100478508)
+@@ -0,0 +1,2 @@
++3
++1 2 3
+\ No newline at end of file
+Index: cmake-build-debug/input1.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cmake-build-debug/input1.txt b/cmake-build-debug/input1.txt
+new file mode 100644
+--- /dev/null	(date 1758100478504)
++++ b/cmake-build-debug/input1.txt	(date 1758100478504)
+@@ -0,0 +1,2 @@
++3
++1 2 3
+\ No newline at end of file
+Index: unitdyn.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//\n// Created by Иван on 11.09.2025.\n//\n\n#ifndef UNITDYN_H\n#define UNITDYN_H\n#include <stdio.h>\n#include <stdlib.h>\n\nint FirstElemForMaxIf(int *array, int size, int *flag, int upNumber);\nint FindMaxFromIf(int *array, int size, int *flag, int upNumber);\nvoid inputArrayFromFile(int **array, int *size, FILE *file);\nvoid Out(int max1, int max2, int max3, int flag1, int flag2, int flag3);\n\n#endif //UNITDYN_H\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/unitdyn.h b/unitdyn.h
+--- a/unitdyn.h	(revision 064e41e5e93cf2d6d3224fc527bc61e48eb3fc87)
++++ b/unitdyn.h	(date 1758100378204)
+@@ -7,9 +7,8 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-int FirstElemForMaxIf(int *array, int size, int *flag, int upNumber);
+-int FindMaxFromIf(int *array, int size, int *flag, int upNumber);
++void FirstElemForMaxIf(int array[], int size, int *flag, int upNumber, int*elem);
++int FindMaxFromIf(int *array, int size, int upNumber, int firstmax);
+ void inputArrayFromFile(int **array, int *size, FILE *file);
+-void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3);
+ 
+ #endif //UNITDYN_H
+Index: cmake-build-debug/input.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cmake-build-debug/input.txt b/cmake-build-debug/input.txt
+new file mode 100644
+--- /dev/null	(date 1758098516192)
++++ b/cmake-build-debug/input.txt	(date 1758098516192)
+@@ -0,0 +1,7 @@
++3
++1 2 3
++3
++1 2 3
++3
++1 2 3
++2
+\ No newline at end of file
+Index: unit.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//\n// Created by BottomWeb on 08.09.2025.\n//\n\n#ifndef UNTITLED3_UNIT_H\n#define UNTITLED3_UNIT_H\n#include <stdio.h>\n\n\nint FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber);\nint FindMaxFromIf(int array[10], int size, int *flag, int upNumber);\nvoid inputArrayFromFile(int array[10], int *size, FILE *file);\nvoid Out(int max1, int max2, int max3, int flag1, int flag2, int flag3);\n\n#endif //UNTITLED3_UNIT_H\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/unit.h b/unit.h
+--- a/unit.h	(revision 064e41e5e93cf2d6d3224fc527bc61e48eb3fc87)
++++ b/unit.h	(date 1758100378184)
+@@ -7,9 +7,8 @@
+ #include <stdio.h>
+ 
+ 
+-int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber);
+-int FindMaxFromIf(int array[10], int size, int *flag, int upNumber);
+-void inputArrayFromFile(int array[10], int *size, FILE *file);
+-void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3);
++void FirstElemForMaxIf(int array[], int size, int *flag, int upNumber, int*elem);
++int FindMaxFromIf(int array[], int size, int upNumber, int firstmax);
++void inputArrayFromFile(int array[], int *size, FILE *file);
+ 
+ #endif //UNTITLED3_UNIT_H
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>untitled3
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+--- a/.idea/.name	(revision 064e41e5e93cf2d6d3224fc527bc61e48eb3fc87)
++++ b/.idea/.name	(date 1758097977465)
+@@ -1,1 +1,1 @@
+-untitled3
+\ No newline at end of file
++untitled
+\ No newline at end of file
+Index: main1.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n#include <stdio.h>\n\nint FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {\n    int elem;\n    int i = 0;\n\n    while (!*flag && i < size) {\n        if (array[i] < upNumber) {\n            elem = array[i];\n            *flag = 1;\n        } else {\n            i++;\n        }\n    }\n\n    return elem;\n}\n\n\nint FindMaxFromIf(int array[10], int size, int *flag, int upNumber) {\n    int max;\n    max = FirstElemForMaxIf(array, size, flag, upNumber);\n    if (*flag) {\n        for (int j = 0; j < size; j++) {\n            if (max < array[j] && array[j] < upNumber) {\n                max = array[j];\n            }\n        }\n    }\n    return max;\n}\n\nvoid inputArrayFromConsole(int array[10], int *size) {\n    scanf(\"%d\", size);\n    if (*size > 10) {\n        printf(\"wrond length\");\n    }\n    else {\n        for (int i = 0; i < *size; i++) scanf(\"%d\", &array[i]);\n    }\n}\n\nvoid Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){\n    if (flag1 && flag2 && flag3) {\n        if (max1 == max2 && max2 == max3) {\n            printf(\"All maximum are %d\", max1);\n        } else if (max1 == max2 && max1 < max3) {\n            printf(\"Maximum1 and maximum2 are %d\", max1);\n        } else if (max1 == max3 && max1 < max2) {\n            printf(\"Maximum1 and maximum3 are %d\", max1);\n        } else if (max2 == max3 && max2 < max1) {\n            printf(\"Maximum2 and maximum3 are %d\", max2);\n        } else if (max1 < max2 && max1 < max3) {\n            printf(\"Maximum1 are %d\", max1);\n        } else if (max2 < max1 && max2 < max3) {\n            printf(\"Maximum2 are %d\", max2);\n        } else if (max3 < max1 && max3 < max2) {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag1 && flag2) {\n        if (max1 == max2) {\n            printf(\"Maximum1 and maximum2 are %d\", max1);\n        } else if (max1 < max2) {\n            printf(\"Maximum1 are %d\", max1);\n        } else {\n            printf(\"Maximum2 are %d\", max2);\n        }\n    } else if (flag1 && flag3) {\n        if (max1 == max3) {\n            printf(\"Maximum1 and maximum3 are %d\", max1);\n        } else if (max1 < max3) {\n            printf(\"Maximum1 are %d\", max1);\n        } else {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag2 && flag3) {\n        if (max2 == max3) {\n            printf(\"Maximum2 and maximum3 are %d\", max2);\n        } else if (max2 < max3) {\n            printf(\"Maximum2 are %d\", max2);\n        } else {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag1) {\n        printf(\"Maximum1 are %d\", max1);\n    } else if (flag2) {\n        printf(\"Maximum2 are %d\", max2);\n    } else if (flag3) {\n        printf(\"Maximum3 are %d\", max3);\n    }\n}\n\nint main(void) {\n\n    int array1[10];\n    int array2[10];\n    int array3[10];\n\n\n    int size1, size2, size3, max1, max2, max3, upNumber;\n    int flag1 = 0, flag2 = 0, flag3 = 0;\n\n    inputArrayFromConsole(array1, &size1);\n    inputArrayFromConsole(array2, &size2);\n    inputArrayFromConsole(array3, &size3);\n\n    scanf(\"%d\", &upNumber);\n\n    max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);\n    max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);\n    max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);\n\n    Out(max1, max2, max3, flag1, flag2, flag3);\n    return 0;\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main1.c b/main1.c
+--- a/main1.c	(revision 064e41e5e93cf2d6d3224fc527bc61e48eb3fc87)
++++ b/main1.c	(date 1758100378180)
+@@ -1,37 +1,33 @@
+ 
+ #include <stdio.h>
+ 
+-int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {
+-    int elem;
++void FirstElemForMaxIf(int array[], int size, int *flag, int*elem, int upNumber) {
+     int i = 0;
+ 
+     while (!*flag && i < size) {
+         if (array[i] < upNumber) {
+-            elem = array[i];
++            *elem = array[i];
+             *flag = 1;
+         } else {
+             i++;
+         }
+     }
+-
+-    return elem;
++return;
+ }
+ 
+ 
+-int FindMaxFromIf(int array[10], int size, int *flag, int upNumber) {
++int FindMaxFromIf(int array[], int size, int upNumber, int firstmax) {
+     int max;
+-    max = FirstElemForMaxIf(array, size, flag, upNumber);
+-    if (*flag) {
++    max = firstmax;
+         for (int j = 0; j < size; j++) {
+             if (max < array[j] && array[j] < upNumber) {
+                 max = array[j];
+             }
+         }
+-    }
+     return max;
+ }
+ 
+-void inputArrayFromConsole(int array[10], int *size) {
++void inputArrayFromConsole(int array[], int *size) {
+     scanf("%d", size);
+     if (*size > 10) {
+         printf("wrond length");
+@@ -39,9 +35,32 @@
+     else {
+         for (int i = 0; i < *size; i++) scanf("%d", &array[i]);
+     }
++    return;
+ }
++int main(void) {
++
++    int array1[10];
++    int array2[10];
++    int array3[10];
++
++
++    int size1, size2, size3, max1, max2, max3, fmax1, fmax2, fmax3, upNumber;
++    int flag1 = 0, flag2 = 0, flag3 = 0;
+ 
+-void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){
++    inputArrayFromConsole(array1, &size1);
++    inputArrayFromConsole(array2, &size2);
++    inputArrayFromConsole(array3, &size3);
++
++    scanf("%d", &upNumber);
++
++    FirstElemForMaxIf(array1, size1, &flag1, &fmax1, upNumber);
++    FirstElemForMaxIf(array2, size2, &flag2, &fmax2, upNumber);
++    FirstElemForMaxIf(array3, size3, &flag3, &fmax3, upNumber);
++
++    if(flag1) max1 = FindMaxFromIf(array1, size1, upNumber, fmax1);
++    if(flag2) max2 = FindMaxFromIf(array2, size2, upNumber, fmax2);
++    if(flag3) max3 = FindMaxFromIf(array3, size3, upNumber, fmax3);
++
+     if (flag1 && flag2 && flag3) {
+         if (max1 == max2 && max2 == max3) {
+             printf("All maximum are %d", max1);
+@@ -89,29 +108,6 @@
+     } else if (flag3) {
+         printf("Maximum3 are %d", max3);
+     }
+-}
+-
+-int main(void) {
+-
+-    int array1[10];
+-    int array2[10];
+-    int array3[10];
+-
+-
+-    int size1, size2, size3, max1, max2, max3, upNumber;
+-    int flag1 = 0, flag2 = 0, flag3 = 0;
+-
+-    inputArrayFromConsole(array1, &size1);
+-    inputArrayFromConsole(array2, &size2);
+-    inputArrayFromConsole(array3, &size3);
+-
+-    scanf("%d", &upNumber);
+-
+-    max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);
+-    max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);
+-    max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);
+-
+-    Out(max1, max2, max3, flag1, flag2, flag3);
+     return 0;
+ }
+ 
+Index: main2.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n#include <stdio.h>\n\nint FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber);\nint FindMaxFromIf(int array[10], int size, int *flag, int upNumber);\nvoid inputArrayFromFile(int array[10], int *size, FILE *file);\nvoid Out(int max1, int max2, int max3, int flag1, int flag2, int flag3);\n\nint main(void) {\n\n    int array1[10];\n    int array2[10];\n    int array3[10];\n\n    FILE *file;\n\n    int size1, size2, size3, max1, max2, max3, upNumber;\n    int flag1 = 0, flag2 = 0, flag3 = 0;\n\n    char filename[100];\n\n    printf(\"Enter filename: \");\n    scanf(\"%99s\", filename);\n\n    file = fopen(filename, \"r\");\n    if (file == NULL) {\n        printf(\"file not exists\");\n    }\n    else {\n        inputArrayFromFile(array1, &size1, file);\n        inputArrayFromFile(array2, &size2, file);\n        inputArrayFromFile(array3, &size3, file);\n\n        fscanf(file, \"%d\", &upNumber);\n\n        max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);\n        max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);\n        max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);\n\n        Out(max1, max2, max3, flag1, flag2, flag3);\n\n        fclose(file);\n    }\n    return 0;\n}\n\nint FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {\n    int elem;\n    int i = 0;\n\n    while (!*flag && i < size) {\n        if (array[i] < upNumber) {\n            elem = array[i];\n            *flag = 1;\n        } else {\n            i++;\n        }\n    }\n    return elem;\n}\n\n\nint FindMaxFromIf(int array[10], int size, int *flag, int upNumber) {\n    int max;\n    max = FirstElemForMaxIf(array, size, flag, upNumber);\n    if (*flag) {\n        for (int j = 0; j < size; j++) {\n            if (max < array[j] && array[j] < upNumber) {\n                max = array[j];\n            }\n        }\n    }\n    return max;\n}\n\nvoid inputArrayFromFile(int array[10], int *size, FILE *file) {\n    fscanf(file, \"%d\", size);\n    if (*size > 10) {\n        printf(\"wrond length\");\n    }\n    else {\n        for (int i = 0; i < *size; i++) fscanf(file, \"%d\", &array[i]);\n    }\n}\n\nvoid Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){\n    if (flag1 && flag2 && flag3) {\n        if (max1 == max2 && max2 == max3) {\n            printf(\"All maximum are %d\", max1);\n        } else if (max1 == max2 && max1 < max3) {\n            printf(\"Maximum1 and maximum2 are %d\", max1);\n        } else if (max1 == max3 && max1 < max2) {\n            printf(\"Maximum1 and maximum3 are %d\", max1);\n        } else if (max2 == max3 && max2 < max1) {\n            printf(\"Maximum2 and maximum3 are %d\", max2);\n        } else if (max1 < max2 && max1 < max3) {\n            printf(\"Maximum1 are %d\", max1);\n        } else if (max2 < max1 && max2 < max3) {\n            printf(\"Maximum2 are %d\", max2);\n        } else if (max3 < max1 && max3 < max2) {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag1 && flag2) {\n        if (max1 == max2) {\n            printf(\"Maximum1 and maximum2 are %d\", max1);\n        } else if (max1 < max2) {\n            printf(\"Maximum1 are %d\", max1);\n        } else {\n            printf(\"Maximum2 are %d\", max2);\n        }\n    } else if (flag1 && flag3) {\n        if (max1 == max3) {\n            printf(\"Maximum1 and maximum3 are %d\", max1);\n        } else if (max1 < max3) {\n            printf(\"Maximum1 are %d\", max1);\n        } else {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag2 && flag3) {\n        if (max2 == max3) {\n            printf(\"Maximum2 and maximum3 are %d\", max2);\n        } else if (max2 < max3) {\n            printf(\"Maximum2 are %d\", max2);\n        } else {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag1) {\n        printf(\"Maximum1 are %d\", max1);\n    } else if (flag2) {\n        printf(\"Maximum2 are %d\", max2);\n    } else if (flag3) {\n        printf(\"Maximum3 are %d\", max3);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main2.c b/main2.c
+--- a/main2.c	(revision 064e41e5e93cf2d6d3224fc527bc61e48eb3fc87)
++++ b/main2.c	(date 1758100378199)
+@@ -1,10 +1,9 @@
+ 
+ #include <stdio.h>
+ 
+-int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber);
+-int FindMaxFromIf(int array[10], int size, int *flag, int upNumber);
+-void inputArrayFromFile(int array[10], int *size, FILE *file);
+-void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3);
++void FirstElemForMaxIf(int array[], int size, int *flag, int upNumber, int*elem);
++int FindMaxFromIf(int array[], int size, int upNumber, int firstmax);
++void inputArrayFromFile(int array[], int *size, FILE *file);
+ 
+ int main(void) {
+ 
+@@ -14,7 +13,7 @@
+ 
+     FILE *file;
+ 
+-    int size1, size2, size3, max1, max2, max3, upNumber;
++    int size1, size2, size3, max1, max2, max3, fmax1, fmax2, fmax3, upNumber;
+     int flag1 = 0, flag2 = 0, flag3 = 0;
+ 
+     char filename[100];
+@@ -33,102 +32,100 @@
+ 
+         fscanf(file, "%d", &upNumber);
+ 
+-        max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);
+-        max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);
+-        max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);
+-
+-        Out(max1, max2, max3, flag1, flag2, flag3);
+-
+-        fclose(file);
+-    }
+-    return 0;
+-}
+-
+-int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {
+-    int elem;
+-    int i = 0;
+-
+-    while (!*flag && i < size) {
+-        if (array[i] < upNumber) {
+-            elem = array[i];
+-            *flag = 1;
+-        } else {
+-            i++;
+-        }
+-    }
+-    return elem;
+-}
++        FirstElemForMaxIf(array1, size1, &flag1, upNumber, &fmax1);
++        FirstElemForMaxIf(array2, size2, &flag2, upNumber, &fmax2);
++        FirstElemForMaxIf(array3, size3, &flag3, upNumber, &fmax3);
+ 
++        if(flag1) max1 = FindMaxFromIf(array1, size1, upNumber, fmax1);
++        if(flag2) max2 = FindMaxFromIf(array2, size2, upNumber, fmax2);
++        if(flag3) max3 = FindMaxFromIf(array3, size3, upNumber, fmax3);
+ 
+-int FindMaxFromIf(int array[10], int size, int *flag, int upNumber) {
+-    int max;
+-    max = FirstElemForMaxIf(array, size, flag, upNumber);
+-    if (*flag) {
+-        for (int j = 0; j < size; j++) {
+-            if (max < array[j] && array[j] < upNumber) {
+-                max = array[j];
+-            }
+-        }
+-    }
+-    return max;
+-}
+-
+-void inputArrayFromFile(int array[10], int *size, FILE *file) {
+-    fscanf(file, "%d", size);
+-    if (*size > 10) {
+-        printf("wrond length");
+-    }
+-    else {
+-        for (int i = 0; i < *size; i++) fscanf(file, "%d", &array[i]);
+-    }
+-}
+-
+-void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){
+-    if (flag1 && flag2 && flag3) {
+-        if (max1 == max2 && max2 == max3) {
+-            printf("All maximum are %d", max1);
+-        } else if (max1 == max2 && max1 < max3) {
+-            printf("Maximum1 and maximum2 are %d", max1);
+-        } else if (max1 == max3 && max1 < max2) {
+-            printf("Maximum1 and maximum3 are %d", max1);
+-        } else if (max2 == max3 && max2 < max1) {
+-            printf("Maximum2 and maximum3 are %d", max2);
+-        } else if (max1 < max2 && max1 < max3) {
+-            printf("Maximum1 are %d", max1);
+-        } else if (max2 < max1 && max2 < max3) {
+-            printf("Maximum2 are %d", max2);
+-        } else if (max3 < max1 && max3 < max2) {
+-            printf("Maximum3 are %d", max3);
+-        }
+-    } else if (flag1 && flag2) {
+-        if (max1 == max2) {
+-            printf("Maximum1 and maximum2 are %d", max1);
+-        } else if (max1 < max2) {
+-            printf("Maximum1 are %d", max1);
+-        } else {
+-            printf("Maximum2 are %d", max2);
+-        }
+-    } else if (flag1 && flag3) {
+-        if (max1 == max3) {
+-            printf("Maximum1 and maximum3 are %d", max1);
+-        } else if (max1 < max3) {
+-            printf("Maximum1 are %d", max1);
+-        } else {
+-            printf("Maximum3 are %d", max3);
+-        }
+-    } else if (flag2 && flag3) {
+-        if (max2 == max3) {
+-            printf("Maximum2 and maximum3 are %d", max2);
+-        } else if (max2 < max3) {
+-            printf("Maximum2 are %d", max2);
+-        } else {
+-            printf("Maximum3 are %d", max3);
+-        }
+-    } else if (flag1) {
+-        printf("Maximum1 are %d", max1);
+-    } else if (flag2) {
+-        printf("Maximum2 are %d", max2);
+-    } else if (flag3) {
+-        printf("Maximum3 are %d", max3);
+-    }
+-}
+\ No newline at end of file
++        if (flag1 && flag2 && flag3) {
++            if (max1 == max2 && max2 == max3) {
++                printf("All maximum are %d", max1);
++            } else if (max1 == max2 && max1 < max3) {
++                printf("Maximum1 and maximum2 are %d", max1);
++            } else if (max1 == max3 && max1 < max2) {
++                printf("Maximum1 and maximum3 are %d", max1);
++            } else if (max2 == max3 && max2 < max1) {
++                printf("Maximum2 and maximum3 are %d", max2);
++            } else if (max1 < max2 && max1 < max3) {
++                printf("Maximum1 are %d", max1);
++            } else if (max2 < max1 && max2 < max3) {
++                printf("Maximum2 are %d", max2);
++            } else if (max3 < max1 && max3 < max2) {
++                printf("Maximum3 are %d", max3);
++            }
++        } else if (flag1 && flag2) {
++            if (max1 == max2) {
++                printf("Maximum1 and maximum2 are %d", max1);
++            } else if (max1 < max2) {
++                printf("Maximum1 are %d", max1);
++            } else {
++                printf("Maximum2 are %d", max2);
++            }
++        } else if (flag1 && flag3) {
++            if (max1 == max3) {
++                printf("Maximum1 and maximum3 are %d", max1);
++            } else if (max1 < max3) {
++                printf("Maximum1 are %d", max1);
++            } else {
++                printf("Maximum3 are %d", max3);
++            }
++        } else if (flag2 && flag3) {
++            if (max2 == max3) {
++                printf("Maximum2 and maximum3 are %d", max2);
++            } else if (max2 < max3) {
++                printf("Maximum2 are %d", max2);
++            } else {
++                printf("Maximum3 are %d", max3);
++            }
++        } else if (flag1) {
++            printf("Maximum1 are %d", max1);
++        } else if (flag2) {
++            printf("Maximum2 are %d", max2);
++        } else if (flag3) {
++            printf("Maximum3 are %d", max3);
++        }
++
++        fclose(file);
++    }
++    return 0;
++}
++
++void FirstElemForMaxIf(int array[], int size, int *flag, int upNumber, int*elem) {
++    int i = 0;
++
++    while (!*flag && i < size) {
++        if (array[i] < upNumber) {
++            *elem = array[i];
++            *flag = 1;
++        } else {
++            i++;
++        }
++    }
++    return;
++}
++
++
++int FindMaxFromIf(int array[], int size, int upNumber, int firstmax){
++    int max;
++    max = firstmax;
++        for (int j = 0; j < size; j++) {
++            if (max < array[j] && array[j] < upNumber) {
++                max = array[j];
++            }
++        }
++    return max;
++}
++
++void inputArrayFromFile(int array[], int *size, FILE *file) {
++    fscanf(file, "%d", size);
++    if (*size > 10) {
++        printf("wrond length");
++    }
++    else {
++        for (int i = 0; i < *size; i++) if (!feof(file)) fscanf(file, "%d", &array[i]);
++    }
++    return;
++}
+Index: unit.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//\n// Created by BottomWeb on 08.09.2025.\n//\n\n\n#include \"unit.h\"\n\nint FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {\n    int elem;\n    int i = 0;\n\n    while (!*flag && i < size) {\n        if (array[i] < upNumber) {\n            elem = array[i];\n            *flag = 1;\n        } else {\n            i++;\n        }\n    }\n    return elem;\n}\n\n\nint FindMaxFromIf(int array[10], int size, int *flag, int upNumber) {\n    int max;\n    max = FirstElemForMaxIf(array, size, flag, upNumber);\n    if (*flag) {\n        for (int j = 0; j < size; j++) {\n            if (max < array[j] && array[j] < upNumber) {\n                max = array[j];\n            }\n        }\n    }\n    return max;\n}\n\nvoid inputArrayFromFile(int array[10], int *size, FILE *file) {\n    fscanf(file, \"%d\", size);\n    if (*size > 10) {\n        printf(\"wrond length\");\n    }\n    else {\n        for (int i = 0; i < *size; i++){\n            if (!feof(file)) fscanf(file, \"%d\", &array[i]);\n        }\n    }\n}\n\nvoid Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){\n    if (flag1 && flag2 && flag3) {\n        if (max1 == max2 && max2 == max3) {\n            printf(\"All maximum are %d\", max1);\n        } else if (max1 == max2 && max1 < max3) {\n            printf(\"Maximum1 and maximum2 are %d\", max1);\n        } else if (max1 == max3 && max1 < max2) {\n            printf(\"Maximum1 and maximum3 are %d\", max1);\n        } else if (max2 == max3 && max2 < max1) {\n            printf(\"Maximum2 and maximum3 are %d\", max2);\n        } else if (max1 < max2 && max1 < max3) {\n            printf(\"Maximum1 are %d\", max1);\n        } else if (max2 < max1 && max2 < max3) {\n            printf(\"Maximum2 are %d\", max2);\n        } else if (max3 < max1 && max3 < max2) {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag1 && flag2) {\n        if (max1 == max2) {\n            printf(\"Maximum1 and maximum2 are %d\", max1);\n        } else if (max1 < max2) {\n            printf(\"Maximum1 are %d\", max1);\n        } else {\n            printf(\"Maximum2 are %d\", max2);\n        }\n    } else if (flag1 && flag3) {\n        if (max1 == max3) {\n            printf(\"Maximum1 and maximum3 are %d\", max1);\n        } else if (max1 < max3) {\n            printf(\"Maximum1 are %d\", max1);\n        } else {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag2 && flag3) {\n        if (max2 == max3) {\n            printf(\"Maximum2 and maximum3 are %d\", max2);\n        } else if (max2 < max3) {\n            printf(\"Maximum2 are %d\", max2);\n        } else {\n            printf(\"Maximum3 are %d\", max3);\n        }\n    } else if (flag1) {\n        printf(\"Maximum1 are %d\", max1);\n    } else if (flag2) {\n        printf(\"Maximum2 are %d\", max2);\n    } else if (flag3) {\n        printf(\"Maximum3 are %d\", max3);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/unit.c b/unit.c
+--- a/unit.c	(revision 064e41e5e93cf2d6d3224fc527bc61e48eb3fc87)
++++ b/unit.c	(date 1758100378171)
+@@ -5,32 +5,29 @@
+ 
+ #include "unit.h"
+ 
+-int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {
+-    int elem;
++void FirstElemForMaxIf(int array[], int size, int *flag, int upNumber, int*elem) {
+     int i = 0;
+ 
+     while (!*flag && i < size) {
+         if (array[i] < upNumber) {
+-            elem = array[i];
++            *elem = array[i];
+             *flag = 1;
+         } else {
+             i++;
+         }
+     }
+-    return elem;
++return;
+ }
+ 
+ 
+-int FindMaxFromIf(int array[10], int size, int *flag, int upNumber) {
++int FindMaxFromIf(int array[], int size, int upNumber, int firstmax) {
+     int max;
+-    max = FirstElemForMaxIf(array, size, flag, upNumber);
+-    if (*flag) {
++    max = firstmax;
+         for (int j = 0; j < size; j++) {
+             if (max < array[j] && array[j] < upNumber) {
+                 max = array[j];
+             }
+         }
+-    }
+     return max;
+ }
+ 
+@@ -44,54 +41,5 @@
+             if (!feof(file)) fscanf(file, "%d", &array[i]);
+         }
+     }
+-}
+-
+-void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){
+-    if (flag1 && flag2 && flag3) {
+-        if (max1 == max2 && max2 == max3) {
+-            printf("All maximum are %d", max1);
+-        } else if (max1 == max2 && max1 < max3) {
+-            printf("Maximum1 and maximum2 are %d", max1);
+-        } else if (max1 == max3 && max1 < max2) {
+-            printf("Maximum1 and maximum3 are %d", max1);
+-        } else if (max2 == max3 && max2 < max1) {
+-            printf("Maximum2 and maximum3 are %d", max2);
+-        } else if (max1 < max2 && max1 < max3) {
+-            printf("Maximum1 are %d", max1);
+-        } else if (max2 < max1 && max2 < max3) {
+-            printf("Maximum2 are %d", max2);
+-        } else if (max3 < max1 && max3 < max2) {
+-            printf("Maximum3 are %d", max3);
+-        }
+-    } else if (flag1 && flag2) {
+-        if (max1 == max2) {
+-            printf("Maximum1 and maximum2 are %d", max1);
+-        } else if (max1 < max2) {
+-            printf("Maximum1 are %d", max1);
+-        } else {
+-            printf("Maximum2 are %d", max2);
+-        }
+-    } else if (flag1 && flag3) {
+-        if (max1 == max3) {
+-            printf("Maximum1 and maximum3 are %d", max1);
+-        } else if (max1 < max3) {
+-            printf("Maximum1 are %d", max1);
+-        } else {
+-            printf("Maximum3 are %d", max3);
+-        }
+-    } else if (flag2 && flag3) {
+-        if (max2 == max3) {
+-            printf("Maximum2 and maximum3 are %d", max2);
+-        } else if (max2 < max3) {
+-            printf("Maximum2 are %d", max2);
+-        } else {
+-            printf("Maximum3 are %d", max3);
+-        }
+-    } else if (flag1) {
+-        printf("Maximum1 are %d", max1);
+-    } else if (flag2) {
+-        printf("Maximum2 are %d", max2);
+-    } else if (flag3) {
+-        printf("Maximum3 are %d", max3);
+-    }
++    return;
+ }
+\ No newline at end of file
+Index: main3.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n#include <stdio.h>\n#include \"unit.c\"\n\nint main(void) {\n\n    int array1[10];\n    int array2[10];\n    int array3[10];\n\n    FILE *file;\n\n    int size1, size2, size3, max1, max2, max3, upNumber;\n    int flag1 = 0, flag2 = 0, flag3 = 0;\n\n    char filename[100];\n\n    printf(\"Enter filename: \");\n    scanf(\"%99s\", filename);\n\n    file = fopen(filename, \"r\");\n    if (file == NULL) {\n        printf(\"file not exists\");\n    }\n    else {\n        inputArrayFromFile(array1, &size1, file);\n        inputArrayFromFile(array2, &size2, file);\n        inputArrayFromFile(array3, &size3, file);\n\n        fscanf(file, \"%d\", &upNumber);\n\n        max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);\n        max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);\n        max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);\n\n        Out(max1, max2, max3, flag1, flag2, flag3);\n\n        fclose(file);\n    }\n    return 0;\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main3.c b/main3.c
+--- a/main3.c	(revision 064e41e5e93cf2d6d3224fc527bc61e48eb3fc87)
++++ b/main3.c	(date 1758100378175)
+@@ -8,34 +8,94 @@
+     int array2[10];
+     int array3[10];
+ 
+-    FILE *file;
++    FILE *file1;
++    FILE *file2;
++    FILE *file3;
+ 
+-    int size1, size2, size3, max1, max2, max3, upNumber;
++    int size1, size2, size3, max1, max2, max3, fmax1, fmax2, fmax3, upNumber;
+     int flag1 = 0, flag2 = 0, flag3 = 0;
+ 
+-    char filename[100];
++    char filename1[100];
++    char filename2[100];
++    char filename3[100];
+ 
+     printf("Enter filename: ");
+-    scanf("%99s", filename);
++    scanf("%99s", filename1);
++    scanf("%99s", filename2);
++    scanf("%99s", filename3);
+ 
+-    file = fopen(filename, "r");
+-    if (file == NULL) {
++    file1 = fopen(filename1, "r");
++    file2 = fopen(filename2, "r");
++    file3 = fopen(filename3, "r");
++    if (file1 == NULL && file2 == NULL && file3 == NULL) {
+         printf("file not exists");
+     }
+     else {
+-        inputArrayFromFile(array1, &size1, file);
+-        inputArrayFromFile(array2, &size2, file);
+-        inputArrayFromFile(array3, &size3, file);
++        inputArrayFromFile(array1, &size1, file1);
++        inputArrayFromFile(array2, &size2, file2);
++        inputArrayFromFile(array3, &size3, file3);
+ 
+-        fscanf(file, "%d", &upNumber);
++        scanf("%d", &upNumber);
+ 
+-        max1 = FindMaxFromIf(array1, size1, &flag1, upNumber);
+-        max2 = FindMaxFromIf(array2, size2, &flag2, upNumber);
+-        max3 = FindMaxFromIf(array3, size3, &flag3, upNumber);
++        FirstElemForMaxIf(array1, size1, &flag1, upNumber, &fmax1);
++        FirstElemForMaxIf(array2, size2, &flag2, upNumber, &fmax2);
++        FirstElemForMaxIf(array3, size3, &flag3, upNumber, &fmax3);
+ 
+-        Out(max1, max2, max3, flag1, flag2, flag3);
++        if(flag1) max1 = FindMaxFromIf(array1, size1, upNumber, fmax1);
++        if(flag2) max2 = FindMaxFromIf(array2, size2, upNumber, fmax2);
++        if(flag3) max3 = FindMaxFromIf(array3, size3, upNumber, fmax3);
+ 
+-        fclose(file);
++        if (flag1 && flag2 && flag3) {
++            if (max1 == max2 && max2 == max3) {
++                printf("All maximum are %d", max1);
++            } else if (max1 == max2 && max1 < max3) {
++                printf("Maximum1 and maximum2 are %d", max1);
++            } else if (max1 == max3 && max1 < max2) {
++                printf("Maximum1 and maximum3 are %d", max1);
++            } else if (max2 == max3 && max2 < max1) {
++                printf("Maximum2 and maximum3 are %d", max2);
++            } else if (max1 < max2 && max1 < max3) {
++                printf("Maximum1 are %d", max1);
++            } else if (max2 < max1 && max2 < max3) {
++                printf("Maximum2 are %d", max2);
++            } else if (max3 < max1 && max3 < max2) {
++                printf("Maximum3 are %d", max3);
++            }
++        } else if (flag1 && flag2) {
++            if (max1 == max2) {
++                printf("Maximum1 and maximum2 are %d", max1);
++            } else if (max1 < max2) {
++                printf("Maximum1 are %d", max1);
++            } else {
++                printf("Maximum2 are %d", max2);
++            }
++        } else if (flag1 && flag3) {
++            if (max1 == max3) {
++                printf("Maximum1 and maximum3 are %d", max1);
++            } else if (max1 < max3) {
++                printf("Maximum1 are %d", max1);
++            } else {
++                printf("Maximum3 are %d", max3);
++            }
++        } else if (flag2 && flag3) {
++            if (max2 == max3) {
++                printf("Maximum2 and maximum3 are %d", max2);
++            } else if (max2 < max3) {
++                printf("Maximum2 are %d", max2);
++            } else {
++                printf("Maximum3 are %d", max3);
++            }
++        } else if (flag1) {
++            printf("Maximum1 are %d", max1);
++        } else if (flag2) {
++            printf("Maximum2 are %d", max2);
++        } else if (flag3) {
++            printf("Maximum3 are %d", max3);
++        }
++
++        fclose(file1);
++        fclose(file2);
++        fclose(file3);
+     }
+     return 0;
+ }
