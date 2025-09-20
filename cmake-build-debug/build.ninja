@@ -61,6 +61,18 @@ build CMakeFiles/untitled.dir/unit.c.o: C_COMPILER__untitled_unscanned_Debug /Us
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
+build CMakeFiles/untitled.dir/main2.c.o: C_COMPILER__untitled_unscanned_Debug /Users/ivandarovskoy/CLionProjects/MyLabsMPEI/main2.c || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/main2.c.o.d
+  FLAGS = -g -std=gnu11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.5 -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+
+build CMakeFiles/untitled.dir/unitStatic.c.o: C_COMPILER__untitled_unscanned_Debug /Users/ivandarovskoy/CLionProjects/MyLabsMPEI/unitStatic.c || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/unitStatic.c.o.d
+  FLAGS = -g -std=gnu11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.5 -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target untitled
@@ -69,7 +81,7 @@ build CMakeFiles/untitled.dir/unit.c.o: C_COMPILER__untitled_unscanned_Debug /Us
 #############################################
 # Link the executable untitled
 
-build untitled: C_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main4.c.o CMakeFiles/untitled.dir/unit.c.o
+build untitled: C_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main4.c.o CMakeFiles/untitled.dir/unit.c.o CMakeFiles/untitled.dir/main2.c.o CMakeFiles/untitled.dir/unitStatic.c.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.5
   OBJECT_DIR = CMakeFiles/untitled.dir
   POST_BUILD = :

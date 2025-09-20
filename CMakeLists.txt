@@ -7,5 +7,8 @@ add_executable(untitled
         main4.c
         unit.c
         unit.h
+        main2.c
+        unitStatic.c
+        unitStatic.h
 
 )
