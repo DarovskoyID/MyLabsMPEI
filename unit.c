@@ -31,7 +31,7 @@ int FindMaxFromIf(int array[], int size, int upNumber, int firstmax) {
     return max;
 }
 
-void inputArrayFromFile(int array[10], int *size, FILE *file) {
+void inputArrayFromFile(int array[], int *size, FILE *file) {
     fscanf(file, "%d", size);
     if (*size > 10) {
         printf("wrond length");
