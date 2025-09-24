@@ -20,10 +20,11 @@ void OutputArray(int array[], int size) {
     for (int i = 0; i < size; i++) {
         printf("%d ", array[i]);
     }
+    return;
 }
 
 
-int FindZero(int matrix[MAXY][MAXX], int sizeX, int sizeY) {
+int FindZero(int matrix[][MAXX], int sizeX, int sizeY) {
     int i = 0;
     int j = 0;
     int flag = 0;
@@ -51,4 +52,5 @@ void inputMatrixFromFile(int matrix[MAXY][MAXX], int *sizeX, int *sizeY, FILE *f
             fscanf(file, "%d", &matrix[i][j]);
         }
     }
+    return;
 }
