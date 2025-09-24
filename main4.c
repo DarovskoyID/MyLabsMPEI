@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "unitdyn.h"
 
+
+//в том из 3 веткоров в котором меньше минимальный положительный поменять минимальный положительный и минимальный местами
 int main(void) {
 
     int *array1;
@@ -12,8 +14,11 @@ int main(void) {
     FILE *file2;
     FILE *file3;
 
-    int size1, size2, size3, max1, max2, max3, fmax1, fmax2, fmax3, upNumber;
+    int size1, size2, size3, max1, max2, max3, fmax1, fmax2, fmax3, upNumber, indexmin1, indexmin2, indexmin3,
+    indexminpos1, indexminpos2, indexminpos3,
+    min1, min2, min3, minpos1, minpos2, minpos3;
     int flag1 = 0, flag2 = 0, flag3 = 0;
+    int flag11 = 0, flag21 = 0, flag31 = 0;
 
     char filename1[100];
     char filename2[100];
@@ -36,6 +41,78 @@ int main(void) {
         inputArrayFromFile(&array3, &size3, file3);
 
         scanf("%d", &upNumber);
+
+        printArr(array1, size1);
+        printArr(array2, size2);
+        printArr(array3, size3);
+
+        FindFirstMin(array1, size1, &indexminpos1, &minpos1, &flag11);
+        FindFirstMin(array2, size2, &indexminpos2, &minpos2, &flag21);
+        FindFirstMin(array3, size3, &indexminpos3, &minpos3, &flag31);
+
+        if (flag11) {
+            FindPosMin(array1, size1, &indexminpos1, &minpos1);
+        }
+        if (flag21) {
+            FindPosMin(array2, size2, &indexminpos2, &minpos2);
+        }
+        if (flag31) {
+            FindPosMin(array3, size3, &indexminpos3, &minpos3);
+        }
+
+        if (flag11 && flag21 && flag31) {
+            if (minpos1 <= minpos2 && minpos1 <= minpos3) {
+                FindMin(array1, size1, &indexmin1, &min1);
+                swap(&array1, indexminpos1, indexmin1);
+            }
+            else if (minpos2 <= minpos1 && minpos2 <= minpos3) {
+                FindMin(array2, size2, &indexmin2, &min2);
+                swap(&array2, indexminpos2, indexmin2);
+            } else {
+                FindMin(array3, size3, &indexmin3, &min3);
+                swap(&array3, indexminpos3, indexmin3);
+            }
+        } else if (flag11 && flag21) {
+            if (minpos1 <= minpos2) {
+                FindMin(array1, size1, &indexmin1, &min1);
+                swap(&array1, indexminpos1, indexmin1);
+            } else {
+                FindMin(array2, size2, &indexmin2, &min2);
+                swap(&array2, indexminpos2, indexmin2);
+            }
+        } else if (flag21 && flag31) {
+            if (minpos2 <= minpos3) {
+                FindMin(array2, size2, &indexmin2, &min2);
+                swap(&array2, indexminpos2, indexmin2);
+            } else {
+                FindMin(array3, size3, &indexmin3, &min3);
+                swap(&array3, indexminpos3, indexmin3);
+            }
+        } else if (flag11 && flag31) {
+            if (minpos1 <= minpos3) {
+                FindMin(array1, size1, &indexmin1, &min1);
+                swap(&array1, indexminpos1, indexmin1);
+            } else {
+                FindMin(array3, size3, &indexmin3, &min3);
+                swap(&array3, indexminpos3, indexmin3);
+            }
+        } else if (flag11) {
+            FindMin(array1, size1, &indexmin1, &min1);
+            swap(&array1, indexminpos1, indexmin1);
+        } else if (flag21) {
+            FindMin(array2, size2, &indexmin2, &min2);
+            swap(&array2, indexminpos2, indexmin2);
+        } else if (flag31) {
+            FindMin(array3, size3, &indexmin3, &min3);
+            swap(&array3, indexminpos3, indexmin3);
+        }
+
+
+        printArr(array1, size1);
+        printArr(array2, size2);
+        printArr(array3, size3);
+
+
 
         FirstElemForMaxIf(array1, size1, &flag1, upNumber, &fmax1);
         FirstElemForMaxIf(array2, size2, &flag2, upNumber, &fmax2);
