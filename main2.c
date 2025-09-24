@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#include "unit.h"
+#include "unitStatic.h"
 
 #define MAXX 10
 #define MAXY 10
@@ -36,16 +36,16 @@ int main(void) {
         printf("file not exists");
     }
     else {
-        inputMatrixFromFile(&matrix1, &sizeX1, &sizeY1, file1);
-        inputMatrixFromFile(&matrix2, &sizeX2, &sizeY2, file2);
+        inputMatrixFromFile(matrix1, &sizeX1, &sizeY1, file1);
+        inputMatrixFromFile(matrix2, &sizeX2, &sizeY2, file2);
         flag1 = FindZero(matrix1, sizeX1, sizeY1);
         flag2 = FindZero(matrix2, sizeX2, sizeY2);
         if(flag1) {
-            findMinArray(matrix1, &array1, sizeX1, sizeY1);
+            findMinArray(matrix1, array1, sizeX1, sizeY1);
         }
 
         if(flag2) {
-            findMinArray(matrix2, &array2, sizeX2, sizeY2);
+            findMinArray(matrix2, array2, sizeX2, sizeY2);
         }
 
         if(flag1) {
@@ -56,10 +56,6 @@ int main(void) {
             OutputArray(array2, sizeY2);
         }
 
-        if (flag1) free(array1);
-        if (flag2) free(array2);
-        free(matrix1);
-        free(matrix2);
         fclose(file1);
         fclose(file2);
     }
