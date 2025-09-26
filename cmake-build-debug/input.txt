@@ -1,7 +1,7 @@
 f a b
-e * e # f
-a b 2 2 2 1 4 * c
+e * e2 # f
+a buuuuuu 2 2 2 1 4 * c
 e r
 t
-e r t
+e r u
 u * * u 1 u
