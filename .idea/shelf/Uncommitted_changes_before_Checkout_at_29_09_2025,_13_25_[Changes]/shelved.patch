@@ -1,0 +1,165 @@
+Index: cmake-build-debug/.ninja_log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># ninja log v6\n7\t508\t1758692326978563659\tCMakeFiles/untitled.dir/unitStatic.c.o\tf238472e03877a86\n154\t246\t1757908643080692054\tuntitled3\tb9de95886d9b5349\n135\t229\t1758692354709532854\tuntitled\t653e793ab3f1bab3\n2\t134\t1758692354576881611\tCMakeFiles/untitled.dir/main4.c.o\te78ee0e3707b43ce\n1\t100\t1758704877652930137\tbuild.ninja\td1c383e42ca6f69d\n6\t511\t1758692326977698345\tCMakeFiles/untitled.dir/main2.c.o\tf5fef5da403bdf22\n3\t135\t1758692354577626438\tCMakeFiles/untitled.dir/unit.c.o\td5c7f843e67461bc\n4\t549\t1758705223245648132\tCMakeFiles/untitled.dir/main4.c.o\te78ee0e3707b43ce\n5\t549\t1758705223246583017\tCMakeFiles/untitled.dir/unit.c.o\td5c7f843e67461bc\n549\t878\t1758705223791071964\tuntitled\t653e793ab3f1bab3\n12\t142\t1758705251754944375\tCMakeFiles/untitled.dir/unit.c.o\td5c7f843e67461bc\n142\t249\t1758705251885147455\tuntitled\t653e793ab3f1bab3\n5\t147\t1758705330293623423\tCMakeFiles/untitled.dir/unit.c.o\td5c7f843e67461bc\n147\t244\t1758705330435517070\tuntitled\t653e793ab3f1bab3\n5\t548\t1758705749692405049\tCMakeFiles/untitled.dir/unit.c.o\td5c7f843e67461bc\n7\t106\t1758705773319372341\tCMakeFiles/untitled.dir/unit.c.o\td5c7f843e67461bc\n107\t217\t1758705773419136447\tuntitled\t653e793ab3f1bab3\n5\t138\t1758705813862481829\tCMakeFiles/untitled.dir/unit.c.o\td5c7f843e67461bc\n139\t237\t1758705813995812810\tuntitled\t653e793ab3f1bab3\n3\t91\t1758705851353924514\tCMakeFiles/untitled.dir/unit.c.o\td5c7f843e67461bc\n91\t201\t1758705851442508963\tuntitled\t653e793ab3f1bab3\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cmake-build-debug/.ninja_log b/cmake-build-debug/.ninja_log
+--- a/cmake-build-debug/.ninja_log	
++++ b/cmake-build-debug/.ninja_log	
+@@ -1,22 +1,11 @@
+ # ninja log v6
+-7	508	1758692326978563659	CMakeFiles/untitled.dir/unitStatic.c.o	f238472e03877a86
++38	264	1759141469864905881	CMakeFiles/untitled.dir/unitStatic.c.o	f238472e03877a86
+ 154	246	1757908643080692054	untitled3	b9de95886d9b5349
+-135	229	1758692354709532854	untitled	653e793ab3f1bab3
+-2	134	1758692354576881611	CMakeFiles/untitled.dir/main4.c.o	e78ee0e3707b43ce
+-1	100	1758704877652930137	build.ninja	d1c383e42ca6f69d
+-6	511	1758692326977698345	CMakeFiles/untitled.dir/main2.c.o	f5fef5da403bdf22
+-3	135	1758692354577626438	CMakeFiles/untitled.dir/unit.c.o	d5c7f843e67461bc
++268	681	1759141470095297781	untitled	a10707b85b1cf925
+ 4	549	1758705223245648132	CMakeFiles/untitled.dir/main4.c.o	e78ee0e3707b43ce
+-5	549	1758705223246583017	CMakeFiles/untitled.dir/unit.c.o	d5c7f843e67461bc
+-549	878	1758705223791071964	untitled	653e793ab3f1bab3
+-12	142	1758705251754944375	CMakeFiles/untitled.dir/unit.c.o	d5c7f843e67461bc
+-142	249	1758705251885147455	untitled	653e793ab3f1bab3
+-5	147	1758705330293623423	CMakeFiles/untitled.dir/unit.c.o	d5c7f843e67461bc
+-147	244	1758705330435517070	untitled	653e793ab3f1bab3
+-5	548	1758705749692405049	CMakeFiles/untitled.dir/unit.c.o	d5c7f843e67461bc
+-7	106	1758705773319372341	CMakeFiles/untitled.dir/unit.c.o	d5c7f843e67461bc
+-107	217	1758705773419136447	untitled	653e793ab3f1bab3
+-5	138	1758705813862481829	CMakeFiles/untitled.dir/unit.c.o	d5c7f843e67461bc
+-139	237	1758705813995812810	untitled	653e793ab3f1bab3
++1	100	1759141504888269683	build.ninja	d1c383e42ca6f69d
++1	268	1759141469863788269	CMakeFiles/untitled.dir/main2.c.o	f5fef5da403bdf22
+ 3	91	1758705851353924514	CMakeFiles/untitled.dir/unit.c.o	d5c7f843e67461bc
+-91	201	1758705851442508963	untitled	653e793ab3f1bab3
++1	115	1759141514067904695	CMakeFiles/untitled.dir/main4.c.o	e78ee0e3707b43ce
++1	117	1759141514068379220	CMakeFiles/untitled.dir/unit.c.o	d5c7f843e67461bc
++117	215	1759141514183979074	untitled	653e793ab3f1bab3
+Index: cmake-build-debug/Testing/Temporary/LastTest.log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Start testing: Sep 24 12:24 MSK\n----------------------------------------------------------\nEnd testing: Sep 24 12:24 MSK\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cmake-build-debug/Testing/Temporary/LastTest.log b/cmake-build-debug/Testing/Temporary/LastTest.log
+--- a/cmake-build-debug/Testing/Temporary/LastTest.log	
++++ b/cmake-build-debug/Testing/Temporary/LastTest.log	
+@@ -1,3 +1,3 @@
+-Start testing: Sep 24 12:24 MSK
++Start testing: Sep 29 13:25 MSK
+ ----------------------------------------------------------
+-End testing: Sep 24 12:24 MSK
++End testing: Sep 29 13:25 MSK
+Index: unitStatic.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//\n// Created by Иван on 20.09.2025.\n//\n#include \"unitStatic.h\"\n\nvoid findMinArray(int mat[MAXY][MAXX], int array[], int sizeX, int sizeY) {\n    for (int i = 0; i < sizeY; i++) {\n        int min = mat[i][0];\n        for (int j = 1; j < sizeX; j++) {\n            if (min > mat[i][j]) {\n                min = mat[i][j];\n            }\n        }\n        array[i] = min;\n    }\n    return;\n}\n\nvoid OutputArray(int array[], int size) {\n    for (int i = 0; i < size; i++) {\n        printf(\"%d \", array[i]);\n    }\n    return;\n}\n\n\nint FindZero(int matrix[][MAXX], int sizeX, int sizeY) {\n    int i = 0;\n    int j = 0;\n    int flag = 0;\n    while (i < sizeY && !flag) {\n        j = 0;\n        while (j < sizeX && !flag) {\n            if (matrix[i][j] == 0) {\n                flag = 1;\n            } else {\n                j++;\n            }\n        }\n        if (!flag) {\n            i++;\n        }\n\n    }\n    return flag;\n}\n\nvoid inputMatrixFromFile(int matrix[MAXY][MAXX], int *sizeX, int *sizeY, FILE *file) {\n    fscanf(file, \"%d %d\", sizeY, sizeX);\n    for (int i = 0; i < *sizeY; i++) {\n        for (int j = 0; j < *sizeX; j++) {\n            fscanf(file, \"%d\", &matrix[i][j]);\n        }\n    }\n    return;\n}
+===================================================================
+diff --git a/unitStatic.c b/unitStatic.c
+--- a/unitStatic.c	
++++ b/unitStatic.c	
+@@ -2,20 +2,27 @@
+ // Created by Иван on 20.09.2025.
+ //
+ #include "unitStatic.h"
++#define MAXX 10
++#define MAXY 10
+ 
+-void findMinArray(int mat[MAXY][MAXX], int array[], int sizeX, int sizeY) {
+-    for (int i = 0; i < sizeY; i++) {
+-        int min = mat[i][0];
+-        for (int j = 1; j < sizeX; j++) {
+-            if (min > mat[i][j]) {
+-                min = mat[i][j];
+-            }
+-        }
+-        array[i] = min;
++int findMinInRow(int row[], int sizeX) {
++    int min = row[0];
++    for (int j = 1; j < sizeX; j++) {
++        if (min > row[j]) {
++            min = row[j];
++        }
++    }
++    return min;
++}
++
++void findMinArray(int mat[][MAXX], int array[], int sizeX, int sizeY) {
++    for (int i = 0; i < sizeY; i++) {
++        array[i] = findMinInRow(mat[i], sizeX);
+     }
+     return;
+ }
+ 
++
+ void OutputArray(int array[], int size) {
+     for (int i = 0; i < size; i++) {
+         printf("%d ", array[i]);
+@@ -24,33 +31,45 @@
+ }
+ 
+ 
++int findZeroInRow(int row[], int sizeX) {
++    int flag = 0;
++    int j = 0;
++    while (j < sizeX && !flag) {
++        if (row[j] == 0) {
++            flag = 1;
++        } else {
++            j++;
++        }
++    }
++    return flag;
++}
++
+ int FindZero(int matrix[][MAXX], int sizeX, int sizeY) {
+-    int i = 0;
+-    int j = 0;
+     int flag = 0;
++    int i = 0;
+     while (i < sizeY && !flag) {
+-        j = 0;
+-        while (j < sizeX && !flag) {
+-            if (matrix[i][j] == 0) {
+-                flag = 1;
+-            } else {
+-                j++;
+-            }
+-        }
+-        if (!flag) {
++        if (findZeroInRow(matrix[i], sizeX)) {
++            flag = 1;
++        } else {
+             i++;
+         }
+-
+     }
+     return flag;
+ }
+ 
+-void inputMatrixFromFile(int matrix[MAXY][MAXX], int *sizeX, int *sizeY, FILE *file) {
++
++void inputString(int array[], int *sizeX, FILE *file) {
++    for (int j = 0; j < *sizeX; j++) {
++        fscanf(file, "%d", &(array[j]));
++    }
++    return;
++}
++
++void inputMatrixFromFile(int matrix[][MAXX], int *sizeX, int *sizeY, FILE *file) {
+     fscanf(file, "%d %d", sizeY, sizeX);
++
+     for (int i = 0; i < *sizeY; i++) {
+-        for (int j = 0; j < *sizeX; j++) {
+-            fscanf(file, "%d", &matrix[i][j]);
+-        }
++        inputString(matrix[i], sizeX, file);
+     }
+     return;
+-}
+\ No newline at end of file
++}
