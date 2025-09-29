@@ -7,9 +7,12 @@
 #include <stdio.h>
 
 
-int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber);
-int FindMaxFromIf(int array[10], int size, int *flag, int upNumber);
-void inputArrayFromFile(int array[10], int *size, FILE *file);
-void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3);
+void inputStringFromFile(char string[255], FILE *file);
+void splitter(const char inputString[255], char outputString[255][255], int i, int *j);
+int CalculateLen(char inputString[255]);
+void copyString(char *dest, const char *src);
+void swap(char a[255], char b[255]);
+int partition(char words[255][255], int low, int high);
+void quickSort(char words[255][255], int low, int high);
 
 #endif //UNTITLED3_UNIT_H

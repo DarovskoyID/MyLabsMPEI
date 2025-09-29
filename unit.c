@@ -5,93 +5,63 @@
 
 #include "unit.h"
 
-int FirstElemForMaxIf(int array[10], int size, int *flag, int upNumber) {
-    int elem;
+void inputStringFromFile(char string[255], FILE *file) {
+    if (fgets(string, sizeof(char) * 255, file) == NULL) printf("ERROR");
+    return;
+}
+void splitter(const char inputString[255], char outputString[255][255], int i, int *j) {
+    int m = 0;
+    while(inputString[i] != '\0') {
+        if (inputString[i] != ' ') {
+            outputString[*j][m] = inputString[i];
+            m++;
+        }
+        if (inputString[i] == ' ' && inputString[i+1] !=' ' || inputString[i+1] == '\0') {
+            (*j)++;
+            outputString[*j][m+1] = '\0';
+            m = 0;
+        }
+        i++;
+    }
+    return;
+}
+int CalculateLen(char inputString[255]) {
     int i = 0;
-
-    while (!*flag && i < size) {
-        if (array[i] < upNumber) {
-            elem = array[i];
-            *flag = 1;
-        } else {
+    while (inputString[i] != '\0') i++;
+    return i;
+}
+void copyString(char *dest, const char *src) {
+    int i = 0;
+    while (src[i] != '\0') {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+    return;
+}
+void swap(char a[255], char b[255]) {
+    char temp[255];
+    copyString(temp, a);
+    copyString(a, b);
+    copyString(b, temp);
+    return;
+}
+int partition(char words[255][255], int low, int high) {
+    int pivot = CalculateLen(words[high]);
+    int i = low - 1;
+    for (int j = low; j < high; j++) {
+        if (CalculateLen(words[j]) <= pivot) {
             i++;
+            swap(words[i], words[j]);
         }
     }
-    return elem;
+    swap(words[i + 1], words[high]);
+    return i + 1;
 }
-
-
-int FindMaxFromIf(int array[10], int size, int *flag, int upNumber) {
-    int max;
-    max = FirstElemForMaxIf(array, size, flag, upNumber);
-    if (*flag) {
-        for (int j = 0; j < size; j++) {
-            if (max < array[j] && array[j] < upNumber) {
-                max = array[j];
-            }
-        }
-    }
-    return max;
-}
-
-void inputArrayFromFile(int array[10], int *size, FILE *file) {
-    fscanf(file, "%d", size);
-    if (*size > 10) {
-        printf("wrond length");
-    }
-    else {
-        for (int i = 0; i < *size; i++){
-            if (!feof(file)) fscanf(file, "%d", &array[i]);
-        }
-    }
-}
-
-void Out(int max1, int max2, int max3, int flag1, int flag2, int flag3){
-    if (flag1 && flag2 && flag3) {
-        if (max1 == max2 && max2 == max3) {
-            printf("All maximum are %d", max1);
-        } else if (max1 == max2 && max1 < max3) {
-            printf("Maximum1 and maximum2 are %d", max1);
-        } else if (max1 == max3 && max1 < max2) {
-            printf("Maximum1 and maximum3 are %d", max1);
-        } else if (max2 == max3 && max2 < max1) {
-            printf("Maximum2 and maximum3 are %d", max2);
-        } else if (max1 < max2 && max1 < max3) {
-            printf("Maximum1 are %d", max1);
-        } else if (max2 < max1 && max2 < max3) {
-            printf("Maximum2 are %d", max2);
-        } else if (max3 < max1 && max3 < max2) {
-            printf("Maximum3 are %d", max3);
-        }
-    } else if (flag1 && flag2) {
-        if (max1 == max2) {
-            printf("Maximum1 and maximum2 are %d", max1);
-        } else if (max1 < max2) {
-            printf("Maximum1 are %d", max1);
-        } else {
-            printf("Maximum2 are %d", max2);
-        }
-    } else if (flag1 && flag3) {
-        if (max1 == max3) {
-            printf("Maximum1 and maximum3 are %d", max1);
-        } else if (max1 < max3) {
-            printf("Maximum1 are %d", max1);
-        } else {
-            printf("Maximum3 are %d", max3);
-        }
-    } else if (flag2 && flag3) {
-        if (max2 == max3) {
-            printf("Maximum2 and maximum3 are %d", max2);
-        } else if (max2 < max3) {
-            printf("Maximum2 are %d", max2);
-        } else {
-            printf("Maximum3 are %d", max3);
-        }
-    } else if (flag1) {
-        printf("Maximum1 are %d", max1);
-    } else if (flag2) {
-        printf("Maximum2 are %d", max2);
-    } else if (flag3) {
-        printf("Maximum3 are %d", max3);
+void quickSort(char words[255][255], int low, int high) {
+    if (low < high) {
+        int pi = partition(words, low, high);
+        quickSort(words, low, pi - 1);
+        quickSort(words, pi + 1, high);
     }
 }
