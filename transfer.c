@@ -13,9 +13,7 @@ void transferFileToBFile(FILE *fileText, FILE *fileBinary, int *flag) {
             if ((buffer[i] != ' ' && buffer[i] != '\n' && buffer[i] != '\t') &&
                 (buffer[i+1] == ' ' || buffer[i+1] == '\n' || buffer[i+1] == '\t' || buffer[i+1] == '\0') &&
                 (buffer[i-1] == ' ' || buffer[i-1] == '\n' || buffer[i-1] == '\t' || buffer[i-1] == '\0')
-                )
-
-                {
+                ) {
                 rec[j] = buffer[i];
                 j++;
             }

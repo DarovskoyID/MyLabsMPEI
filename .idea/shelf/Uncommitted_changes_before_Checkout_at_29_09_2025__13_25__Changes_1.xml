@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_29_09_2025,_13_25_[Changes]1" date="1759141560059" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_09_2025,_13_25_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 29.09.2025, 13:25 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/untitled" />
+    <option name="AFTER_PATH" value="cmake-build-debug/untitled" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_09_2025,_13_25_[Changes]1/untitled" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/.ninja_deps" />
+    <option name="AFTER_PATH" value="cmake-build-debug/.ninja_deps" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_09_2025,_13_25_[Changes]1/.ninja_deps" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/CMakeFiles/untitled.dir/unitStatic.c.o" />
+    <option name="AFTER_PATH" value="cmake-build-debug/CMakeFiles/untitled.dir/unitStatic.c.o" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_09_2025,_13_25_[Changes]1/unitStatic.c.o" />
+  </binary>
+</changelist>
