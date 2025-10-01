@@ -3,18 +3,23 @@
 //
 #include "unitStatic.h"
 
-void findMinArray(int mat[MAXY][MAXX], int array[], int sizeX, int sizeY) {
-    for (int i = 0; i < sizeY; i++) {
-        int min = mat[i][0];
-        for (int j = 1; j < sizeX; j++) {
-            if (min > mat[i][j]) {
-                min = mat[i][j];
-            }
+int findMinInRow(int row[], int sizeX) {
+    int min = row[0];
+    for (int j = 1; j < sizeX; j++) {
+        if (min > row[j]) {
+            min = row[j];
         }
-        array[i] = min;
+    }
+    return min;
+}
+
+void findMinArray(int mat[][MAXX], int array[], int sizeX, int sizeY) {
+    for (int i = 0; i < sizeY; i++) {
+        array[i] = findMinInRow(mat[i], sizeX);
     }
     return;
 }
+
 
 void OutputArray(int array[], int size) {
     for (int i = 0; i < size; i++) {
@@ -24,33 +29,45 @@ void OutputArray(int array[], int size) {
 }
 
 
-int FindZero(int matrix[][MAXX], int sizeX, int sizeY) {
-    int i = 0;
-    int j = 0;
+int findZeroInRow(int row[], int sizeX) {
     int flag = 0;
-    while (i < sizeY && !flag) {
-        j = 0;
-        while (j < sizeX && !flag) {
-            if (matrix[i][j] == 0) {
-                flag = 1;
-            } else {
-                j++;
-            }
+    int j = 0;
+    while (j < sizeX && !flag) {
+        if (row[j] == 0) {
+            flag = 1;
+        } else {
+            j++;
         }
-        if (!flag) {
-            i++;
-        }
-
     }
     return flag;
 }
 
-void inputMatrixFromFile(int matrix[MAXY][MAXX], int *sizeX, int *sizeY, FILE *file) {
-    fscanf(file, "%d %d", sizeY, sizeX);
-    for (int i = 0; i < *sizeY; i++) {
-        for (int j = 0; j < *sizeX; j++) {
-            fscanf(file, "%d", &matrix[i][j]);
+int FindZero(int matrix[][MAXX], int sizeX, int sizeY) {
+    int flag = 0;
+    int i = 0;
+    while (i < sizeY && !flag) {
+        if (findZeroInRow(matrix[i], sizeX)) {
+            flag = 1;
+        } else {
+            i++;
         }
+    }
+    return flag;
+}
+
+
+void inputString(int array[], int *sizeX, FILE *file) {
+    for (int j = 0; j < *sizeX; j++) {
+        fscanf(file, "%d", &(array[j]));
+    }
+    return;
+}
+
+void inputMatrixFromFile(int matrix[][MAXX], int *sizeX, int *sizeY, FILE *file) {
+    fscanf(file, "%d %d", sizeY, sizeX);
+
+    for (int i = 0; i < *sizeY; i++) {
+        inputString(matrix[i], sizeX, file);
     }
     return;
 }
