@@ -1,6 +1,8 @@
 
 #include <stdio.h>
-#include "unit.h"
+#include "unitmat.h"
+//защ в той матрице в который минимум и максимум равны по модулю поменять верхнюю половину на положительный нижнию на отриц
+
 
 // Даны две матрицы разного размера. Для той из матриц,
 // в которой есть элементы, равные 0, найти минимальный элемент в каждой строке.
@@ -52,6 +54,20 @@ int main(void) {
         if(flag2) {
             OutputArray(array2, sizeY2);
         }
+
+        OutputMat(matrix1, sizeX1, sizeY1);
+        OutputMat(matrix2, sizeX2, sizeY2);
+
+        if (abs(findMaxMatrix(matrix1, sizeX1, sizeY1)) == abs(findMinMatrix(matrix1, sizeX1, sizeY1))) {
+            change(matrix1, sizeX1, sizeY1);
+        }
+
+        if (abs(findMaxMatrix(matrix2, sizeX2, sizeY2)) == abs(findMinMatrix(matrix2, sizeX2, sizeY2))) {
+            change(matrix2, sizeX2, sizeY2);
+        }
+
+        OutputMat(matrix1, sizeX1, sizeY1);
+        OutputMat(matrix2, sizeX2, sizeY2);
 
         if (flag1) free(array1);
         if (flag2) free(array2);

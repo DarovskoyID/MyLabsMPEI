@@ -5,9 +5,13 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(untitled
         main4.c
-        unit.c
-        unit.h
-#        main2.c
+#        unit.c
+#        unit.h
+        unitmat.c
+        unitmat.h
+#        stat.c
+#        stat.h
+        #        main2.c
 #        unitStatic.c
 #        unitStatic.h
 

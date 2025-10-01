@@ -1,5 +1,28 @@
 #include "unit.h"
 
+int findMaxInRow(int *row, int sizeX) {
+    int max = row[0];
+    for (int j = 1; j < sizeX; j++) {
+        if (max < row[j]) {
+            max = row[j];
+        }
+    }
+    return max;
+}
+
+int findMaxMatrix(int **mat, int sizeX, int sizeY) {
+    int max = findMaxInRow(mat[0], sizeX);
+    int temp;
+    for (int i = 1; i < sizeY; i++) {
+        temp = findMaxInRow(mat[i], sizeX);
+        if (temp > max) {
+            max = temp;
+        }
+    }
+    return max;
+}
+
+
 int findMinInRow(int *row, int sizeX) {
     int min = row[0];
     for (int j = 1; j < sizeX; j++) {
@@ -9,6 +32,40 @@ int findMinInRow(int *row, int sizeX) {
     }
     return min;
 }
+
+int findMinMatrix(int **mat, int sizeX, int sizeY) {
+    int min = findMinInRow(mat[0], sizeX);
+    int temp;
+    for (int i = 1; i < sizeY; i++) {
+        temp = findMinInRow(mat[i], sizeX);
+        if (temp < min) {
+            min = temp;
+        }
+    }
+    return min;
+}
+
+void changeRow(int *row, int sizeX) {
+    int left = 0, right = sizeX - 1;
+    while (left < right) {
+        while (left < sizeX && row[left] > 0) left++;
+        while (right >= 0 && row[right] < 0) right--;
+        if (left < right) {
+            int tmp = row[left];
+            row[left] = row[right];
+            row[right] = tmp;
+        }
+    }
+    return;
+}
+
+void change(int **mat, int sizeX, int sizeY) {
+    for (int i = 0; i < sizeY; i++) {
+        changeRow(mat[i], sizeX);
+    }
+    return;
+}
+
 
 void findMinArray(int **mat, int **array, int sizeX, int sizeY) {
     *array = (int*) malloc(sizeY * sizeof(int));

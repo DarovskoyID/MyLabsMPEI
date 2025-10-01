@@ -5,6 +5,7 @@
 #ifndef UNITSTATIC_H
 #define UNITSTATIC_H
 #include <stdio.h>
+#include <stdlib.h>
 #define MAXX 10
 #define MAXY 10
 
