@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "transfer.h"
 #include "unit.h"
-
+//удалить записи в которых на 2 позиции гласная
 
 //Каждая запись представляет собой 3 символа.
 //поменять местами две записи и вывести содержимое
@@ -31,7 +31,9 @@ int main(void) {
             ChageRecordPosition(fileBinary, 2, 3);
             printf("\n");
             OutFile(fileBinary);
-
+            DeleteGlasnie(fileBinary);
+            printf("\n");
+            OutFile(fileBinary);
             fclose(fileBinary);
             fclose(fileText);
         }
