@@ -1,0 +1,281 @@
+Index: CMakeLists.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>cmake_minimum_required(VERSION 3.28)\r\nproject(untitled3 C)\r\n\r\nset(CMAKE_C_STANDARD 11)\r\n\r\nadd_executable(untitled3\r\n\r\n#        main4.c\r\n#        unitdyn.c\r\n#        unitdyn.h\r\n        main1-1.c\r\n\r\n        #        main3.c\r\n#        unit.c\r\n#        unit.h\r\n\r\n#        main2.c\r\n#        main1.c\r\n)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	(revision 372e5ed4772ec95c7e9216cc0efe798a6d5ad753)
++++ b/CMakeLists.txt	(date 1757612694830)
+@@ -5,10 +5,10 @@
+ 
+ add_executable(untitled3
+ 
+-#        main4.c
+-#        unitdyn.c
+-#        unitdyn.h
+-        main1-1.c
++        main4.c
++        unitdyn.c
++        unitdyn.h
++#        main1-1.c
+ 
+         #        main3.c
+ #        unit.c
+Index: cmake-build-debug/.cmake/api/v1/reply/target-untitled3-Debug-ef567ec9c42c4af16259.json
+===================================================================
+diff --git a/cmake-build-debug/.cmake/api/v1/reply/target-untitled3-Debug-ef567ec9c42c4af16259.json b/cmake-build-debug/.cmake/api/v1/reply/target-untitled3-Debug-ef567ec9c42c4af16259.json
+deleted file mode 100644
+--- a/cmake-build-debug/.cmake/api/v1/reply/target-untitled3-Debug-ef567ec9c42c4af16259.json	(revision 372e5ed4772ec95c7e9216cc0efe798a6d5ad753)
++++ /dev/null	(revision 372e5ed4772ec95c7e9216cc0efe798a6d5ad753)
+@@ -1,106 +0,0 @@
+-{
+-	"artifacts" : 
+-	[
+-		{
+-			"path" : "untitled3.exe"
+-		},
+-		{
+-			"path" : "untitled3.pdb"
+-		}
+-	],
+-	"backtrace" : 1,
+-	"backtraceGraph" : 
+-	{
+-		"commands" : 
+-		[
+-			"add_executable"
+-		],
+-		"files" : 
+-		[
+-			"CMakeLists.txt"
+-		],
+-		"nodes" : 
+-		[
+-			{
+-				"file" : 0
+-			},
+-			{
+-				"command" : 0,
+-				"file" : 0,
+-				"line" : 6,
+-				"parent" : 0
+-			}
+-		]
+-	},
+-	"compileGroups" : 
+-	[
+-		{
+-			"compileCommandFragments" : 
+-			[
+-				{
+-					"fragment" : "/DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -std:c11 -MDd -Zi"
+-				}
+-			],
+-			"language" : "C",
+-			"languageStandard" : 
+-			{
+-				"backtraces" : 
+-				[
+-					1
+-				],
+-				"standard" : "11"
+-			},
+-			"sourceIndexes" : 
+-			[
+-				0
+-			]
+-		}
+-	],
+-	"id" : "untitled3::@6890427a1f51a3e7e1df",
+-	"link" : 
+-	{
+-		"commandFragments" : 
+-		[
+-			{
+-				"fragment" : "/DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -MDd -Zi",
+-				"role" : "flags"
+-			},
+-			{
+-				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+-				"role" : "flags"
+-			},
+-			{
+-				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+-				"role" : "libraries"
+-			}
+-		],
+-		"language" : "C"
+-	},
+-	"name" : "untitled3",
+-	"nameOnDisk" : "untitled3.exe",
+-	"paths" : 
+-	{
+-		"build" : ".",
+-		"source" : "."
+-	},
+-	"sourceGroups" : 
+-	[
+-		{
+-			"name" : "Source Files",
+-			"sourceIndexes" : 
+-			[
+-				0
+-			]
+-		}
+-	],
+-	"sources" : 
+-	[
+-		{
+-			"backtrace" : 1,
+-			"compileGroupIndex" : 0,
+-			"path" : "main1-1.c",
+-			"sourceGroupIndex" : 0
+-		}
+-	],
+-	"type" : "EXECUTABLE"
+-}
+Index: cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-b90b763602f61a73d4d2.json
+===================================================================
+diff --git a/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-b90b763602f61a73d4d2.json b/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-b90b763602f61a73d4d2.json
+deleted file mode 100644
+--- a/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-b90b763602f61a73d4d2.json	(revision 372e5ed4772ec95c7e9216cc0efe798a6d5ad753)
++++ /dev/null	(revision 372e5ed4772ec95c7e9216cc0efe798a6d5ad753)
+@@ -1,60 +0,0 @@
+-{
+-	"configurations" : 
+-	[
+-		{
+-			"directories" : 
+-			[
+-				{
+-					"build" : ".",
+-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+-					"minimumCMakeVersion" : 
+-					{
+-						"string" : "3.28"
+-					},
+-					"projectIndex" : 0,
+-					"source" : ".",
+-					"targetIndexes" : 
+-					[
+-						0
+-					]
+-				}
+-			],
+-			"name" : "Debug",
+-			"projects" : 
+-			[
+-				{
+-					"directoryIndexes" : 
+-					[
+-						0
+-					],
+-					"name" : "untitled3",
+-					"targetIndexes" : 
+-					[
+-						0
+-					]
+-				}
+-			],
+-			"targets" : 
+-			[
+-				{
+-					"directoryIndex" : 0,
+-					"id" : "untitled3::@6890427a1f51a3e7e1df",
+-					"jsonFile" : "target-untitled3-Debug-ef567ec9c42c4af16259.json",
+-					"name" : "untitled3",
+-					"projectIndex" : 0
+-				}
+-			]
+-		}
+-	],
+-	"kind" : "codemodel",
+-	"paths" : 
+-	{
+-		"build" : "C:/Users/BottomWeb/Desktop/MyLabsMPEI/cmake-build-debug",
+-		"source" : "C:/Users/BottomWeb/Desktop/MyLabsMPEI"
+-	},
+-	"version" : 
+-	{
+-		"major" : 2,
+-		"minor" : 7
+-	}
+-}
+Index: cmake-build-debug/.ninja_log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># ninja log v6\r\n620\t978\t1757581778422019955\tuntitled3\ta511ae02d1af25f5\r\n2\t111\t7793157591809812\tbuild.ninja\td1c383e42ca6f69d\r\n1\t50\t7793157476232842\tCMakeFiles/untitled3.dir/main1-1.c.obj\t6a117ef7a7698222\r\n2\t156\t7793157649894633\tuntitled3.exe\t1ed935257b844a8b\r\n1\t7\t7793157894895411\tclean\tcde670ad128f80d7\r\n1\t46\t7793157895485442\tCMakeFiles/untitled3.dir/main1-1.c.obj\t6a117ef7a7698222\r\n46\t129\t7793157895935398\tuntitled3.exe\t1ed935257b844a8b\r\n1\t52\t7793158438514873\tCMakeFiles/untitled3.dir/main1-1.c.obj\t6a117ef7a7698222\r\n52\t129\t7793158439028990\tuntitled3.exe\t1ed935257b844a8b\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cmake-build-debug/.ninja_log b/cmake-build-debug/.ninja_log
+--- a/cmake-build-debug/.ninja_log	(revision 372e5ed4772ec95c7e9216cc0efe798a6d5ad753)
++++ b/cmake-build-debug/.ninja_log	(date 1757785661205)
+@@ -1,10 +1,8 @@
+ # ninja log v6
+ 620	978	1757581778422019955	untitled3	a511ae02d1af25f5
+-2	111	7793157591809812	build.ninja	d1c383e42ca6f69d
+-1	50	7793157476232842	CMakeFiles/untitled3.dir/main1-1.c.obj	6a117ef7a7698222
+-2	156	7793157649894633	untitled3.exe	1ed935257b844a8b
++69	167	7793158950141071	untitled3.exe	4135fd573764777c
++1	87	7794888611464587	build.ninja	d1c383e42ca6f69d
+ 1	7	7793157894895411	clean	cde670ad128f80d7
+-1	46	7793157895485442	CMakeFiles/untitled3.dir/main1-1.c.obj	6a117ef7a7698222
+-46	129	7793157895935398	untitled3.exe	1ed935257b844a8b
+ 1	52	7793158438514873	CMakeFiles/untitled3.dir/main1-1.c.obj	6a117ef7a7698222
+-52	129	7793158439028990	untitled3.exe	1ed935257b844a8b
++15	67	7793158949599014	CMakeFiles/untitled3.dir/main4.c.obj	2d887f575d974928
++18	69	7793158949619355	CMakeFiles/untitled3.dir/unitdyn.c.obj	7315a1ff5878eb7e
+Index: cmake-build-debug/build.ninja
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># CMAKE generated file: DO NOT EDIT!\r\n# Generated by \"Ninja\" Generator, CMake Version 3.31\r\n\r\n# This file contains all the build statements describing the\r\n# compilation DAG.\r\n\r\n# =============================================================================\r\n# Write statements declared in CMakeLists.txt:\r\n# \r\n# Which is the root file.\r\n# =============================================================================\r\n\r\n# =============================================================================\r\n# Project: untitled3\r\n# Configurations: Debug\r\n# =============================================================================\r\n\r\n#############################################\r\n# Minimal version of Ninja required by this file\r\n\r\nninja_required_version = 1.5\r\n\r\n\r\n#############################################\r\n# Set configuration variable for custom commands.\r\n\r\nCONFIGURATION = Debug\r\n# =============================================================================\r\n# Include auxiliary files.\r\n\r\n\r\n#############################################\r\n# Include rules file.\r\n\r\ninclude CMakeFiles\\rules.ninja\r\n\r\n# =============================================================================\r\n\r\n#############################################\r\n# Logical path to working directory; prefix for absolute paths.\r\n\r\ncmake_ninja_workdir = C$:\\Users\\BottomWeb\\Desktop\\MyLabsMPEI\\cmake-build-debug\\\r\n# =============================================================================\r\n# Object build statements for EXECUTABLE target untitled3\r\n\r\n\r\n#############################################\r\n# Order-only phony target for untitled3\r\n\r\nbuild cmake_object_order_depends_target_untitled3: phony || .\r\n\r\nbuild CMakeFiles\\untitled3.dir\\main1-1.c.obj: C_COMPILER__untitled3_unscanned_Debug C$:\\Users\\BottomWeb\\Desktop\\MyLabsMPEI\\main1-1.c || cmake_object_order_depends_target_untitled3\r\n  FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -std:c11 -MDd -Zi\r\n  OBJECT_DIR = CMakeFiles\\untitled3.dir\r\n  OBJECT_FILE_DIR = CMakeFiles\\untitled3.dir\r\n  TARGET_COMPILE_PDB = CMakeFiles\\untitled3.dir\\\r\n  TARGET_PDB = untitled3.pdb\r\n\r\n\r\n# =============================================================================\r\n# Link build statements for EXECUTABLE target untitled3\r\n\r\n\r\n#############################################\r\n# Link the executable untitled3.exe\r\n\r\nbuild untitled3.exe: C_EXECUTABLE_LINKER__untitled3_Debug CMakeFiles\\untitled3.dir\\main1-1.c.obj\r\n  FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -MDd -Zi\r\n  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console\r\n  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib\r\n  OBJECT_DIR = CMakeFiles\\untitled3.dir\r\n  POST_BUILD = cd .\r\n  PRE_LINK = cd .\r\n  TARGET_COMPILE_PDB = CMakeFiles\\untitled3.dir\\\r\n  TARGET_FILE = untitled3.exe\r\n  TARGET_IMPLIB = untitled3.lib\r\n  TARGET_PDB = untitled3.pdb\r\n\r\n\r\n#############################################\r\n# Utility command for edit_cache\r\n\r\nbuild CMakeFiles\\edit_cache.util: CUSTOM_COMMAND\r\n  COMMAND = C:\\Windows\\system32\\cmd.exe /C \"cd /D C:\\Users\\BottomWeb\\Desktop\\MyLabsMPEI\\cmake-build-debug && \"C:\\Program Files\\JetBrains\\CLion 2025.1.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe\" -E echo \"No interactive CMake dialog available.\"\"\r\n  DESC = No interactive CMake dialog available...\r\n  restat = 1\r\n\r\nbuild edit_cache: phony CMakeFiles\\edit_cache.util\r\n\r\n\r\n#############################################\r\n# Utility command for rebuild_cache\r\n\r\nbuild CMakeFiles\\rebuild_cache.util: CUSTOM_COMMAND\r\n  COMMAND = C:\\Windows\\system32\\cmd.exe /C \"cd /D C:\\Users\\BottomWeb\\Desktop\\MyLabsMPEI\\cmake-build-debug && \"C:\\Program Files\\JetBrains\\CLion 2025.1.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe\" --regenerate-during-build -SC:\\Users\\BottomWeb\\Desktop\\MyLabsMPEI -BC:\\Users\\BottomWeb\\Desktop\\MyLabsMPEI\\cmake-build-debug\"\r\n  DESC = Running CMake to regenerate build system...\r\n  pool = console\r\n  restat = 1\r\n\r\nbuild rebuild_cache: phony CMakeFiles\\rebuild_cache.util\r\n\r\n# =============================================================================\r\n# Target aliases.\r\n\r\nbuild untitled3: phony untitled3.exe\r\n\r\n# =============================================================================\r\n# Folder targets.\r\n\r\n# =============================================================================\r\n\r\n#############################################\r\n# Folder: C:/Users/BottomWeb/Desktop/MyLabsMPEI/cmake-build-debug\r\n\r\nbuild all: phony untitled3.exe\r\n\r\n# =============================================================================\r\n# Built-in targets\r\n\r\n\r\n#############################################\r\n# Re-run CMake if any of its inputs changed.\r\n\r\nbuild build.ninja: RERUN_CMAKE | C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeCInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeCommonLanguageInclude.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeGenericSystem.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeInitializeConfigs.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeLanguageInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeRCInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeSystemSpecificInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeSystemSpecificInitialize.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Compiler\\CMakeCommonCompilerMacros.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Compiler\\MSVC-C.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Compiler\\MSVC.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Internal\\CMakeCLinkerInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Internal\\CMakeCommonLinkerInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Linker\\Windows-MSVC-C.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Linker\\Windows-MSVC.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Windows-Initialize.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Windows-MSVC-C.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Windows-MSVC.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Windows.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\WindowsPaths.cmake C$:\\Users\\BottomWeb\\Desktop\\MyLabsMPEI\\CMakeLists.txt CMakeCache.txt CMakeFiles\\3.31.6\\CMakeCCompiler.cmake CMakeFiles\\3.31.6\\CMakeRCCompiler.cmake CMakeFiles\\3.31.6\\CMakeSystem.cmake\r\n  pool = console\r\n\r\n\r\n#############################################\r\n# A missing CMake input file is not an error.\r\n\r\nbuild C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeCInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeCommonLanguageInclude.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeGenericSystem.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeInitializeConfigs.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeLanguageInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeRCInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeSystemSpecificInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\CMakeSystemSpecificInitialize.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Compiler\\CMakeCommonCompilerMacros.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Compiler\\MSVC-C.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Compiler\\MSVC.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Internal\\CMakeCLinkerInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Internal\\CMakeCommonLinkerInformation.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Linker\\Windows-MSVC-C.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Linker\\Windows-MSVC.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Windows-Initialize.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Windows-MSVC-C.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Windows-MSVC.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\Windows.cmake C$:\\Program$ Files\\JetBrains\\CLion$ 2025.1.3\\bin\\cmake\\win\\x64\\share\\cmake-3.31\\Modules\\Platform\\WindowsPaths.cmake C$:\\Users\\BottomWeb\\Desktop\\MyLabsMPEI\\CMakeLists.txt CMakeCache.txt CMakeFiles\\3.31.6\\CMakeCCompiler.cmake CMakeFiles\\3.31.6\\CMakeRCCompiler.cmake CMakeFiles\\3.31.6\\CMakeSystem.cmake: phony\r\n\r\n\r\n#############################################\r\n# Clean all the built files.\r\n\r\nbuild clean: CLEAN\r\n\r\n\r\n#############################################\r\n# Print all primary targets available.\r\n\r\nbuild help: HELP\r\n\r\n\r\n#############################################\r\n# Make the all target the default.\r\n\r\ndefault all\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cmake-build-debug/build.ninja b/cmake-build-debug/build.ninja
+--- a/cmake-build-debug/build.ninja	(revision 372e5ed4772ec95c7e9216cc0efe798a6d5ad753)
++++ b/cmake-build-debug/build.ninja	(date 1757785661146)
+@@ -49,7 +49,14 @@
+ 
+ build cmake_object_order_depends_target_untitled3: phony || .
+ 
+-build CMakeFiles\untitled3.dir\main1-1.c.obj: C_COMPILER__untitled3_unscanned_Debug C$:\Users\BottomWeb\Desktop\MyLabsMPEI\main1-1.c || cmake_object_order_depends_target_untitled3
++build CMakeFiles\untitled3.dir\main4.c.obj: C_COMPILER__untitled3_unscanned_Debug C$:\Users\BottomWeb\Desktop\MyLabsMPEI\main4.c || cmake_object_order_depends_target_untitled3
++  FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -std:c11 -MDd -Zi
++  OBJECT_DIR = CMakeFiles\untitled3.dir
++  OBJECT_FILE_DIR = CMakeFiles\untitled3.dir
++  TARGET_COMPILE_PDB = CMakeFiles\untitled3.dir\
++  TARGET_PDB = untitled3.pdb
++
++build CMakeFiles\untitled3.dir\unitdyn.c.obj: C_COMPILER__untitled3_unscanned_Debug C$:\Users\BottomWeb\Desktop\MyLabsMPEI\unitdyn.c || cmake_object_order_depends_target_untitled3
+   FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -std:c11 -MDd -Zi
+   OBJECT_DIR = CMakeFiles\untitled3.dir
+   OBJECT_FILE_DIR = CMakeFiles\untitled3.dir
+@@ -64,7 +71,7 @@
+ #############################################
+ # Link the executable untitled3.exe
+ 
+-build untitled3.exe: C_EXECUTABLE_LINKER__untitled3_Debug CMakeFiles\untitled3.dir\main1-1.c.obj
++build untitled3.exe: C_EXECUTABLE_LINKER__untitled3_Debug CMakeFiles\untitled3.dir\main4.c.obj CMakeFiles\untitled3.dir\unitdyn.c.obj
+   FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -MDd -Zi
+   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
+   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+Index: cmake-build-debug/Testing/Temporary/LastTest.log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Start testing: Sep 11 20:44 RTZ 2 (����)\r\n----------------------------------------------------------\r\nEnd testing: Sep 11 20:44 RTZ 2 (����)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cmake-build-debug/Testing/Temporary/LastTest.log b/cmake-build-debug/Testing/Temporary/LastTest.log
+--- a/cmake-build-debug/Testing/Temporary/LastTest.log	(revision 372e5ed4772ec95c7e9216cc0efe798a6d5ad753)
++++ b/cmake-build-debug/Testing/Temporary/LastTest.log	(date 1757785661850)
+@@ -1,3 +1,3 @@
+-Start testing: Sep 11 20:44 RTZ 2 (����)
++Start testing: Sep 13 20:47 RTZ 2 (����)
+ ----------------------------------------------------------
+-End testing: Sep 11 20:44 RTZ 2 (����)
++End testing: Sep 13 20:47 RTZ 2 (����)

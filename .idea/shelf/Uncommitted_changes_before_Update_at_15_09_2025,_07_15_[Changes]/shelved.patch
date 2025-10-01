@@ -1,0 +1,16 @@
+Index: cmake-build-debug/.ninja_log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># ninja log v6\n2\t239\t1757581377912161028\tCMakeFiles/untitled3.dir/main3.c.o\ta080819893c5f889\n5\t620\t1757581777806987704\tCMakeFiles/untitled3.dir/main4.c.o\ta8f63ae8404b73e8\n620\t978\t1757581778422019955\tuntitled3\ta511ae02d1af25f5\n4\t693\t1757579479032681604\tCMakeFiles/untitled3.dir/main2.c.o\t5dddf946668c23f9\n1\t218\t1757581851229707720\tbuild.ninja\t4cf2320e94e86e3e\n5\t269\t1757483968234713854\tCMakeFiles/untitled3.dir/unit.c.o\t438d08e2d47d4549\n7\t618\t1757581777809217493\tCMakeFiles/untitled3.dir/unitdyn.c.o\ta05d21458126c923\n
+===================================================================
+diff --git a/cmake-build-debug/.ninja_log b/cmake-build-debug/.ninja_log
+--- a/cmake-build-debug/.ninja_log	
++++ b/cmake-build-debug/.ninja_log	
+@@ -3,6 +3,6 @@
+ 5	620	1757581777806987704	CMakeFiles/untitled3.dir/main4.c.o	a8f63ae8404b73e8
+ 620	978	1757581778422019955	untitled3	a511ae02d1af25f5
+ 4	693	1757579479032681604	CMakeFiles/untitled3.dir/main2.c.o	5dddf946668c23f9
+-1	218	1757581851229707720	build.ninja	4cf2320e94e86e3e
++1	218	1757909741651137075	build.ninja	4cf2320e94e86e3e
+ 5	269	1757483968234713854	CMakeFiles/untitled3.dir/unit.c.o	438d08e2d47d4549
+ 7	618	1757581777809217493	CMakeFiles/untitled3.dir/unitdyn.c.o	a05d21458126c923
