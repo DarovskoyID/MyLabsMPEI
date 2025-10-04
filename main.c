@@ -3,19 +3,24 @@
 int main(void) {
     FILE *file;
     char filename[100];
-    char string[255];
-    char words[255][255];
+    char *string = NULL;
+    char **words;
     int count = 0;
+    size_t lenStr = 0;
     printf("Enter filename: ");
     scanf("%99s", filename);
     file = fopen(filename, "r");
-    file == NULL ? printf("file not exists") :
-    inputStringFromFile(string, file);
-    fclose(file);
-    splitter(string, words, 0, &count);
-    quickSort(words, 0, count - 1);
-    for (int i = 0; i < count; i++) {
-        printf("%s ", words[i]);
+    if (file == NULL) {
+        printf("file not exists");
+    } else {
+       inputStringFromFile(&string, &lenStr, file);
+        fclose(file);
+        splitter(string, words, lenStr, &count);
+        sortWordsByLen(words, count);
+        for (int i = 0; i < count; i++) {
+            printf("%s ", words[i]);
+        }
     }
+
     return 0;
 }

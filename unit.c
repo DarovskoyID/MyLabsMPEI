@@ -1,36 +1,40 @@
-//
-// Created by BottomWeb on 08.09.2025.
-//
-
-
 #include "unit.h"
-
-void inputStringFromFile(char string[255], FILE *file) {
-    if (fgets(string, sizeof(char) * 255, file) == NULL) printf("ERROR");
+#include <stdio.h>
+#include <stdlib.h>
+void inputStringFromFile(char **inputString, size_t *len, FILE *file) {
+    getline(inputString, len, file);
     return;
 }
-void splitter(const char inputString[255], char outputString[255][255], int i, int *j) {
-    int m = 0;
-    while(inputString[i] != '\0') {
-        if (inputString[i] != ' ') {
-            outputString[*j][m] = inputString[i];
-            m++;
+int countWords(const char *s) {
+    int count = 0, inWord = 0;
+    while (*s) {
+        if (*s != ' ' && !inWord) { inWord = 1; count++; }
+        else if (*s == ' ') inWord = 0;
+        s++;
+    }
+    return count;
+}
+void splitter(const char *input, char **output, int lenStr, int *len) {
+    int start = -1, j = 0;
+    for (int i = 0; i < lenStr ; i++) {
+        if (input[i] != ' ' && input[i] != '\0' && start == -1) start = i;
+        if ((input[i] == ' ' || input[i] == '\0') && start != -1) {
+            *len = i - start;
+            output[j] = malloc(*len + 1);
+            if (!output[j]) exit(1);
+            for (int k = 0; k < *len; k++) output[j][k] = input[start + k];
+            output[j][*len] = '\0';
+            j++; start = -1;
         }
-        if (inputString[i] == ' ' && inputString[i+1] !=' ' || inputString[i+1] == '\0') {
-            (*j)++;
-            outputString[*j][m+1] = '\0';
-            m = 0;
-        }
-        i++;
     }
     return;
 }
-int CalculateLen(char inputString[255]) {
+int CalculateLen(char *inputString) {
     int i = 0;
     while (inputString[i] != '\0') i++;
     return i;
 }
-void copyString(char *dest, const char *src) {
+void copyString(char *dest, char *src) {
     int i = 0;
     while (src[i] != '\0') {
         dest[i] = src[i];
@@ -39,29 +43,13 @@ void copyString(char *dest, const char *src) {
     dest[i] = '\0';
     return;
 }
-void swap(char a[255], char b[255]) {
-    char temp[255];
-    copyString(temp, a);
-    copyString(a, b);
-    copyString(b, temp);
+void sortWordsByLen(char **words, int n) {
+    for (int i = 0; i < n-1; i++)
+        for (int j = 0; j < n-i-1; j++)
+            if (CalculateLen(words[j]) > CalculateLen(words[j+1])) {
+                char *tmp = words[j];
+                words[j] = words[j+1];
+                words[j+1] = tmp;
+            }
     return;
-}
-int partition(char words[255][255], int low, int high) {
-    int pivot = CalculateLen(words[high]);
-    int i = low - 1;
-    for (int j = low; j < high; j++) {
-        if (CalculateLen(words[j]) <= pivot) {
-            i++;
-            swap(words[i], words[j]);
-        }
-    }
-    swap(words[i + 1], words[high]);
-    return i + 1;
-}
-void quickSort(char words[255][255], int low, int high) {
-    if (low < high) {
-        int pi = partition(words, low, high);
-        quickSort(words, low, pi - 1);
-        quickSort(words, pi + 1, high);
-    }
 }
