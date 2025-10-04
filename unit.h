@@ -7,10 +7,10 @@
 #include <stdio.h>
 
 
-void inputStringFromFile(char **inputString, size_t *len, FILE *file);
-void splitter(const char *input, char **output, int lenStr, int *len);
+void inputStringFromFile(char **inputString, int *len, FILE *file);
+void splitter(const char *input, char ***output, int lenStr, int lenwords);
+int countWords(const char *s);
 int CalculateLen(char *inputString);
-void copyString(char *dest, char *src);
 void sortWordsByLen(char **words, int n);
 
 #endif //UNTITLED3_UNIT_H
