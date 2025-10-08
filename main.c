@@ -1,22 +1,26 @@
 #include <stdio.h>
 #include "unit.h"
 int main(void) {
-    FILE *file;
-    char filename[100], *string = NULL, **words;
-    int lenStr = 0, lenWords = 0;
-    scanf("%99s", filename);
-    file = fopen(filename, "r");
-    if (file == NULL) {
-        printf("file not exists");
-    } else {
-        inputStringFromFile(&string, &lenStr, file);
-        fclose(file);
-        lenWords = countWords(string);
-        splitter(string, &words, lenStr, lenWords);
-        sortWordsByLen(words, lenWords);
-        for (int i = 0; i < lenWords; i++) {
-            printf("%s ", words[i]);
-        }
-    }
+    unsigned int x, o1, o2;
+    int n;
+    char s[SIZEOFX];
+    printf("input unsigned int: \n");
+    scanf("%s", s);
+    x = binaryToDecimal(s);
+    printf("input int n: \n");
+    scanf("%d", &n);
+    o1 = rotateLeft(x, n);
+    o2 = rotateRight(x, n);
+    printf("HEX1: %X \n", o1);
+    printf("HEX2: %X \n", o2);
+    printf("DEC1: %u \n", o1);
+    printf("DEC2: %u \n", o2);
+    printf("Binary1: ");
+    PrintBinary(o1);
+    printf("\n");
+    printf("Binary2: ");
+    PrintBinary(o2);
+    printf("\n");
+
     return 0;
 }
