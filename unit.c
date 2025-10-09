@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 unsigned int rotateRight(TYPEBIN x, int n) {
-    return (x << n | x >> (BITS - n));
+    return n < BITS ? (x << n | x >> (BITS - n)) : x;
 }
 unsigned int rotateLeft(TYPEBIN x, int n) {
-    return (x >> n | x << (BITS - n));
+    return n < BITS ? (x >> n | x << (BITS - n)) : x;
 }
 void PrintBinary(TYPEBIN x) {
     for (int i = BITS - 1; i >= 0; i--) {

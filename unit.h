@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 #define SIZEOFX 8
-#define TYPEBIN u_int16_t
+#define TYPEBIN u_int32_t
 #define BITS (sizeof(TYPEBIN) * SIZEOFX)
 
 unsigned int rotateRight(TYPEBIN x, int n);
