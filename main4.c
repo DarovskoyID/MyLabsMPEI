@@ -37,6 +37,9 @@ int main(void) {
 
     int (*f3)(int) = mod10;
 
+    printf("Array1: ");
+    printArrWithFunc(array1, size1, NULL);
+
     printf("Array1 with abs: ");
     printArrWithFunc(array1, size1, f1);
 
