@@ -79,6 +79,12 @@
 		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/main.c">
 			<Option target="untitled"/>
 		</Unit>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/unit.c">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/unit.h">
+			<Option target="untitled"/>
+		</Unit>
 		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

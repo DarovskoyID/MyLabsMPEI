@@ -35,14 +35,14 @@ int CalculateLen(char *inputString) {
     while (inputString[i] != '\0') i++;
     return i;
 }
-void sortWordsByLen(char **words, int n) {
-    for (int i = 0; i < n-1; i++)
-        for (int j = 0; j < n-i-1; j++)
-            if (CalculateLen(words[j]) > CalculateLen(words[j+1])) {
-                char *tmp = words[j];
-                words[j] = words[j+1];
-                words[j+1] = tmp;
-            }
-
-    return;
+void sortWordsByLen(char **words, int n, int l, int r) {
+    if (n <= 1) return;
+    for (int i = 0; i < n - 1; i++) {
+        if (CalculateLen(words[i]) > CalculateLen(words[i + 1])) {
+            char *tmp = words[i];
+            words[i] = words[i + 1];
+            words[i + 1] = tmp;
+        }
+    }
+    sortWordsByLen(words, n - 1, l, r);
 }
