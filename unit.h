@@ -6,13 +6,11 @@
 #define UNTITLED3_UNIT_H
 #include <stdio.h>
 
-#define SIZEOFX 8
-#define TYPEBIN u_int16_t
-#define BITS (sizeof(TYPEBIN) * SIZEOFX)
 
-unsigned int rotateRight(TYPEBIN x, int n);
-unsigned int rotateLeft(TYPEBIN x, int n);
-void PrintBinary(TYPEBIN x);
-unsigned int binaryToDecimal(const char *s);
+void inputStringFromFile(char **inputString, size_t *len, FILE *file);
+void splitter(const char *input, char ***output, int lenStr, int lenwords);
+int countWords(const char *s);
+int CalculateLen(char *inputString);
+void sortWordsByLen(char **words, int n);
 
 #endif //UNTITLED3_UNIT_H

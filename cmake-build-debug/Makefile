@@ -129,53 +129,53 @@ untitled/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
 .PHONY : untitled/fast
 
-main.o: main.c.o
+main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.c.o
-.PHONY : main.c.o
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-main.i: main.c.i
+main.i: main.cpp.i
 .PHONY : main.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.c.i
-.PHONY : main.c.i
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-main.s: main.c.s
+main.s: main.cpp.s
 .PHONY : main.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.c.s
-.PHONY : main.c.s
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.s
+.PHONY : main.cpp.s
 
-unit.o: unit.c.o
+unit.o: unit.cpp.o
 .PHONY : unit.o
 
 # target to build an object file
-unit.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/unit.c.o
-.PHONY : unit.c.o
+unit.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/unit.cpp.o
+.PHONY : unit.cpp.o
 
-unit.i: unit.c.i
+unit.i: unit.cpp.i
 .PHONY : unit.i
 
 # target to preprocess a source file
-unit.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/unit.c.i
-.PHONY : unit.c.i
+unit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/unit.cpp.i
+.PHONY : unit.cpp.i
 
-unit.s: unit.c.s
+unit.s: unit.cpp.s
 .PHONY : unit.s
 
 # target to generate assembly for a file
-unit.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/unit.c.s
-.PHONY : unit.c.s
+unit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/unit.cpp.s
+.PHONY : unit.cpp.s
 
 # Help Target
 help:
