@@ -5,7 +5,7 @@
 int mod10(int x) {
     return x % 10;
 }
-
+//require sinx cosx tgx e^x lnx x%10 abs square userFunc
 int main(void) {
     int *array1, *array2, *array3;
     int size1, size2, size3;
