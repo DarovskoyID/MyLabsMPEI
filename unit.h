@@ -7,11 +7,12 @@
 #include <stdio.h>
 
 #define SIZEOFX 8
-#define TYPEBIN u_int32_t
+#define TYPEBIN u_int8_t
 #define BITS (sizeof(TYPEBIN) * SIZEOFX)
 
 unsigned int rotateRight(TYPEBIN x, int n);
 unsigned int rotateLeft(TYPEBIN x, int n);
+unsigned int invertBits(unsigned int x, int k, int n);
 void PrintBinary(TYPEBIN x);
 unsigned int binaryToDecimal(const char *s);
 

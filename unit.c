@@ -12,6 +12,18 @@ void PrintBinary(TYPEBIN x) {
         putchar((x & (1u << i)) ? '1' : '0');
     }
 }
+
+unsigned int invertBitsMask(int k, int n) {
+    unsigned int mask = ((1U << n) - 1) << k;
+    return mask;
+}
+
+unsigned int invertBits(unsigned int x, int k, int n) {
+    unsigned int mask = invertBitsMask(k, n);
+    return x ^ mask;
+}
+
+
 unsigned int binaryToDecimal(const char *s) {
     unsigned int result = 0;
     while (*s)
