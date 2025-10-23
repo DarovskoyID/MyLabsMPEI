@@ -1,3 +1,4 @@
-/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles/untitled.dir
+/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles/unit_dll_M.dir
+/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles/main_test.dir
 /Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles/rebuild_cache.dir

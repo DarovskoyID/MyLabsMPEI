@@ -1,5 +1,5 @@
 #include <iostream>
-#include "unit.h"
+#include "unit_dll_M.h"
 using namespace std;
 
 int main() {
@@ -7,11 +7,11 @@ int main() {
     char filename[100], *string = nullptr, **words;
     int lenStr = 0, lenWords = 0;
 
-    cin >> filename;
+    scanf("%s", filename);
     file = fopen(filename, "r");
 
     if (!file) {
-        cout << "file not exists";
+        printf("file not exists");
     } else {
         inputStringFromFile(&string, (size_t*)&lenStr, file);
         fclose(file);
@@ -21,7 +21,8 @@ int main() {
         sortWordsByLen(words, lenWords);
 
         for (int i = 0; i < lenWords; i++)
-            cout << words[i] << ' ';
+            printf("%s ", words[i]);
+        printf("\n");
     }
 
     return 0;

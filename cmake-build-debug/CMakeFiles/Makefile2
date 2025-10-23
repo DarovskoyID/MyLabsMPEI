@@ -63,7 +63,8 @@ CMAKE_BINARY_DIR = /Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-deb
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/untitled.dir/all
+all: CMakeFiles/unit_dll_M.dir/all
+all: CMakeFiles/main_test.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +72,61 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/untitled.dir/clean
+clean: CMakeFiles/unit_dll_M.dir/clean
+clean: CMakeFiles/main_test.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/untitled.dir
+# Target rules for target CMakeFiles/unit_dll_M.dir
 
 # All Build rule for target.
-CMakeFiles/untitled.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target untitled"
-.PHONY : CMakeFiles/untitled.dir/all
+CMakeFiles/unit_dll_M.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_dll_M.dir/build.make CMakeFiles/unit_dll_M.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_dll_M.dir/build.make CMakeFiles/unit_dll_M.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target unit_dll_M"
+.PHONY : CMakeFiles/unit_dll_M.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/untitled.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles 3
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/untitled.dir/all
+CMakeFiles/unit_dll_M.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/unit_dll_M.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/untitled.dir/rule
+.PHONY : CMakeFiles/unit_dll_M.dir/rule
 
 # Convenience name for target.
-untitled: CMakeFiles/untitled.dir/rule
-.PHONY : untitled
+unit_dll_M: CMakeFiles/unit_dll_M.dir/rule
+.PHONY : unit_dll_M
 
 # clean rule for target.
-CMakeFiles/untitled.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/clean
-.PHONY : CMakeFiles/untitled.dir/clean
+CMakeFiles/unit_dll_M.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_dll_M.dir/build.make CMakeFiles/unit_dll_M.dir/clean
+.PHONY : CMakeFiles/unit_dll_M.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/main_test.dir
+
+# All Build rule for target.
+CMakeFiles/main_test.dir/all: CMakeFiles/unit_dll_M.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target main_test"
+.PHONY : CMakeFiles/main_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/main_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/main_test.dir/rule
+
+# Convenience name for target.
+main_test: CMakeFiles/main_test.dir/rule
+.PHONY : main_test
+
+# clean rule for target.
+CMakeFiles/main_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/clean
+.PHONY : CMakeFiles/main_test.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

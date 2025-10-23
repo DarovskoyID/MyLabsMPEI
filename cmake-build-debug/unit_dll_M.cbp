@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="untitled3"/>
+		<Option title="unit_dll_M"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
@@ -17,11 +17,11 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="untitled3">
-				<Option output="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/untitled3" prefix_auto="0" extension_auto="0"/>
+			<Target title="unit_dll_M">
+				<Option output="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/lib/libunit_dll_M.dylib" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug"/>
 				<Option object_output="./"/>
-				<Option type="1"/>
+				<Option type="3"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include"/>
@@ -30,14 +30,33 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 untitled3"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 unit_dll_M"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="untitled3/fast">
-				<Option output="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/untitled3" prefix_auto="0" extension_auto="0"/>
+			<Target title="unit_dll_M/fast">
+				<Option output="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/lib/libunit_dll_M.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 unit_dll_M/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="main_test">
+				<Option output="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/main_test" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -49,7 +68,26 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 untitled3/fast"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 main_test"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="main_test/fast">
+				<Option output="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/main_test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 main_test/fast"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -76,14 +114,14 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/main4.c">
-			<Option target="untitled3"/>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/mainDynImport.cpp">
+			<Option target="main_test"/>
 		</Unit>
-		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/unitdyn.c">
-			<Option target="untitled3"/>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/unit_dll_M.cpp">
+			<Option target="unit_dll_M"/>
 		</Unit>
-		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/unitdyn.h">
-			<Option target="untitled3"/>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/unit_dll_M.h">
+			<Option target="unit_dll_M"/>
 		</Unit>
 		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
