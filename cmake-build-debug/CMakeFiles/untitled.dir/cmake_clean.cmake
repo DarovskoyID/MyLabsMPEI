@@ -1,13 +1,13 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/untitled.dir/main.c.o"
-  "CMakeFiles/untitled.dir/main.c.o.d"
-  "CMakeFiles/untitled.dir/unit.c.o"
-  "CMakeFiles/untitled.dir/unit.c.o.d"
+  "CMakeFiles/untitled.dir/CharSet.cpp.o"
+  "CMakeFiles/untitled.dir/CharSet.cpp.o.d"
+  "CMakeFiles/untitled.dir/main.cpp.o"
+  "CMakeFiles/untitled.dir/main.cpp.o.d"
   "untitled"
   "untitled.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang C)
+foreach(lang CXX)
   include(CMakeFiles/untitled.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

@@ -129,53 +129,53 @@ untitled/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
 .PHONY : untitled/fast
 
-main.o: main.c.o
+CharSet.o: CharSet.cpp.o
+.PHONY : CharSet.o
+
+# target to build an object file
+CharSet.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/CharSet.cpp.o
+.PHONY : CharSet.cpp.o
+
+CharSet.i: CharSet.cpp.i
+.PHONY : CharSet.i
+
+# target to preprocess a source file
+CharSet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/CharSet.cpp.i
+.PHONY : CharSet.cpp.i
+
+CharSet.s: CharSet.cpp.s
+.PHONY : CharSet.s
+
+# target to generate assembly for a file
+CharSet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/CharSet.cpp.s
+.PHONY : CharSet.cpp.s
+
+main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.c.o
-.PHONY : main.c.o
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-main.i: main.c.i
+main.i: main.cpp.i
 .PHONY : main.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.c.i
-.PHONY : main.c.i
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-main.s: main.c.s
+main.s: main.cpp.s
 .PHONY : main.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.c.s
-.PHONY : main.c.s
-
-unit.o: unit.c.o
-.PHONY : unit.o
-
-# target to build an object file
-unit.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/unit.c.o
-.PHONY : unit.c.o
-
-unit.i: unit.c.i
-.PHONY : unit.i
-
-# target to preprocess a source file
-unit.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/unit.c.i
-.PHONY : unit.c.i
-
-unit.s: unit.c.s
-.PHONY : unit.s
-
-# target to generate assembly for a file
-unit.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/unit.c.s
-.PHONY : unit.c.s
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -186,12 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... untitled"
+	@echo "... CharSet.o"
+	@echo "... CharSet.i"
+	@echo "... CharSet.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... unit.o"
-	@echo "... unit.i"
-	@echo "... unit.s"
 .PHONY : help
 
 

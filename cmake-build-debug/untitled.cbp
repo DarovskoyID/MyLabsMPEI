@@ -76,13 +76,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/main.c">
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/CharSet.cpp">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/unit.c">
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/CharSet.h">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/unit.h">
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/main.cpp">
 			<Option target="untitled"/>
 		</Unit>
 		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/CMakeLists.txt">
