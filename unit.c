@@ -1,10 +1,17 @@
 #include "unit.h"
-#include <stdio.h>
-#include <stdlib.h>
-void inputStringFromFile(char **inputString, int *len, FILE *file) {
-    getline(inputString, len, file);
-    return;
-}
+//UNIX
+//void inputStringFromFile(char **inputString, int *len, FILE *file) {
+//    getline(inputString, len, file);
+//    return;
+//}
+void inputStringFromFile(char **s, int *len, FILE *f) {
+    int c, i=0, cap=128;
+    *s=malloc(cap);
+    while((c=fgetc(f))!=EOF&&c!='\n'){
+        if(i+1>=cap){cap*=2;*s=realloc(*s,cap);}
+        (*s)[i++]=c;
+    }
+    (*s)[i]=0;*len=i;}
 int countWords(const char *s) {
     int count = 0, inWord = 0;
     while (*s) {
@@ -12,37 +19,30 @@ int countWords(const char *s) {
         else if (*s == ' ') inWord = 0;
         s++;
     }
-    return count;
-}
-void splitter(const char *input, char ***output, int lenStr, int lenwords) {
-    int len = 0;
-    *output = malloc(lenwords * sizeof(char *));
-    int start = -1, j = 0;
-    for (int i = 0; i < lenStr ; i++) {
-        if (input[i] != ' ' && input[i] != '\0' && start == -1) start = i;
-        if ((input[i] == ' ' || input[i] == '\0') && start != -1) {
-            len = i - start;
-            (*output)[j] = malloc(len + 1);
-            for (int k = 0; k < len; k++) (*output)[j][k] = input[start + k];
-            (*output)[j][len] = '\0';
-            j++; start = -1;
-        }
+    return count;}
+void copyWord(const char*src, char*dst, int start, int k, int len){
+    if(k==len){ dst[k]=0; return; } dst[k] = src[start+k]; copyWord(src, dst, start, k+1, len); }
+void splitWords(const char*str, char***out, int i, int len, int*wordIndex, int*start){
+    if( i > len )return;
+    if( str[i] != ' ' && str[i] !=0 && *start == -1) *start = i;
+    if( ( str[i] == ' ' || str[i]==0 ) && *start != -1 ){
+        int wlen = i - *start;  (*out)[*wordIndex]=malloc(wlen+1);
+        copyWord(str, (*out)[*wordIndex], *start, 0, wlen);  (*wordIndex)++;*start=-1;
     }
-    return;
-}
-int CalculateLen(char *inputString) {
-    int i = 0;
-    while (inputString[i] != '\0') i++;
-    return i;
-}
-void sortWordsByLen(char **words, int n, int l, int r) {
-    if (n <= 1) return;
-    for (int i = 0; i < n - 1; i++) {
-        if (CalculateLen(words[i]) > CalculateLen(words[i + 1])) {
-            char *tmp = words[i];
-            words[i] = words[i + 1];
-            words[i + 1] = tmp;
-        }
-    }
-    sortWordsByLen(words, n - 1, l, r);
-}
+    splitWords(str,out,i+1,len,wordIndex,start);}
+void splitter(const char*str, char***out, int len, int count){
+    *out = malloc(count*sizeof(char*));
+    int start = -1, wordIndex = 0;
+    splitWords(str, out, 0, len, &wordIndex, &start);}
+int CalculateLen(char *s){
+    if(*s=='\0') return 0;
+    return 1 + CalculateLen(s+1);}
+void sortStep(char **w, int i, int n){
+    if( i >= n - 1 ) return;
+    if( CalculateLen(w[i]) > CalculateLen(w[i+1]) ){
+        char*t=w[i];  w[i]=w[i+1];  w[i+1]=t;}
+    sortStep(w,i+1,n);}
+void sortWordsByLen(char **w,int n){
+    if(n<=1) return;
+    sortStep(w,0,n);
+    sortWordsByLen(w,n-1);}

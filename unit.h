@@ -5,6 +5,7 @@
 #ifndef UNTITLED3_UNIT_H
 #define UNTITLED3_UNIT_H
 #include <stdio.h>
+#include <stdlib.h>
 
 
 void inputStringFromFile(char **inputString, int *len, FILE *file);
