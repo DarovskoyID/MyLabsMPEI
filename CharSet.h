@@ -17,9 +17,14 @@ public:
 
     ~CharSet();
 
+    void Add(char c);
+    void Delete(char c);
+    void Sort();
     int Size() const;
     char Get(int i) const;
+    bool inSet(char c);
     void print() const;
+    operator char() const;
 };
 
 
