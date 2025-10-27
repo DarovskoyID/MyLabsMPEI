@@ -22,44 +22,32 @@ CharSet::CharSet(const char *elementsStr) : elements(nullptr), size(0) {
             elements[size++] = c;
         }
     }
-
-    elements[size] = '\0';
 }
 
 CharSet::CharSet(const CharSet &setik, char n) : elements(nullptr), size(0) {
     int maxSize = setik.Size();
-    if (maxSize > 0) {
-        elements = new char[maxSize];
+    if (maxSize > 0){
+
+        elements = new char[maxSize + 1]();
 
         for (int i = 0; i < maxSize; i++) {
             char c = setik.Get(i);
-            int found = 0;
-            int j = 0;
+            bool found = false;
 
-            while (j < size && !found) {
+            for (int j = 0; j < size; j++) {
                 if (elements[j] == c) {
-                    found = 1;
-                } else {
-                    j++;
+                    found = true;
+                    break;
                 }
             }
 
             if (!found && c <= n) {
-                elements[size] = c;
-                size++;
+                elements[size++] = c;
             }
         }
-
-        // уменьшаем массив только если реально что-то добавлено
-        if (size < maxSize) {
-            char* temp = new char[size];
-            for (int i = 0; i < size; i++) temp[i] = elements[i];
-            delete[] elements;
-            elements = temp;
-        }
-
     }
 }
+
 
 
 CharSet::~CharSet()  {
@@ -102,7 +90,7 @@ int CharSet::Size() const {
 char CharSet::Get(int i) const{
     char result = '\0';
     if(i < size) {
-        result = elements[i-1];
+        result = elements[i];
     }
     return result;
 }
