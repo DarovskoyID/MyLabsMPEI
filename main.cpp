@@ -1,5 +1,5 @@
 #include <iostream>
-#include "unit_dll_M.h"
+#include "unit_dll_W.h"
 using namespace std;
 
 int main() {
@@ -13,10 +13,10 @@ int main() {
     if (!file) {
         printf("file not exists");
     } else {
-        inputStringFromFile(&string, (size_t*)&lenStr, file);
+        inputStringFromFile(&string, &lenStr, file);
         fclose(file);
 
-        lenWords = countWords(string);
+        lenWords = countWords(string, true);
         splitter(string, &words, lenStr, lenWords);
         sortWordsByLen(words, lenWords);
 

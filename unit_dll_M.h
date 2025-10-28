@@ -14,11 +14,11 @@
     #define UNIT_API extern "C"
 #endif
 
-UNIT_API void inputStringFromFile(char **inputString, size_t *len, FILE *file);
-UNIT_API int countWords(const char *s);
-UNIT_API void splitter(const char *in, char ***out, int lenStr, int lenW);
-UNIT_API int CalculateLen(char *s);
-UNIT_API void sortWordsByLen(char **w, int n);
+UNIT_API void inputStringFromFile(char **inputString, int *len, FILE *file);
+UNIT_API void splitter(const char *input, char ***output, int lenStr, int lenwords);
+UNIT_API int countWords(const char *s, bool flag);
+UNIT_API int CalculateLen(char *inputString);
+UNIT_API void sortWordsByLen(char **words, int n);
 
 
 #endif //UNIT_DLL_M_H

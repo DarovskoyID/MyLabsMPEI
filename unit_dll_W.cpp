@@ -22,24 +22,26 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     return TRUE;
 }
 
-UNIT_API void inputStringFromFile(char **inputString, size_t *len, FILE *file) {
+UNIT_API void inputStringFromFile(char **inputString, int *len, FILE *file) {
     static char buf[1024];
     if (fgets(buf, sizeof(buf), file)) {
         *len = 0;
         while (buf[*len] && buf[*len] != '\n') (*len)++;
         *inputString = new char[*len + 1];
-        for (size_t i = 0; i < *len; i++) (*inputString)[i] = buf[i];
+        for (int i = 0; i < *len; i++) (*inputString)[i] = buf[i];
         (*inputString)[*len] = '\0';
     } else {
         *inputString = nullptr;
     }
 }
-UNIT_API int countWords(const char *s) {
+
+UNIT_API int countWords(const char *s, bool flag) {
     if (*s == '\0') return 0;
-    if (*s != ' ' && (s == 0 || *(s - 1) == ' '))
-        return 1 + countWords(s + 1);
-    return countWords(s + 1);
+    if (*s != ' ' && (*(s - 1) == ' ' || flag))
+        return 1 + countWords(s + 1, false);
+    return countWords(s + 1, false);
 }
+
 UNIT_API void copyWord(const char*src, char*dst, int start, int k, int len){
     if( k == len ){
         dst[k] = 0;
@@ -47,6 +49,7 @@ UNIT_API void copyWord(const char*src, char*dst, int start, int k, int len){
     }
     dst[k] = src[start+k]; copyWord(src, dst, start, k+1, len);
 }
+
 UNIT_API void splitWords(const char*str, char***out, int i, int len, int*wordIndex, int*start){
     if( i > len ) return;
     if( str[i] != ' ' && str[i] !=0 && *start == -1) *start = i;
