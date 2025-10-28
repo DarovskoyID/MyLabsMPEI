@@ -20,4 +20,5 @@ UNIT_API void splitter(const char *in, char ***out, int lenStr, int lenW);
 UNIT_API int CalculateLen(char *s);
 UNIT_API void sortWordsByLen(char **w, int n);
 
+
 #endif //UNIT_DLL_M_H

@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/main_test.dir/mainDynImport.cpp.o"
-  "CMakeFiles/main_test.dir/mainDynImport.cpp.o.d"
-  "main_test"
+  "CMakeFiles/main_test.dir/mainDynImport.cpp.obj"
+  "CMakeFiles/main_test.dir/mainDynImport.cpp.obj.d"
+  "main_test.exe"
+  "main_test.exe.manifest"
+  "main_test.lib"
   "main_test.pdb"
 )
 

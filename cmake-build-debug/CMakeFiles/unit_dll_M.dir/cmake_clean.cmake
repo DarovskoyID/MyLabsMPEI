@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/unit_dll_M.dir/unit_dll_M.cpp.o"
-  "CMakeFiles/unit_dll_M.dir/unit_dll_M.cpp.o.d"
-  "lib/libunit_dll_M.dylib"
-  "lib/libunit_dll_M.pdb"
+  "CMakeFiles/unit_dll_M.dir/unit_dll_M.cpp.obj"
+  "CMakeFiles/unit_dll_M.dir/unit_dll_M.cpp.obj.d"
+  "unit_dll_M.dll"
+  "unit_dll_M.dll.manifest"
+  "unit_dll_M.lib"
+  "unit_dll_M.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

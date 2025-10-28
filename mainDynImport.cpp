@@ -1,5 +1,23 @@
 #include <cstdio>
+#ifdef _WIN32
+    #include <windows.h>
+    #define PLATFORM_NAME "Windows"
+#elif defined(__APPLE__)
+    #include <dlfcn.h>
+    #define PLATFORM_NAME "macOS"
+
+#else
+    #include <dlfcn.h>
+    #define PLATFORM_NAME "Linux"
+#endif
+
+#ifdef _WIN32
+#include <windows.h>
+#define DLL_NAME "./unit_dll_W.dll"
+#else
 #include <dlfcn.h>
+    #define DLL_NAME "./lib/libunit_dll_M.dylib"
+#endif
 
 typedef void (*T_inputStringFromFile)(char **, size_t *, FILE *);
 typedef int (*T_countWords)(const char *);
@@ -8,13 +26,39 @@ typedef int (*T_CalculateLen)(char *);
 typedef void (*T_sortWordsByLen)(char **, int);
 
 int main() {
-    void* handle = dlopen("./lib/libunit_dll_M.dylib", RTLD_LAZY);
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+
+    HMODULE handle = LoadLibrary(TEXT(DLL_NAME));
     if (!handle) {
-        printf("Ошибка загрузки libunit_dll_M.dylib: %s\n", dlerror());
+        printf("Ошибка загрузки DLL: %lu\n", GetLastError());
         return 1;
     }
 
-    dlerror();
+    T_inputStringFromFile inputStringFromFile =
+            (T_inputStringFromFile)GetProcAddress(handle, "inputStringFromFile");
+    T_countWords countWords =
+            (T_countWords)GetProcAddress(handle, "countWords");
+    T_splitter splitter =
+            (T_splitter)GetProcAddress(handle, "splitter");
+    T_sortWordsByLen sortWordsByLen =
+            (T_sortWordsByLen)GetProcAddress(handle, "sortWordsByLen");
+
+    if (!inputStringFromFile || !countWords || !splitter || !sortWordsByLen) {
+        printf("Ошибка поиска функции\n");
+        FreeLibrary(handle);
+        return 1;
+    }
+
+#else
+    void* handle = dlopen(DLL_NAME, RTLD_LAZY);
+    if (!handle) {
+        printf("Ошибка загрузки %s: %s\n", DLL_NAME, dlerror());
+        return 1;
+    }
+
+    dlerror(); // сброс ошибок
 
     T_inputStringFromFile inputStringFromFile =
         (T_inputStringFromFile)dlsym(handle, "inputStringFromFile");
@@ -31,6 +75,8 @@ int main() {
         dlclose(handle);
         return 1;
     }
+#endif
+    printf("Библиотека успешно загружена!\n");
 
     FILE *file;
     char filename[100], *string = nullptr, **words;
@@ -42,21 +88,24 @@ int main() {
     file = fopen(filename, "r");
     if (!file) {
         printf("file not exists\n");
-        dlclose(handle);
-        return 1;
+    } else{
+        inputStringFromFile(&string, (size_t*)&lenStr, file);
+        fclose(file);
+
+        lenWords = countWords(string);
+        splitter(string, &words, lenStr, lenWords);
+        sortWordsByLen(words, lenWords);
+
+        for (int i = 0; i < lenWords; i++)
+            printf("%s ", words[i]);
+        printf("\n");
     }
+    #ifdef _WIN32
+        FreeLibrary(handle);
+    #else
+        dlclose(handle);
+    #endif
 
-    inputStringFromFile(&string, (size_t*)&lenStr, file);
-    fclose(file);
 
-    lenWords = countWords(string);
-    splitter(string, &words, lenStr, lenWords);
-    sortWordsByLen(words, lenWords);
-
-    for (int i = 0; i < lenWords; i++)
-        printf("%s ", words[i]);
-    printf("\n");
-
-    dlclose(handle);
     return 0;
 }

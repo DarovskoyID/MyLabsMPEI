@@ -1,8 +1,7 @@
+#define UNIT_EXPORTS
 #include "unit_dll_W.h"
 #include <cstring>
 #include <iostream>
-
-// Опционально: если нужна точка входа DLL
 #include <windows.h>
 
 BOOL APIENTRY DllMain(HMODULE hModule,
@@ -23,8 +22,6 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     return TRUE;
 }
 
-// Теперь реализации функций — без изменений логики
-
 UNIT_API void inputStringFromFile(char **inputString, size_t *len, FILE *file) {
     static char buf[1024];
     if (fgets(buf, sizeof(buf), file)) {
@@ -37,53 +34,49 @@ UNIT_API void inputStringFromFile(char **inputString, size_t *len, FILE *file) {
         *inputString = nullptr;
     }
 }
-
 UNIT_API int countWords(const char *s) {
-    int c = 0, in = 0;
-    while (*s) {
-        if (*s != ' ' && !in) {
-            in = 1;
-            c++;
-        } else if (*s == ' ') {
-            in = 0;
-        }
-        s++;
+    if (*s == '\0') return 0;
+    if (*s != ' ' && (s == 0 || *(s - 1) == ' '))
+        return 1 + countWords(s + 1);
+    return countWords(s + 1);
+}
+UNIT_API void copyWord(const char*src, char*dst, int start, int k, int len){
+    if( k == len ){
+        dst[k] = 0;
+        return;
     }
-    return c;
+    dst[k] = src[start+k]; copyWord(src, dst, start, k+1, len);
+}
+UNIT_API void splitWords(const char*str, char***out, int i, int len, int*wordIndex, int*start){
+    if( i > len ) return;
+    if( str[i] != ' ' && str[i] !=0 && *start == -1) *start = i;
+    if( ( str[i] == ' ' || str[i]==0 ) && *start != -1 ){
+        int wlen = i - *start;  (*out)[*wordIndex] = new char[wlen + 1];
+        copyWord(str, (*out)[*wordIndex], *start, 0, wlen);  (*wordIndex)++;*start=-1;
+    }
+    splitWords(str,out,i+1,len,wordIndex,start);
 }
 
-UNIT_API void splitter(const char *in, char ***out, int lenStr, int lenW) {
-    *out = new char*[lenW];
-    int st = -1, j = 0;
-    for (int i = 0; i <= lenStr; i++) {
-        if (in[i] != ' ' && in[i] && st == -1) st = i;
-        if ((in[i] == ' ' || in[i] == '\0') && st != -1) {
-            int len = i - st;
-            (*out)[j] = new char[len + 1];
-            for (int k = 0; k < len; k++) {
-                (*out)[j][k] = in[st + k];
-            }
-            (*out)[j][len] = '\0';
-            j++;
-            st = -1;
-        }
-    }
+UNIT_API void splitter(const char*str, char***out, int len, int count){
+    *out = new char*[count];
+    int start = -1, wordIndex = 0;
+    splitWords(str, out, 0, len, &wordIndex, &start);
 }
 
-UNIT_API int CalculateLen(char *s) {
-    int i = 0;
-    while (s[i]) i++;
-    return i;
+UNIT_API int CalculateLen(char *s){
+    if( *s == '\0' ) return 0;
+    return 1 + CalculateLen(s+1);
 }
 
-UNIT_API void sortWordsByLen(char **w, int n) {
-    if (n <= 1) return;
-    for (int i = 0; i < n - 1; i++) {
-        if (CalculateLen(w[i]) > CalculateLen(w[i + 1])) {
-            char *t = w[i];
-            w[i] = w[i + 1];
-            w[i + 1] = t;
-        }
-    }
-    sortWordsByLen(w, n - 1);
+UNIT_API void sortStep(char **w, int i, int n){
+    if( i >= n - 1 ) return;
+    if( CalculateLen(w[i]) > CalculateLen(w[i+1]) ){
+        char*t = w[i];  w[i] = w[i+1];  w[i+1] = t;}
+    sortStep(w,i+1,n);
+}
+
+UNIT_API void sortWordsByLen(char **w,int n){
+    if( n <= 1 ) return;
+    sortStep(w,0,n);
+    sortWordsByLen(w,n-1);
 }

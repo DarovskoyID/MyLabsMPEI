@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/mainDynImport.cpp" "CMakeFiles/main_test.dir/mainDynImport.cpp.o" "gcc" "CMakeFiles/main_test.dir/mainDynImport.cpp.o.d"
+  "C:/Users/BottomWeb/Desktop/MyLabsMPEI/mainDynImport.cpp" "CMakeFiles/main_test.dir/mainDynImport.cpp.obj" "msvc" "CMakeFiles/main_test.dir/mainDynImport.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
