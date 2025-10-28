@@ -12,13 +12,10 @@ void inputStringFromFile(char **s, int *len, FILE *f) {
         (*s)[i++] = c;}
     (*s)[i] = 0; *len = i;}
 int countWords(const char *s) {
-    int count = 0, inWord = 0;
-    while (*s) {
-        if (*s != ' ' && !inWord) { inWord = 1; count++; }
-        else if (*s == ' ') inWord = 0;
-        s++;
-    }
-    return count;}
+    if (*s == '\0') return 0;
+    if (*s != ' ' && (s == 0 || *(s - 1) == ' ')) return 1 + countWords(s + 1);
+    return countWords(s + 1);
+}
 void copyWord(const char*src, char*dst, int start, int k, int len){
     if( k == len ){ dst[k] = 0; return; } dst[k] = src[start+k]; copyWord(src, dst, start, k+1, len); }
 void splitWords(const char*str, char***out, int i, int len, int*wordIndex, int*start){
@@ -26,8 +23,7 @@ void splitWords(const char*str, char***out, int i, int len, int*wordIndex, int*s
     if( str[i] != ' ' && str[i] !=0 && *start == -1) *start = i;
     if( ( str[i] == ' ' || str[i]==0 ) && *start != -1 ){
         int wlen = i - *start;  (*out)[*wordIndex]=malloc(wlen+1);
-        copyWord(str, (*out)[*wordIndex], *start, 0, wlen);  (*wordIndex)++;*start=-1;
-    }
+        copyWord(str, (*out)[*wordIndex], *start, 0, wlen);  (*wordIndex)++;*start=-1;}
     splitWords(str,out,i+1,len,wordIndex,start);}
 void splitter(const char*str, char***out, int len, int count){
     *out = malloc(count*sizeof(char*));
