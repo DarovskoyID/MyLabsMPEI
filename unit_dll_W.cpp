@@ -42,7 +42,7 @@ UNIT_API int countWords(const char *s, bool flag) {
     return countWords(s + 1, false);
 }
 
-UNIT_API void copyWord(const char*src, char*dst, int start, int k, int len){
+void copyWord(const char*src, char*dst, int start, int k, int len){
     if( k == len ){
         dst[k] = 0;
         return;
@@ -50,7 +50,7 @@ UNIT_API void copyWord(const char*src, char*dst, int start, int k, int len){
     dst[k] = src[start+k]; copyWord(src, dst, start, k+1, len);
 }
 
-UNIT_API void splitWords(const char*str, char***out, int i, int len, int*wordIndex, int*start){
+void splitWords(const char*str, char***out, int i, int len, int*wordIndex, int*start){
     if( i > len ) return;
     if( str[i] != ' ' && str[i] !=0 && *start == -1) *start = i;
     if( ( str[i] == ' ' || str[i]==0 ) && *start != -1 ){
@@ -71,7 +71,7 @@ UNIT_API int CalculateLen(char *s){
     return 1 + CalculateLen(s+1);
 }
 
-UNIT_API void sortStep(char **w, int i, int n){
+void sortStep(char **w, int i, int n){
     if( i >= n - 1 ) return;
     if( CalculateLen(w[i]) > CalculateLen(w[i+1]) ){
         char*t = w[i];  w[i] = w[i+1];  w[i+1] = t;}

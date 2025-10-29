@@ -17,7 +17,6 @@
 UNIT_API void inputStringFromFile(char **inputString, int *len, FILE *file);
 UNIT_API void splitter(const char *input, char ***output, int lenStr, int lenwords);
 UNIT_API int countWords(const char *s, bool flag);
-UNIT_API int CalculateLen(char *inputString);
 UNIT_API void sortWordsByLen(char **words, int n);
 
 
