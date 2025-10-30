@@ -25,16 +25,12 @@ int main(){
     // a.Delete('b');
     a.print();
     std::cout << "size: " << a.Size() << std::endl;
-    a.Sort();
     a.print();
     std::cout << "size: " << a.Size() << std::endl;
     std::cout << std::endl;
-    if(a.Get(3) != '\0') std::cout << "4 element s: " << a.Get(3)  << std::endl;
-    else std::cout << "4 element a: don't exists" << std::endl;
-    if(a.Get(100) != '\0') std::cout << "100 element a: " << a.Get(100)  << std::endl;
-    else std::cout << "100 element a: don't exists" << std::endl;
+
     std::cout << "have a: " << a.inSet('a') << std::endl;
-    std::cout << "(char) a: " << (char)a << std::endl;
+    std::cout << "(char) a: " << (char*)a << std::endl;
     std::cout << std::endl;
     s.print();
     std::cout << "size: " << s.Size() << std::endl;
