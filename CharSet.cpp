@@ -1,129 +1,204 @@
-//
-// Created by Иван on 23.10.2025.
-//
-
 #include "CharSet.h"
-uint256 CharSet::_maskGeneration(const char *str) {
-    uint256 resault;
-    uint256 temp;
-    for (int i = 0; i < std::strlen(str); i++) {
-        temp.set(0);
-        temp << (unsigned char)str[i];
-        resault |= temp;
-        temp.reset();
-    }
-    return resault;
+
+void CharSet::setBit(int index){
+    int idx = index >> 2;
+    int bit = index & 3;
+    data[idx] |= (1 << bit);
+    return;
 }
 
-char* CharSet::_clearDuplicate(const char *str, unsigned char n) {
-    char c;
-    bool found = false;
+void CharSet::clrBit(int index){
+    int idx = index >> 2;
+    int bit = index & 3;
+    data[idx] &= ~(1 << bit);
+    return;
+}
+
+bool CharSet::getBit(int index) const{
+    int idx = index >> 2;
+    int bit = index & 3;
+    return (data[idx] >> bit) & 1;
+}
+
+int CharSet::mapChar(unsigned char c) const{
+    int i = 0;
+    while(i < mappingSize){
+        if(mapping[i] == c) return i;
+        i = i + 1;
+    }
+    return -1;
+}
+
+void CharSet::addMapping(unsigned char c){
+    if(mappingSize >= mappingCapacity){
+        int newCap = mappingCapacity + 4;
+        unsigned char* newMap = new unsigned char[newCap];
+        int i = 0;
+        while(i < mappingSize){
+            newMap[i] = mapping[i];
+            i = i + 1;
+        }
+        delete[] mapping;
+        mapping = newMap;
+        mappingCapacity = newCap;
+    }
+    mapping[mappingSize] = c;
+    mappingSize = mappingSize + 1;
+    return;
+}
+
+CharSet::CharSet(const char* elementsStr){
+    int i = 0;
+    while(i < 64){
+        data[i] = 0;
+        i = i + 1;
+    }
+    mappingCapacity = 4;
+    mappingSize = 0;
+    mapping = new unsigned char[mappingCapacity];
+
+    i = 0;
+    while(elementsStr[i] != 0){
+        if(mapChar(elementsStr[i]) < 0){
+            addMapping(elementsStr[i]);
+        }
+        int idx = mapChar(elementsStr[i]);
+        if(idx >= 0){
+            setBit(idx);
+        }
+        i = i + 1;
+    }
+}
+
+CharSet::CharSet(CharSet &setik, unsigned char n){
+    int i = 0;
+    while(i < 64){
+        data[i] = 0;
+        i = i + 1;
+    }
+    mappingCapacity = 4;
+    mappingSize = 0;
+    mapping = new unsigned char[mappingCapacity];
+
+    char* t = setik.ToChar();
+    i = 0;
+    while(t[i] != 0){
+        int idx = mapChar((unsigned char)t[i]);
+        if(idx < 0){
+            addMapping((unsigned char)t[i]);
+            idx = mappingSize - 1;
+        }
+        if(idx <= n){
+            setBit(idx);
+        }
+        i = i + 1;
+    }
+    delete[] t;
+}
+
+CharSet::~CharSet(){
+    int i = 0;
+    while(i < 64){
+        data[i] = 0;
+        i = i + 1;
+    }
+    delete[] mapping;
+}
+
+void CharSet::Add(const char *c){
+    int i = 0;
+    while(c[i] != 0){
+        int idx = mapChar((unsigned char)c[i]);
+        if(idx < 0){
+            addMapping((unsigned char)c[i]);
+            idx = mappingSize - 1;
+        }
+        setBit(idx);
+        i = i + 1;
+    }
+    return;
+}
+void CharSet::Add(CharSet &setik) {
+    char* c = setik.ToChar();
+    int i = 0;
+    while(c[i] != 0){
+        int idx = mapChar((unsigned char)c[i]);
+        if(idx < 0){
+            addMapping((unsigned char)c[i]);
+            idx = mappingSize - 1;
+        }
+        setBit(idx);
+        i = i + 1;
+    }
+    return;
+}
+
+void CharSet::Delete(CharSet &setik) {
+    char *c = setik.ToChar();
+    int i = 0;
+    while(c[i] != 0){
+        int idx = mapChar((unsigned char)c[i]);
+        if(idx >= 0){
+            clrBit(idx);
+        }
+        i = i + 1;
+    }
+    return;
+}
+void CharSet::Delete(const char *c){
+    int i = 0;
+    while(c[i] != 0){
+        int idx = mapChar((unsigned char)c[i]);
+        if(idx >= 0){
+            clrBit(idx);
+        }
+        i = i + 1;
+    }
+    return;
+}
+
+int CharSet::Size() const{
+    int cnt = 0;
+    int i = 0;
+    while(i < mappingSize){
+        if(getBit(i)){
+            cnt = cnt + 1;
+        }
+        i = i + 1;
+    }
+    return cnt;
+}
+
+bool CharSet::inSet(unsigned char c) const{
+    int idx = mapChar(c);
+    if(idx < 0) return false;
+    return getBit(idx);
+}
+
+char* CharSet::ToChar(){
+    int s = Size();
+    char* r = new char[s+1];
     int j = 0;
-    int len = std::strlen(str);
-    int size = 0;
-    char* result = nullptr, *temp = nullptr;
-
-    for (int i = 0; i < len; i++) {
-        c = str[i];
-        j = 0;
-        found = false;
-        while (j < size && !found ) {
-            if (result[j] == c) {
-                found = true;
-            } else {
-                j++;
-            }
+    int i = 0;
+    while(i < mappingSize){
+        if(getBit(i)){
+            r[j] = mapping[i];
+            j = j + 1;
         }
-        if (!found && (unsigned char)c <= n) {
-            size +=1;
-            temp = new char[size];
-            for (int i = 0; i < size-1; i++) {
-                temp[i] = result[i];
-            }
-            temp[size-1] = c;
-            delete[] result;
-            result = temp;
-            delete[] temp;
-        }
+        i = i + 1;
     }
-    return result;
-}
-
-
-CharSet::CharSet(const char *elementsStr) {
-    char* chars = _clearDuplicate(elementsStr);
-    uint256 mask = _maskGeneration(chars);
-    elements |= mask;
-}
-
-CharSet::CharSet(const CharSet &setik, unsigned char n) {
-    char* temp = (char*)setik;
-    temp = _clearDuplicate(temp, n);
-    uint256 mask = _maskGeneration(temp);
-    elements |= mask;
-
-}
-
-CharSet::~CharSet()  {
-    elements.reset();
+    r[j] = 0;
+    return r;
 }
 
 void CharSet::print() const{
-    unsigned char c;
-    for (int i = 0; i < 256; i++) {
-        if (elements.test(i)) {
-            c = (unsigned char)i;
-            std::cout << c << " ";
+    int i = 0;
+    while(i < mappingSize){
+        if(getBit(i)){
+            std::cout << mapping[i] << ' ';
         }
+        i = i + 1;
     }
     std::cout << '\n';
-    return;
-}
-
-CharSet::operator char*() const {
-    char *result, *temp;
-    int size = 0;
-    for (int i = 0; i < 256; i++) {
-        if (elements.test(i)) {
-            size++;
-            temp = new char[size];
-            for (int j = 0; j < size-1; j++) {
-                temp[j] = result[j];
-            }
-            temp[size-1] = (char)i;
-            delete[] result;
-            result = temp;
-            delete[] temp;
-        }
-    }
-    return result;
-}
-
-int CharSet::Size() const {
-    int size = 0;
-    for (int i = 0; i < 256; i++) {
-        if (elements.test(i)) size++;
-    }
-    return size;
-}
-
-bool CharSet::inSet(unsigned char c){
-    return elements.test((int)c);
-}
-
-void CharSet::Add(char *c) {
-    char *temp = _clearDuplicate(c);
-    uint256 mask;
-    mask = _maskGeneration(temp);
-    elements |= mask;
-
-    return;
-}
-
-void CharSet::Delete(char *c) {
-    char *temp = _clearDuplicate(c);
-    uint256 mask;
-    mask = _maskGeneration(temp);
-    elements &= ~mask;
     return;
 }

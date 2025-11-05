@@ -15,22 +15,24 @@ char в множество и из множества в переменную т
 int main(){
     CharSet a("abfgCDEF78@bdfibdfjkbjkbjskbjeiuwIYVSYIUVSYVSY((");
     CharSet s(a, 'a');
-    // s.Add('i');
-    // s.Add('i');
-    // s.Add('i');
-    // s.Add('a');
-    // s.Add('b');
-    // s.Add('c');
-    // a.Delete('F');
-    // a.Delete('b');
+    s.Add("i");
+    s.Add(a);
+    s.Add("i");
+    s.Add("i");
+    s.Add("i");
+    s.Add("b");
+    s.Add("c");
+    a.Delete("F");
+    a.Delete("babddd");
+    s.Delete(a);
     a.print();
     std::cout << "size: " << a.Size() << std::endl;
-    a.print();
-    std::cout << "size: " << a.Size() << std::endl;
+    s.print();
+    std::cout << "size: " << s.Size() << std::endl;
     std::cout << std::endl;
 
     std::cout << "have a: " << a.inSet('a') << std::endl;
-    std::cout << "(char) a: " << (char*)a << std::endl;
+    std::cout << "(char) a: " << a.ToChar() << std::endl;
     std::cout << std::endl;
     s.print();
     std::cout << "size: " << s.Size() << std::endl;
