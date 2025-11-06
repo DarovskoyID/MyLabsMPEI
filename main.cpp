@@ -13,9 +13,35 @@ char в множество и из множества в переменную т
 #include <iostream>
 #include "CharSet.h"
 int main(){
-    CharSet a("abfgCDEF78@bdfibdfjkbjkbjskbjeiuwIYVSYIUVSYVSY((");
+    CharSet a("abcd");
+    CharSet b("efgh");
+    CharSet d("igklmnru");
     CharSet s(a, 'a');
-    s.Add("i");
+    std::cout << "SET A:" << std::endl;
+    a.print();
+    a = std::move(b);
+    b = "efgh";
+    std::cout << "SET A AFTER = *B:" << std::endl;
+    a.print();
+    a = "abcd";
+    std::cout << "SET A AFTER = abcd:" << std::endl;
+    a.print();
+    a += "Russia";
+    std::cout << "SET A AFTER += Russia:" << std::endl;
+    a.print();
+    s = std::move(a + b);
+    std::cout << "SET S = A + B:" << std::endl;
+    s.print();
+    s = std::move(a - d);
+    std::cout << "SET S = A - D:" << std::endl;
+    s.print();
+    a.print();
+    d.print();
+    s = std::move(a * d);
+    std::cout << "SET S = A * D:" << std::endl;
+    s.print();
+    auto t1 = a < d, t2 = a <= d, t3 = a > d, t4 = a >= d;
+    std::cout << "a < d " << t1 << " " << "a <= d " << t2 << " " << "a > d " << t3 << " " << "a >= d " << t4 << std::endl;
     s.Add(a);
     s.Add("i");
     s.Add("i");
