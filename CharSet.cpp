@@ -274,36 +274,31 @@ CharSet CharSet::operator+(CharSet &setik) {
 
 
 CharSet CharSet::operator-(CharSet &setik) {
-    char* c = setik.ToChar();
-    CharSet t(*this);
-    int i = 0;
-    while(c[i] != 0){
-        int idx = t.mapChar((unsigned char)c[i]);
-        if(idx < 0){
-            t.addMapping((unsigned char)c[i]);
-            idx = mappingSize - 1;
+    CharSet result("");
+    char* c = this->ToChar();
+    for (int i = 0; c[i] != 0; ++i) {
+        unsigned char ch = (unsigned char)c[i];
+        if (this->inSet(ch) && !setik.inSet(ch)) {
+            result.addMapping(ch);
+            result.setBit(result.mapChar(ch));
         }
-        if(this->inSet(c[i]) && !setik.inSet(c[i])) t.setBit(idx);
-        i = i + 1;
     }
-    return t;
+    return result;
 }
 
 CharSet CharSet::operator*(CharSet &setik) {
-    char* c = setik.ToChar();
-    CharSet t(*this);
-    int i = 0;
-    while(c[i] != 0){
-        int idx = t.mapChar((unsigned char)c[i]);
-        if(idx < 0){
-            t.addMapping((unsigned char)c[i]);
-            idx = mappingSize - 1;
+    CharSet result("");
+    char* c = this->ToChar();
+    for (int i = 0; c[i] != 0; ++i) {
+        unsigned char ch = (unsigned char)c[i];
+        if (this->inSet(ch) && setik.inSet(ch)) {
+            result.addMapping(ch);
+            result.setBit(result.mapChar(ch));
         }
-        if(this->inSet(c[i]) && setik.inSet(c[i])) t.setBit(idx);
-        i = i + 1;
     }
-    return t;
+    return result;
 }
+
 
 bool CharSet::operator>(CharSet &setik) {
     return this->Size() > setik.Size();

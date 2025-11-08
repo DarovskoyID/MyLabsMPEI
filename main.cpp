@@ -35,32 +35,14 @@ int main(){
     s = std::move(a - d);
     std::cout << "SET S = A - D:" << std::endl;
     s.print();
-    a.print();
-    d.print();
     s = std::move(a * d);
     std::cout << "SET S = A * D:" << std::endl;
     s.print();
     auto t1 = a < d, t2 = a <= d, t3 = a > d, t4 = a >= d;
     std::cout << "a < d " << t1 << " " << "a <= d " << t2 << " " << "a > d " << t3 << " " << "a >= d " << t4 << std::endl;
-    s.Add(a);
-    s.Add("i");
-    s.Add("i");
-    s.Add("i");
-    s.Add("b");
-    s.Add("c");
-    a.Delete("F");
-    a.Delete("babddd");
-    s.Delete(a);
-    a.print();
-    std::cout << "size: " << a.Size() << std::endl;
-    s.print();
-    std::cout << "size: " << s.Size() << std::endl;
-    std::cout << std::endl;
 
-    std::cout << "have a: " << a.inSet('a') << std::endl;
-    std::cout << "(char) a: " << a.ToChar() << std::endl;
-    std::cout << std::endl;
-    s.print();
-    std::cout << "size: " << s.Size() << std::endl;
+    a.print();
+    b.print();
+    d.print();
     return 0;
 }
