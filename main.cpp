@@ -29,13 +29,14 @@ int main(){
     a += "Russia";
     std::cout << "SET A AFTER += Russia:" << std::endl;
     a.print();
-    s = std::move(a + b);
+    s = a + b;
+    //нельзя ("abcd" + b), но можно определить
     std::cout << "SET S = A + B:" << std::endl;
     s.print();
-    s = std::move(a - d);
+    s = a - d;
     std::cout << "SET S = A - D:" << std::endl;
     s.print();
-    s = std::move(a * d);
+    s = a * d;
     std::cout << "SET S = A * D:" << std::endl;
     s.print();
     auto t1 = a < d, t2 = a <= d, t3 = a > d, t4 = a >= d;

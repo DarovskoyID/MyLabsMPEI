@@ -255,9 +255,9 @@ CharSet& CharSet::operator=(const char *str) {
 }
 
 
-CharSet CharSet::operator+(CharSet &setik) {
-    char* c = setik.ToChar();
-    CharSet t(*this);
+CharSet operator+(CharSet &setik1, CharSet &setik2) {
+    char* c = setik1.ToChar();
+    CharSet t("");
     int i = 0;
     while(c[i] != 0){
         int idx = t.mapChar((unsigned char)c[i]);
@@ -265,7 +265,7 @@ CharSet CharSet::operator+(CharSet &setik) {
             t.addMapping((unsigned char)c[i]);
             idx = t.mappingSize - 1;
         }
-        if(this->inSet(c[i]) || setik.inSet(c[i]))
+        if(setik1.inSet(c[i]) || setik2.inSet(c[i]))
             t.setBit(idx);
         i = i + 1;
     }
@@ -273,12 +273,12 @@ CharSet CharSet::operator+(CharSet &setik) {
 }
 
 
-CharSet CharSet::operator-(CharSet &setik) {
+CharSet operator-(CharSet &setik1, CharSet &setik2) {
     CharSet result("");
-    char* c = this->ToChar();
+    char* c = setik1.ToChar();
     for (int i = 0; c[i] != 0; ++i) {
         unsigned char ch = (unsigned char)c[i];
-        if (this->inSet(ch) && !setik.inSet(ch)) {
+        if (setik1.inSet(ch) && !setik2.inSet(ch)) {
             result.addMapping(ch);
             result.setBit(result.mapChar(ch));
         }
@@ -286,12 +286,12 @@ CharSet CharSet::operator-(CharSet &setik) {
     return result;
 }
 
-CharSet CharSet::operator*(CharSet &setik) {
+CharSet operator*(CharSet &setik1, CharSet &setik2) {
     CharSet result("");
-    char* c = this->ToChar();
+    char* c = setik1.ToChar();
     for (int i = 0; c[i] != 0; ++i) {
         unsigned char ch = (unsigned char)c[i];
-        if (this->inSet(ch) && setik.inSet(ch)) {
+        if (setik1.inSet(ch) && setik2.inSet(ch)) {
             result.addMapping(ch);
             result.setBit(result.mapChar(ch));
         }

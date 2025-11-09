@@ -42,9 +42,9 @@ public:
     char* ToChar();
     CharSet& operator=(CharSet &&setik);
     CharSet& operator=(const char* str);
-    CharSet operator+(CharSet &setik);
-    CharSet operator-(CharSet &setik);
-    CharSet operator*(CharSet &setik);
+    friend CharSet operator+(CharSet &setik1, CharSet &setik2);
+    friend CharSet operator-(CharSet &setik1, CharSet &setik2);
+    friend CharSet operator*(CharSet &setik1, CharSet &setik2);
     bool operator>(CharSet &setik);
     bool operator<(CharSet &setik);
     bool operator>=(CharSet &setik);
