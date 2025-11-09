@@ -14,6 +14,29 @@
 
 #include <iostream>
 
+class CharSetException : public std::exception {
+public:
+    virtual const char* what() const noexcept = 0; // чисто виртуальная функция
+};
+
+class CharAlreadyExists : public CharSetException {
+    const unsigned char ch;
+public:
+    CharAlreadyExists(const unsigned char c) : ch(c) {}
+    const char* what() const noexcept override {
+        return "Character already exists in the set";
+    }
+};
+
+class CharNotFound : public CharSetException {
+    const unsigned char ch;
+public:
+    CharNotFound(const unsigned char c) : ch(c) {}
+    const char* what() const noexcept override {
+        return "Character not found in the set";
+    }
+};
+
 class CharSet {
 private:
     unsigned char data[64];

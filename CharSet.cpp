@@ -123,10 +123,9 @@ void CharSet::Add(const char *c){
     int i = 0;
     while(c[i] != 0){
         int idx = mapChar((unsigned char)c[i]);
-        if(idx < 0){
-            addMapping((unsigned char)c[i]);
-            idx = mappingSize - 1;
-        }
+        if(idx >= 0) throw CharAlreadyExists(c[i]);
+        addMapping((unsigned char)c[i]);
+        idx = mappingSize - 1;
         setBit(idx);
         i = i + 1;
     }
@@ -137,10 +136,9 @@ void CharSet::Add(CharSet &setik) {
     int i = 0;
     while(c[i] != 0){
         int idx = mapChar((unsigned char)c[i]);
-        if(idx < 0){
-            addMapping((unsigned char)c[i]);
-            idx = mappingSize - 1;
-        }
+        if(idx >= 0) throw CharAlreadyExists(c[i]);
+        addMapping((unsigned char)c[i]);
+        idx = mappingSize - 1;
         setBit(idx);
         i = i + 1;
     }
@@ -185,7 +183,7 @@ int CharSet::Size() const{
 
 bool CharSet::inSet(unsigned char c) const{
     int idx = mapChar(c);
-    if(idx < 0) return false;
+    if(idx < 0) throw CharNotFound(c);
     return getBit(idx);
 }
 
@@ -321,10 +319,9 @@ CharSet& CharSet::operator+=(CharSet &setik) {
     int i = 0;
     while(c[i] != 0){
         int idx = mapChar((unsigned char)c[i]);
-        if(idx < 0){
-            addMapping((unsigned char)c[i]);
-            idx = mappingSize - 1;
-        }
+        if(idx >= 0) throw CharAlreadyExists(c[i]);
+        addMapping((unsigned char)c[i]);
+        idx = mappingSize - 1;
         setBit(idx);
         i = i + 1;
     }
@@ -335,10 +332,9 @@ CharSet& CharSet::operator+=(const char *c) {
     int i = 0;
     while(c[i] != 0){
         int idx = mapChar((unsigned char)c[i]);
-        if(idx < 0){
-            addMapping((unsigned char)c[i]);
-            idx = mappingSize - 1;
-        }
+        if(idx >= 0) throw CharAlreadyExists(c[i]);
+        addMapping((unsigned char)c[i]);
+        idx = mappingSize - 1;
         setBit(idx);
         i = i + 1;
     }

@@ -26,20 +26,47 @@ int main(){
     a = "abcd";
     std::cout << "SET A AFTER = abcd:" << std::endl;
     a.print();
-    a += "Russia";
+    try{
+        a += "Russia";
+    }catch (CharSetException &e) {
+        std::cout << "Caught exception: " << e.what() << std::endl;
+    }
     std::cout << "SET A AFTER += Russia:" << std::endl;
     a.print();
-    s = std::move(a + b);
+    try{
+        s = std::move(a + b);
+    }catch (CharSetException &e) {
+        std::cout << "Caught exception: " << e.what() << std::endl;
+    }
     std::cout << "SET S = A + B:" << std::endl;
     s.print();
-    s = std::move(a - d);
+    try{
+        s = std::move(a - d);
+    }catch (CharSetException &e) {
+        std::cout << "Caught exception: " << e.what() << std::endl;
+    }
     std::cout << "SET S = A - D:" << std::endl;
     s.print();
-    s = std::move(a * d);
+    try{
+        s = std::move(a * d);
+    }catch (CharSetException &e) {
+        std::cout << "Caught exception: " << e.what() << std::endl;
+    }
     std::cout << "SET S = A * D:" << std::endl;
     s.print();
     auto t1 = a < d, t2 = a <= d, t3 = a > d, t4 = a >= d;
     std::cout << "a < d " << t1 << " " << "a <= d " << t2 << " " << "a > d " << t3 << " " << "a >= d " << t4 << std::endl;
+
+    try{
+        a += "R";
+    }catch (CharSetException &e) {
+        std::cout << "Caught exception: " << e.what() << std::endl;
+    }
+    try{
+        a.inSet('0');
+    }catch (CharSetException &e) {
+        std::cout << "Caught exception: " << e.what() << std::endl;
+    }
 
     a.print();
     b.print();
