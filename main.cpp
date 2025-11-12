@@ -39,6 +39,14 @@ int main(){
     s = a * d;
     std::cout << "SET S = A * D:" << std::endl;
     s.print();
+    std::cout << a;
+    std::cout<< std::endl;
+    a = std::move(a + 'h');
+    std::cout << a;
+    a = std::move(a - 'h');
+    std::cout << a;
+    a = std::move (a * 'a');
+    std::cout << a;
     auto t1 = a < d, t2 = a <= d, t3 = a > d, t4 = a >= d;
     std::cout << "a < d " << t1 << " " << "a <= d " << t2 << " " << "a > d " << t3 << " " << "a >= d " << t4 << std::endl;
 

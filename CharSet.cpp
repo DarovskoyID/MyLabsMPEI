@@ -206,24 +206,22 @@ char* CharSet::ToChar(){
 }
 
 CharSet& CharSet::operator=(CharSet&& other) {
-    if (this == &other)
-        return *this;
+    if (this != &other){
+        delete[] mapping;
 
-    delete[] mapping;
+        for (int i = 0; i < 64; ++i)
+            data[i] = other.data[i];
 
-    for (int i = 0; i < 64; ++i)
-        data[i] = other.data[i];
+        mapping = other.mapping;
+        mappingCapacity = other.mappingCapacity;
+        mappingSize = other.mappingSize;
 
-    mapping = other.mapping;
-    mappingCapacity = other.mappingCapacity;
-    mappingSize = other.mappingSize;
-
-    for (int i = 0; i < 64; ++i)
-        other.data[i] = 0;
-    other.mapping = nullptr;
-    other.mappingCapacity = 0;
-    other.mappingSize = 0;
-
+        for (int i = 0; i < 64; ++i)
+            other.data[i] = 0;
+        other.mapping = nullptr;
+        other.mappingCapacity = 0;
+        other.mappingSize = 0;
+    }
     return *this;
 }
 
@@ -300,20 +298,20 @@ CharSet operator*(CharSet &setik1, CharSet &setik2) {
 }
 
 
-bool CharSet::operator>(CharSet &setik) {
-    return this->Size() > setik.Size();
+bool operator>(CharSet &setik1, CharSet &setik2) {
+    return setik1.Size() > setik2.Size();
 }
 
-bool CharSet::operator<(CharSet &setik) {
-    return this->Size() < setik.Size();
+bool operator<(CharSet &setik1, CharSet &setik2) {
+    return setik1.Size() < setik2.Size();
 }
 
-bool CharSet::operator>=(CharSet &setik) {
-    return this->Size() >= setik.Size();
+bool operator>=(CharSet &setik1, CharSet &setik2) {
+    return setik1.Size() >= setik2.Size();
 }
 
-bool CharSet::operator<=(CharSet &setik) {
-    return this->Size() <= setik.Size();
+bool operator<=(CharSet &setik1, CharSet &setik2) {
+    return setik1.Size() <= setik2.Size();
 }
 
 CharSet& CharSet::operator+=(CharSet &setik) {
@@ -344,6 +342,52 @@ CharSet& CharSet::operator+=(const char *c) {
     }
     return *this;
 }
+
+std::ostream& operator<<(std::ostream& os, const CharSet& set) {
+    os << "{";
+    bool first = true;
+    for (int i = 0; i < set.mappingSize; ++i) {
+        unsigned char c = set.mapping[i];
+        if (set.getBit(set.mapChar(c))) {
+            if (!first)
+                os << ", ";
+            os << c;
+            first = false;
+        }
+    }
+    os << "}";
+    return os;
+}
+
+CharSet CharSet::operator+(const char c) {
+    CharSet t(*this);
+    int idx = t.mapChar((unsigned char)c);
+    if (idx < 0) {
+        t.addMapping((unsigned char)c);
+        idx = t.mappingSize - 1;
+    }
+    t.setBit(idx);
+    return t;
+}
+
+CharSet CharSet::operator-(const char c) {
+    CharSet t(*this);
+    int idx = t.mapChar((unsigned char)c);
+    if (idx >= 0) {
+        t.clrBit(idx);
+    }
+    return t;
+}
+
+CharSet CharSet::operator*(const char c) {
+    CharSet t("");
+    if (this->inSet(c)) {
+        t.addMapping((unsigned char)c);
+        t.setBit(t.mappingSize - 1);
+    }
+    return t;
+}
+
 
 void CharSet::print() const{
     int i = 0;

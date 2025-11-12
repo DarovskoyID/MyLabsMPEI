@@ -42,15 +42,19 @@ public:
     char* ToChar();
     CharSet& operator=(CharSet &&setik);
     CharSet& operator=(const char* str);
+    CharSet operator+(const char c);
+    CharSet operator-(const char c);
+    CharSet operator*(const char c);
     friend CharSet operator+(CharSet &setik1, CharSet &setik2);
     friend CharSet operator-(CharSet &setik1, CharSet &setik2);
     friend CharSet operator*(CharSet &setik1, CharSet &setik2);
-    bool operator>(CharSet &setik);
-    bool operator<(CharSet &setik);
-    bool operator>=(CharSet &setik);
-    bool operator<=(CharSet &setik);
+    friend bool operator>(CharSet &setik1, CharSet &setik2);
+    friend bool operator<(CharSet &setik1, CharSet &setik2);
+    friend bool operator>=(CharSet &setik1, CharSet &setik2);
+    friend bool operator<=(CharSet &setik1, CharSet &setik2);
     CharSet& operator+=(CharSet &setik);
     CharSet& operator+=(const char* str);
+    friend std::ostream& operator<<(std::ostream& os, const CharSet& set);
     void print() const;
 };
 
