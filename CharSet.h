@@ -1,7 +1,7 @@
 //
 // Created by Иван on 23.10.2025.
 //
-//перегрузить адд и делит чтоб работал с мно-вом
+
 #ifndef CHARSET_H
 #define CHARSET_H
 
@@ -11,7 +11,7 @@
 //операция «*» – пересечение множеств; операция «-» –
 //вычитание множеств; операция «+=» – добавление нового элемента в множество.
 
-
+//сделать перегрузку отрицания
 #include <iostream>
 
 class CharSet {
@@ -51,6 +51,10 @@ public:
     bool operator<=(CharSet &setik);
     CharSet& operator+=(CharSet &setik);
     CharSet& operator+=(const char* str);
+    CharSet& operator-=(const char *c);
+    CharSet& operator!();
+    std::ostream& operator<<(std::ostream& os) const;
+
     void print() const;
 };
 

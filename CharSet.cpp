@@ -345,6 +345,47 @@ CharSet& CharSet::operator+=(const char *c) {
     return *this;
 }
 
+CharSet& CharSet::operator-=(const char *c) {
+    int i = 0;
+    while(c[i] != 0){
+        int idx = mapChar((unsigned char)c[i]);
+        if(idx < 0){
+            addMapping((unsigned char)c[i]);
+            idx = mappingSize - 1;
+        }
+        clrBit(idx);
+        i = i + 1;
+    }
+    return *this;
+}
+
+std::ostream& CharSet::operator<<(std::ostream& os) const {
+    os << "{";
+    int i = 0;
+    while(i < mappingSize){
+        if(getBit(i)){
+            os << mapping[i] << ' ';
+        }
+        i = i + 1;
+    }
+    os << "}";
+    return os;
+}
+
+CharSet& CharSet::operator!(){
+    int i = 0;
+    while(i < mappingSize){
+        if(getBit(i)){
+            clrBit(i);
+        } else{
+            setBit(i);
+        }
+        i = i + 1;
+    }
+    return *this;
+}
+
+
 void CharSet::print() const{
     int i = 0;
     while(i < mappingSize){
