@@ -30,7 +30,6 @@ int main(){
     std::cout << "SET A AFTER += Russia:" << std::endl;
     a.print();
     s = a + b;
-    //нельзя ("abcd" + b), но можно определить
     std::cout << "SET S = A + B:" << std::endl;
     s.print();
     s = a - d;
@@ -39,16 +38,19 @@ int main(){
     s = a * d;
     std::cout << "SET S = A * D:" << std::endl;
     s.print();
-    std::cout << a;
-    std::cout<< std::endl;
-    a = std::move(a + 'h');
-    std::cout << a;
-    a = std::move(a - 'h');
-    std::cout << a;
-    a = std::move (a * 'a');
+    s = a / d;
+    a.print();
+    d.print();
+    std::cout << "SET S = A / D:" << std::endl;
+    s.print();
+
     std::cout << a;
     auto t1 = a < d, t2 = a <= d, t3 = a > d, t4 = a >= d;
     std::cout << "a < d " << t1 << " " << "a <= d " << t2 << " " << "a > d " << t3 << " " << "a >= d " << t4 << std::endl;
+
+    Add(a, "asdfghjkl;");
+    a.print();
+    Delete(a, "asdfgh");
 
     a.print();
     b.print();

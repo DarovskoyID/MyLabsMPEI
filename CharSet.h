@@ -1,7 +1,7 @@
 //
 // Created by Иван on 23.10.2025.
 //
-//перегрузить адд и делит чтоб работал с мно-вом
+//сделать симетрическую разность
 #ifndef CHARSET_H
 #define CHARSET_H
 
@@ -33,6 +33,24 @@ public:
     CharSet(CharSet &setik, unsigned char n);
     ~CharSet();
 
+    friend void Add(CharSet &setik, const char *c);
+    friend void Delete(CharSet &setik, const char *c);
+    friend void Add(CharSet &setik, CharSet &other);
+    friend void Delete(CharSet &setik, CharSet &other);
+    friend int Size(CharSet &setik);
+    friend bool inSet(CharSet &setik, unsigned char c);
+
+    friend CharSet operator+(CharSet &setik1, CharSet &setik2);
+    friend CharSet operator-(CharSet &setik1, CharSet &setik2);
+    friend CharSet operator*(CharSet &setik1, CharSet &setik2);
+    friend CharSet operator/(CharSet &setik1, CharSet &setik2);
+    friend bool operator>(CharSet &setik1, CharSet &setik2);
+    friend bool operator<(CharSet &setik1, CharSet &setik2);
+    friend bool operator>=(CharSet &setik1, CharSet &setik2);
+    friend bool operator<=(CharSet &setik1, CharSet &setik2);
+    friend std::ostream& operator<<(std::ostream& os, const CharSet& set);
+    friend void print(CharSet &setik);
+
     void Add(const char *c);
     void Delete(const char *c);
     void Add(CharSet &setik);
@@ -41,20 +59,10 @@ public:
     bool inSet(unsigned char c) const;
     char* ToChar();
     CharSet& operator=(CharSet &&setik);
-    CharSet& operator=(const char* str);
-    CharSet operator+(const char c);
-    CharSet operator-(const char c);
-    CharSet operator*(const char c);
-    friend CharSet operator+(CharSet &setik1, CharSet &setik2);
-    friend CharSet operator-(CharSet &setik1, CharSet &setik2);
-    friend CharSet operator*(CharSet &setik1, CharSet &setik2);
-    friend bool operator>(CharSet &setik1, CharSet &setik2);
-    friend bool operator<(CharSet &setik1, CharSet &setik2);
-    friend bool operator>=(CharSet &setik1, CharSet &setik2);
-    friend bool operator<=(CharSet &setik1, CharSet &setik2);
+    CharSet& operator=(const char *str);
     CharSet& operator+=(CharSet &setik);
     CharSet& operator+=(const char* str);
-    friend std::ostream& operator<<(std::ostream& os, const CharSet& set);
+    CharSet& operator-=(const char *c);
     void print() const;
 };
 
