@@ -37,6 +37,15 @@ public:
     }
 };
 
+class IsNotCharFound : public CharSetException {
+    const unsigned char ch;
+public:
+    IsNotCharFound(const unsigned char c) : ch(c) {}
+    const char* what() const noexcept override {
+        return "Character is not char";
+    }
+};
+
 class CharSet {
 private:
     unsigned char data[64];
@@ -53,6 +62,7 @@ private:
 public:
     CharSet(const char* elementsStr);
     CharSet(const CharSet& other);
+    CharSet(int a);
     CharSet(CharSet &setik, unsigned char n);
     ~CharSet();
 
@@ -65,6 +75,7 @@ public:
     char* ToChar();
     CharSet& operator=(CharSet &&setik);
     CharSet& operator=(const char* str);
+    CharSet& operator=(int p);
     CharSet operator+(CharSet &setik);
     CharSet operator-(CharSet &setik);
     CharSet operator*(CharSet &setik);

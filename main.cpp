@@ -16,6 +16,21 @@ int main(){
     CharSet a("abcd");
     CharSet b("efgh");
     CharSet d("igklmnru");
+    try{
+
+        CharSet l(12);
+
+    } catch (CharSetException &e) {
+        std::cout << "Caught exception: " << e.what() << std::endl;
+    }
+    try{
+
+        CharSet p("");
+        p = 12;
+
+    } catch (CharSetException &e) {
+        std::cout << "Caught exception: " << e.what() << std::endl;
+    }
     CharSet s(a, 'a');
     std::cout << "SET A:" << std::endl;
     a.print();

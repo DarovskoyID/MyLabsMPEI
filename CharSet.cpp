@@ -84,6 +84,8 @@ CharSet::CharSet(const CharSet& other)
 }
 
 
+
+
 CharSet::CharSet(CharSet &setik, unsigned char n){
     int i = 0;
     while(i < 64){
@@ -351,4 +353,14 @@ void CharSet::print() const{
     }
     std::cout << '\n';
     return;
+}
+
+CharSet::CharSet(int a) {
+    const unsigned char c = (unsigned char)a;
+    throw IsNotCharFound(c);
+}
+
+CharSet& CharSet::operator=(int p){
+    const unsigned char c = (unsigned char)p;
+    throw IsNotCharFound(c);
 }
