@@ -44,7 +44,7 @@ int main(){
     }
     std::cout << "======================================" << std::endl;
 
-    std::cout << "Queue =================================" << std::endl;
+    std::cout << "Queue ================================" << std::endl;
     Queue<int> interqueue, interqueue2, interqueue3;
     interqueue.push(1);
     interqueue.push(2);
@@ -94,13 +94,13 @@ int main(){
     std::cout << charlist3;
     std::cout << charlist3[4] << std::endl;
     try{
-        int a = charlist3[100];
+        char b = charlist3[100];
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
     std::cout << "======================================" << std::endl;
 
-    std::cout << "Queue =================================" << std::endl;
+    std::cout << "Queue ================================" << std::endl;
     Queue<char> charqueue, charqueue2, charqueue3;
     charqueue.push('a');
     charqueue.push('b');
