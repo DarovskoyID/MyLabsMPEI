@@ -469,14 +469,27 @@ void CharSet::print() const{
 //defense
 CharSet operator/(CharSet &setik1, CharSet &setik2) {
     CharSet result("");
-    char* c = setik1.ToChar();
-    for (int i = 0; c[i] != 0; ++i) {
-        unsigned char ch = (unsigned char)c[i];
-        if ((inSet(setik1, ch) && !inSet(setik2, ch)) || (!inSet(setik1, ch) && inSet(setik2, ch))) {
+
+    char* a = setik1.ToChar();
+    char* b = setik2.ToChar();
+
+    for (int i = 0; a[i] != 0; ++i) {
+        unsigned char ch = (unsigned char)a[i];
+        if (!inSet(setik2, ch)) {
             result.addMapping(ch);
             result.setBit(result.mapChar(ch));
         }
     }
+
+    for (int i = 0; b[i] != 0; ++i) {
+        unsigned char ch = (unsigned char)b[i];
+        if (!inSet(setik1, ch)) {
+            result.addMapping(ch);
+            result.setBit(result.mapChar(ch));
+        }
+    }
+
     return result;
 }
+
 
