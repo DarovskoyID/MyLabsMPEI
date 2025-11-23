@@ -54,6 +54,10 @@ public:
         return;
     }
 
+    int size(){
+        return count;
+    }
+
     void pop() {
         if (empty()) return;
         for (int i = 1; i < count; i++)
@@ -78,7 +82,7 @@ public:
         return;
     }
 
-    friend Queue& operator+(Queue q1, Queue q2){
+    friend Queue& operator+(Queue &q1, Queue &q2){
         int newSize = q1.count + q2.count;
         if (newSize > q1.capacity) {
             int newCap = q1.capacity;
@@ -99,7 +103,7 @@ public:
         return q1;
     }
 
-    friend Queue& operator+(Queue q1, T value){
+    friend Queue& operator+(Queue &q1, T value){
         if (q1.count == q1.capacity) {
             int newCap = q1.capacity * 2;
             T* newArr = new T[newCap];
@@ -148,9 +152,33 @@ public:
         return *this;
     }
 
+    Queue& operator=(const Queue& other){
+        if (this == &other)
+            return *this;
+        delete[] arr;
+        capacity = other.capacity;
+        count    = other.count;
+        head     = 0;
+        tail     = count;
+        arr = new T[capacity];
 
-    Queue& operator[](int m){
-        return arr[(head + m) % capacity];
+        for (int i = 0; i < count; i++)
+            arr[i] = other.arr[(other.head + i) % other.capacity];
+
+        return *this;
+    }
+
+
+    friend std::ostream& operator<<(std::ostream& os, const Queue<T>& queue){
+        os << "{";
+        int idx = queue.head;
+        for (int i = 0; i < queue.count; i++) {
+            os << queue.arr[idx] << ", ";
+            idx = (idx + 1) % queue.capacity;
+        }
+        os << "}";
+        os << "\n";
+        return os;
     }
 
 };

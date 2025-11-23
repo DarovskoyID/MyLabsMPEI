@@ -121,16 +121,18 @@ public:
         return *this;
     }
 
-    friend List& operator+(List<T>& list1, List<T>& list2){
-        if (!list1.tail) {
-            list1.head = list1.tail = list2.head;
-        } else if (list2.head) {
-            list1.tail->next = list2.head;
-            list2.head->prev = list1.tail;
-            list1.tail = list2.tail;
-        }
-        return list1;
+    friend List operator+(const List<T>& list1, const List<T>& list2){
+        List<T> result;
+
+        for (Node* p = list1.head; p; p = p->next)
+            result.push_back(p->data);
+
+        for (Node* p = list2.head; p; p = p->next)
+            result.push_back(p->data);
+
+        return result;
     }
+
 
     friend List& operator+(List<T>& list, const T& value){
         Node* n = new Node(value);
@@ -155,6 +157,27 @@ public:
             i++;
         }
         return p->data;
+    }
+
+    List& operator=(const List& other){
+        if (this == &other) return *this;
+
+        clear();
+
+        for (Node* p = other.head; p; p = p->next)
+            push_back(p->data);
+
+        return *this;
+    }
+
+
+    friend std::ostream& operator<<(std::ostream& os, const List<T>& list){
+        os << "{";
+        for (typename List<T>::Node* p = list.head; p; p = p->next)
+            os << p->data << ", ";
+        os << "}";
+        os << "\n";
+        return os;
     }
 };
 
