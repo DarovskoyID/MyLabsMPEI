@@ -1,186 +1,115 @@
-//
-// Created by Иван on 20.11.2025.
-//
-
 #ifndef UNTITLED_QUEUE_H
 #define UNTITLED_QUEUE_H
 
 #include <iostream>
+#include <stdexcept>
 
 template <class T>
 class Queue {
 private:
-    T* arr;
+    T* X;
     int capacity;
-    int head;
-    int tail;
-    int count;
+    int n;
+    int l;
 
     void grow() {
         int newCap = capacity * 2;
-        T* newArr = new T[newCap];
-
-        for (int i = 0; i < count; i++) {
-            newArr[i] = arr[(head + i) % capacity];
-        }
-
-        delete[] arr;
-        arr = newArr;
-
-        head = 0;
-        tail = count;
+        T* newX = new T[newCap];
+        for (int i = 0; i < n; i++)
+            newX[i] = X[l + i];
+        delete[] X;
+        X = newX;
         capacity = newCap;
-        return;
+        l = 0;
     }
 
 public:
-    Queue(int cap = 10)
-            : capacity(cap), head(0), tail(0), count(0)
-    {
-        arr = new T[capacity];
+    Queue(int cap = 10) : capacity(cap), n(0), l(0) {
+        X = new T[capacity];
     }
 
-    ~Queue() { delete[] arr; }
+    Queue(const Queue& other) : capacity(other.capacity), n(other.n), l(0) {
+        X = new T[capacity];
+        for (int i = 0; i < n; i++)
+            X[i] = other.X[other.l + i];
+    }
 
-    bool empty() const { return count == 0; }
+    ~Queue() { delete[] X; }
 
-    void push(const T& value) {
-        if (count == capacity)
+    bool operator!() const {
+        return n == 0;
+    }
+
+    Queue& operator+=(const T& value) {
+        if (l + n == capacity)
             grow();
-
-        arr[tail] = value;
-        tail = (tail + 1) % capacity;
-        ++count;
-        return;
-    }
-
-    int size(){
-        return count;
-    }
-
-    void pop() {
-        if (empty()) return;
-        for (int i = 1; i < count; i++)
-            arr[i - 1] = arr[(head + i) % capacity];
-        head = 0;
-        tail = count - 1;
-        count--;
-    }
-
-
-    T& front() {
-        return arr[head];
-    }
-
-    void print() const {
-        int idx = head;
-        for (int i = 0; i < count; i++) {
-            std::cout << arr[idx] << " ";
-            idx = (idx + 1) % capacity;
-        }
-        std::cout << "\n";
-        return;
-    }
-
-    friend Queue& operator+(Queue &q1, Queue &q2){
-        int newSize = q1.count + q2.count;
-        if (newSize > q1.capacity) {
-            int newCap = q1.capacity;
-            while (newCap < newSize) newCap *= 2;
-            T* newArr = new T[newCap];
-            for (int i = 0; i < q1.count; i++)
-                newArr[i] = q1.arr[(q1.head + i) % q1.capacity];
-            delete[] q1.arr;
-            q1.arr = newArr;
-            q1.capacity = newCap;
-            q1.head = 0;
-            q1.tail = q1.count;
-        }
-        for (int i = 0; i < q2.count; i++)
-            q1.arr[(q1.tail + i) % q1.capacity] = q2.arr[(q2.head + i) % q2.capacity];
-        q1.tail = (q1.tail + q2.count) % q1.capacity;
-        q1.count += q2.count;
-        return q1;
-    }
-
-    friend Queue& operator+(Queue &q1, T value){
-        if (q1.count == q1.capacity) {
-            int newCap = q1.capacity * 2;
-            T* newArr = new T[newCap];
-            for (int i = 0; i < q1.count; i++)
-                newArr[i] = q1.arr[(q1.head + i) % q1.capacity];
-            delete[] q1.arr;
-            q1.arr = newArr;
-            q1.capacity = newCap;
-            q1.head = 0;
-            q1.tail = q1.count;
-        }
-        q1.arr[q1.tail] = value;
-        q1.tail = (q1.tail + 1) % q1.capacity;
-        q1.count++;
-        return q1;
-    }
-
-    Queue& operator+=(const T& value){
-        if (count == capacity) {
-            int newCap = capacity * 2;
-            T* newArr = new T[newCap];
-            for (int i = 0; i < count; i++)
-                newArr[i] = arr[(head + i) % capacity];
-            delete[] arr;
-            arr = newArr;
-            capacity = newCap;
-            head = 0;
-            tail = count;
-        }
-        arr[tail] = value;
-        tail = (tail + 1) % capacity;
-        count++;
+        X[l + n] = value;
+        n++;
         return *this;
     }
 
-    Queue& operator-=(int m){
-        if (m >= count) {
-            head = tail = count = 0;
-        } else {
-            for (int i = 0; i < count - m; i++)
-                arr[i] = arr[(head + m + i) % capacity];
-            head = 0;
-            tail = count - m;
-            count -= m;
+    Queue& operator--() {
+        if (!*this) return *this;
+        l++;
+        n--;
+        if (l > capacity / 2 && capacity > 10) {
+            grow();
         }
         return *this;
     }
 
-    Queue& operator=(const Queue& other){
-        if (this == &other)
-            return *this;
-        delete[] arr;
+    T& operator*() {
+        if (!*this) throw std::out_of_range("Queue is empty");
+        return X[l];
+    }
+
+    T& operator[](int index) {
+        if (index < 0 || index >= n)
+            throw std::out_of_range("Index out of range");
+        return X[l + index];
+    }
+
+    const T& operator[](int index) const {
+        if (index < 0 || index >= n)
+            throw std::out_of_range("Index out of range");
+        return X[l + index];
+    }
+
+    friend Queue operator+(const Queue& q1, const Queue& q2) {
+        Queue result;
+        for (int i = 0; i < q1.n; i++)
+            result += q1[i];
+        for (int i = 0; i < q2.n; i++)
+            result += q2[i];
+        return result;
+    }
+
+    Queue& operator=(const Queue& other) {
+        if (this == &other) return *this;
+        delete[] X;
         capacity = other.capacity;
-        count    = other.count;
-        head     = 0;
-        tail     = count;
-        arr = new T[capacity];
-
-        for (int i = 0; i < count; i++)
-            arr[i] = other.arr[(other.head + i) % other.capacity];
-
+        n = other.n;
+        l = 0;
+        X = new T[capacity];
+        for (int i = 0; i < n; i++)
+            X[i] = other.X[other.l + i];
         return *this;
     }
 
+    void Print() const {
+        std::cout << *this << std::endl;
+    }
 
-    friend std::ostream& operator<<(std::ostream& os, const Queue<T>& queue){
+    friend std::ostream& operator<<(std::ostream& os, const Queue<T>& q) {
         os << "{";
-        int idx = queue.head;
-        for (int i = 0; i < queue.count; i++) {
-            os << queue.arr[idx] << ", ";
-            idx = (idx + 1) % queue.capacity;
+        for (int i = 0; i < q.n; i++) {
+            os << q.X[q.l + i];
+            if (i < q.n - 1) os << ", ";
         }
         os << "}";
-        os << "\n";
         return os;
     }
 
 };
 
-#endif //UNTITLED_QUEUE_H
+#endif

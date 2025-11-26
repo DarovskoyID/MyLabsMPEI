@@ -2,50 +2,33 @@
 #define UNTITLED_LIST_H
 
 #include <iostream>
-#include <format>
 #include <string>
+#include <stdexcept>
+
 using namespace std;
 
 template <class T>
 class List {
-private:
+public:
     struct Node {
         T data;
         Node* prev;
         Node* next;
+
         Node(const T& d) : data(d), prev(nullptr), next(nullptr) {}
+        Node() : data(T()), prev(nullptr), next(nullptr) {}
     };
 
-    Node* head;
-    Node* tail;
+    List() {}
 
-public:
-    List() : head(nullptr), tail(nullptr) {}
-    ~List() { clear(); }
-
-    bool empty() const { return head == nullptr; }
-
-    void push_back(const T& value) {
-        Node* n = new Node(value);
-        if (!tail) {
-            head = tail = n;
-        } else {
-            tail->next = n;
-            n->prev = tail;
-            tail = n;
-        }
+    bool IsEmpty(Node* head) {
+        return head == nullptr;
     }
 
-    int size() {
-        int i = 0;
-        for (Node* p = head; p; p = p->next) i++;
-        return i;
-    }
-
-    void push_front(const T& value) {
+    void AddFirst(Node*& head, const T& value) {
         Node* n = new Node(value);
         if (!head) {
-            head = tail = n;
+            head = n;
         } else {
             n->next = head;
             head->prev = n;
@@ -53,130 +36,103 @@ public:
         }
     }
 
-    T pop_front() {
-        if (!head) throw out_of_range("pop_front");
-        Node* t = head;
-        T temp = t->data;
+    void AddLast(Node*& head, const T& value) {
+        Node* n = new Node(value);
+        if (!head) {
+            head = n;
+            return;
+        }
+        Node* current = head;
+        while (current->next) current = current->next;
+        current->next = n;
+        n->prev = current;
+    }
+
+    void AddMiddle(Node*& head, Node* after, const T& value) {
+        if (!after) {
+            AddFirst(head, value);
+            return;
+        }
+        Node* n = new Node(value);
+        n->prev = after;
+        n->next = after->next;
+        if (after->next) after->next->prev = n;
+        after->next = n;
+    }
+
+    void DelFirst(Node*& head) {
+        if (!head) return;
+        Node* tmp = head;
         head = head->next;
         if (head) head->prev = nullptr;
-        else tail = nullptr;
-        delete t;
-        return temp;
+        delete tmp;
     }
 
-    T pop_back() {
-        if (!tail) throw out_of_range("pop_back");
-        Node* t = tail;
-        T temp = t->data;
-        tail = tail->prev;
-        if (tail) tail->next = nullptr;
-        else head = nullptr;
-        delete t;
-        return temp;
+    void DelLast(Node*& head) {
+        if (!head) return;
+        Node* current = head;
+        while (current->next) current = current->next;
+        if (current->prev) {
+            current->prev->next = nullptr;
+        } else {
+            head = nullptr;
+        }
+        delete current;
     }
 
-    T& get_front() {
-        if (!head) throw out_of_range("get_front");
+    void DelMiddle(Node*& head, Node* target) {
+        if (!target) return;
+        if (target == head) {
+            DelFirst(head);
+            return;
+        }
+        if (target->prev) target->prev->next = target->next;
+        if (target->next) target->next->prev = target->prev;
+        delete target;
+    }
+
+    T& GetFirst(Node* head) {
+        if (!head) throw out_of_range("GetFirst: empty list");
         return head->data;
     }
 
-    T& get_back() {
-        if (!tail) throw out_of_range("get_back");
-        return tail->data;
+    T& GetLast(Node* head) {
+        if (!head) throw out_of_range("GetLast: empty list");
+        Node* current = head;
+        while (current->next) current = current->next;
+        return current->data;
     }
 
-    void clear() {
-        while (!empty()) pop_front();
+    T& GetMiddle(Node* node) {
+        if (!node) throw out_of_range("GetMiddle: null node");
+        return node->data;
     }
 
-    void print() const {
-        for (Node* p = head; p; p = p->next)
-            cout << p->data << " ";
-        cout << "\n";
+    Node* MoveNext(Node* current) {
+        return current ? current->next : nullptr;
     }
 
-    List& operator+=(const T& value){
-        Node* n = new Node(value);
-        if (!tail) {
-            head = tail = n;
-        } else {
-            tail->next = n;
-            n->prev = tail;
-            tail = n;
-        }
-        return *this;
+    Node* MovePrev(Node* current) {
+        return current ? current->prev : nullptr;
     }
 
-    List& operator-=(int value){
-        int i = 0;
-        while (i < value) {
-            if (!tail) break;
-            Node* t = tail;
-            tail = tail->prev;
-            if (tail) tail->next = nullptr;
-            else head = nullptr;
-            delete t;
-            i++;
-        }
-        return *this;
+    void Print(Node* head) {
+        cout << head << endl;
     }
 
-    friend List operator+(const List<T>& list1, const List<T>& list2){
-        List<T> result;
-
-        for (Node* p = list1.head; p; p = p->next)
-            result.push_back(p->data);
-
-        for (Node* p = list2.head; p; p = p->next)
-            result.push_back(p->data);
-
-        return result;
+    void Clear(Node*& head) {
+        while (head) DelLast(head);
     }
 
-
-    friend List& operator+(List<T>& list, const T& value){
-        Node* n = new Node(value);
-        if (!list.tail) {
-            list.head = list.tail = n;
-        } else {
-            list.tail->next = n;
-            n->prev = list.tail;
-            list.tail = n;
-        }
-        return list;
-    }
-
-    T operator[](int m){
-        int s = size();
-        if (m >= s || m < 0)
-            throw out_of_range(format("{} is bigger then {} or less then 0", m, s));
-        int i = 0;
-        Node* p = head;
-        while (i != m){
-            p = p->next;
-            i++;
-        }
-        return p->data;
-    }
-
-    List& operator=(const List& other){
-        if (this == &other) return *this;
-
-        clear();
-
-        for (Node* p = other.head; p; p = p->next)
-            push_back(p->data);
-
-        return *this;
-    }
-
-
-    friend std::ostream& operator<<(std::ostream& os, const List<T>& list){
+    friend ostream& operator<<(ostream& os, Node* head) {
         os << "{";
-        for (typename List<T>::Node* p = list.head; p; p = p->next)
-            os << p->data << ", ";
+        Node* current = head;
+        while (current) {
+            os << current->data;
+            if (current->next) os << ", ";
+            current = current->next;
+        }
         os << "}";
-        os << "\n";
         return os;
     }
 };
