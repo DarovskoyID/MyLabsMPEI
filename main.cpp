@@ -381,6 +381,7 @@ int main(){
     char1queue3 = char1queue + char1queue2;
     char1queue3 += '1';
     std::cout << char1queue3;
+    std::cout << std::endl;
     std::cout << "\n";
     std::cout << char1queue << std::endl;
     if (checkChar(char1queue)){

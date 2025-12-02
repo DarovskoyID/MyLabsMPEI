@@ -11,40 +11,80 @@ private:
     int capacity;
     int n;
     int l;
+    int d;
 
-    void grow() {
-        int newCap = capacity * 2;
+    void grow_right(int add = 10) {
+        int newCap = capacity + add;
         T* newX = new T[newCap];
+
         for (int i = 0; i < n; i++)
-            newX[i] = X[l + i];
+            newX[l + i] = X[l + i];
+
         delete[] X;
         X = newX;
+
+        d += add;
         capacity = newCap;
-        l = 0;
+    }
+
+    void grow_left(int add = 10) {
+        int newCap = capacity + add;
+        T* newX = new T[newCap];
+
+        int newL = l + add;
+
+        for (int i = 0; i < n; i++)
+            newX[newL + i] = X[l + i];
+
+        delete[] X;
+        X = newX;
+
+        l = newL;
+        capacity = newCap;
     }
 
 public:
-    Queue(int cap = 10) : capacity(cap), n(0), l(0) {
+    Queue(int L = 5, int D = 5) {
+        l = L;
+        d = D;
+        capacity = l + d;
+        n = 0;
         X = new T[capacity];
     }
 
-    Queue(const Queue& other) : capacity(other.capacity), n(other.n), l(0) {
+    Queue(const T& value) {
+        capacity = 3;
+        l = 1;
+        d = 1;
+        n = 1;
         X = new T[capacity];
-        for (int i = 0; i < n; i++)
-            X[i] = other.X[other.l + i];
+        X[l] = value;
+    }
+
+    Queue(const Queue& other) {
+        capacity = other.capacity;
+        n = other.n;
+        l = other.l;
+        d = other.d;
+
+        X = new T[capacity];
+        for (int i = 0; i < capacity; i++)
+            X[i] = other.X[i];
     }
 
     ~Queue() { delete[] X; }
 
-    bool operator!() const {
-        return n == 0;
-    }
+    bool operator!() const { return n == 0; }
+    int size() const { return n; }
 
     Queue& operator+=(const T& value) {
-        if (l + n == capacity)
-            grow();
+        if (d == 0)
+            grow_right();
+
         X[l + n] = value;
         n++;
+        d--;
+
         return *this;
     }
 
@@ -52,9 +92,6 @@ public:
         if (!*this) return *this;
         l++;
         n--;
-        if (l > capacity / 2 && capacity > 10) {
-            grow();
-        }
         return *this;
     }
 
@@ -75,24 +112,49 @@ public:
         return X[l + index];
     }
 
+    void TopToBottom() {
+        if (n <= 1) return;
+
+        T temp = X[l];
+
+        for (int i = 0; i < n - 1; i++)
+            X[l + i] = X[l + i + 1];
+
+        X[l + n - 1] = temp;
+
+
+    }
+
     friend Queue operator+(const Queue& q1, const Queue& q2) {
-        Queue result;
-        for (int i = 0; i < q1.n; i++)
-            result += q1[i];
+        Queue result(q1);
+
+        while (result.d < q2.n)
+            result.grow_right();
+
         for (int i = 0; i < q2.n; i++)
-            result += q2[i];
+            result.X[result.l + result.n + i] = q2.X[q2.l + i];
+
+        result.n += q2.n;
+        result.d -= q2.n;
+
         return result;
     }
 
     Queue& operator=(const Queue& other) {
         if (this == &other) return *this;
+
         delete[] X;
+
         capacity = other.capacity;
         n = other.n;
-        l = 0;
+        l = other.l;
+        d = other.d;
+
         X = new T[capacity];
-        for (int i = 0; i < n; i++)
-            X[i] = other.X[other.l + i];
+
+        for (int i = 0; i < capacity; i++)
+            X[i] = other.X[i];
+
         return *this;
     }
 
@@ -109,7 +171,6 @@ public:
         os << "}";
         return os;
     }
-
 };
 
 #endif
