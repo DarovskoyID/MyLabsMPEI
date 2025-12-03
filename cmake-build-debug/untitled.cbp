@@ -79,7 +79,31 @@
 		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/List.h">
 			<Option target="untitled"/>
 		</Unit>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/ListChar.cpp">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/ListChar.h">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/ListInt.cpp">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/ListInt.h">
+			<Option target="untitled"/>
+		</Unit>
 		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/Queue.h">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/QueueChar.cpp">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/QueueChar.h">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/QueueInt.cpp">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/QueueInt.h">
 			<Option target="untitled"/>
 		</Unit>
 		<Unit filename="/Users/ivandarovskoy/CLionProjects/MyLabsMPEI/main.cpp">
