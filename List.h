@@ -33,32 +33,36 @@ public:
         Node* n = new Node(value);
         if (!head) {
             head = n;
-            return;
         }
-        Node* cur = head;
-        while (cur->next) cur = cur->next;
-        cur->next = n;
-        n->prev = cur;
+        else{
+            Node* cur = head;
+            while (cur->next) cur = cur->next;
+            cur->next = n;
+            n->prev = cur;
+        }
+
     }
 
     void DelFirst(Node*& head) {
-        if (!head) return;
-        Node* t = head;
-        head = head->next;
-        if (head) head->prev = nullptr;
-        delete t;
+        if (head) {
+            Node *t = head;
+            head = head->next;
+            if (head) head->prev = nullptr;
+            delete t;
+        }
     }
 
     void DelLast(Node*& head) {
-        if (!head) return;
-        Node* cur = head;
-        while (cur->next) cur = cur->next;
-        if (cur->prev) {
-            cur->prev->next = nullptr;
-        } else {
-            head = nullptr;
+        if (head) {
+            Node *cur = head;
+            while (cur->next) cur = cur->next;
+            if (cur->prev) {
+                cur->prev->next = nullptr;
+            } else {
+                head = nullptr;
+            }
+            delete cur;
         }
-        delete cur;
     }
 
     T& GetFirst(Node* head) {

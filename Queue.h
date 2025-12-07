@@ -59,12 +59,13 @@ public:
     }
 
      QueueBase& operator--() {
-        if (!*this) return *this;
+        if (!(!*this)){
+            X[l] = T();
 
-        X[l] = T();
+            l++;
+            n--;
+        }
 
-        l++;
-        n--;
         return *this;
     }
 
@@ -84,10 +85,12 @@ public:
     }
 
     void TopToBottom() {
-        if (n <= 1) return;
-        T temp = X[l];
-        for (int i = 0; i < n - 1; i++) X[l + i] = X[l + i + 1];
-        X[l + n - 1] = temp;
+        if (n > 1){
+            T temp = X[l];
+            for (int i = 0; i < n - 1; i++) X[l + i] = X[l + i + 1];
+            X[l + n - 1] = temp;
+        }
+
     }
 
      void Print() const {

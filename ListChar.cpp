@@ -12,25 +12,25 @@ bool CharList::checkChar(Node* head) {
 }
 
 void CharList::clearSymbol(Node*& head) {
-    if (!checkChar(head)) return;
+    if (checkChar(head)){
+        Node* new_head = nullptr;
 
-    Node* new_head = nullptr;
-
-    for (Node* p = head; p; p = p->next) {
-        char c = p->data;
-        if (c != '!' && c != ',' && c != '.' && c != '?' && c != ':' && c != ';' &&
-            c != '-' && c != '\'' && c != '\"' && c != '(' && c != ')') {
-            AddLast(new_head, c);
+        for (Node* p = head; p; p = p->next) {
+            char c = p->data;
+            if (c != '!' && c != ',' && c != '.' && c != '?' && c != ':' && c != ';' &&
+                c != '-' && c != '\'' && c != '\"' && c != '(' && c != ')') {
+                AddLast(new_head, c);
+            }
         }
+
+        while (head) DelLast(head);
+
+        for (Node* p = new_head; p; p = p->next) {
+            AddLast(head, p->data);
+        }
+
+        while (new_head) DelLast(new_head);
     }
-
-    while (head) DelLast(head);
-
-    for (Node* p = new_head; p; p = p->next) {
-        AddLast(head, p->data);
-    }
-
-    while (new_head) DelLast(new_head);
 }
 
 char CharList::GetAt(Node* head, int index) {
