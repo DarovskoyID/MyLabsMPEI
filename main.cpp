@@ -1,180 +1,14 @@
-/*Для чётных вариантов:
-двунаправленный список;
-очередь на основе массива.
-
- Если в списке из символов есть латинские буквы, удалить из списка знаки препинания.
-*/
 #include <iostream>
-#include "List.h"
-#include "Queue.h"
-
-template<class T>
-int GetQueueSize(Queue<T>& q) {
-    int size = 0;
-    Queue<T> temp = q;
-    while (!!temp) {
-        size++;
-        --temp;
-    }
-    return size;
-}
-
-bool checkChar(Queue<char>& q) {
-    bool flag = false;
-    Queue<char> temp = q;
-
-    while (!!temp) {
-        char c = *temp;
-        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
-            flag = true;
-            break;
-        }
-        --temp;
-    }
-
-    return flag;
-}
-
-void clearSymbol(Queue<char>& q) {
-    if (!checkChar(q)) {
-        return;
-    }
-
-    Queue<char> temp;
-    Queue<char> original = q;
-
-    while (!!original) {
-        char c = *original;
-        if (c != '!' && c != ',' && c != '.' && c != '?' && c != ':' && c != ';' &&
-            c != '-' && c != '\'' && c != '\"' && c != '(' && c != ')') {
-            temp += c;
-        }
-        --original;
-    }
-
-    q = temp;
-}
-
-bool checkChar(List<char>::Node* head) {
-    bool flag = false;
-
-    for (List<char>::Node* p = head; p; p = p->next) {
-        char c = p->data;
-        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
-            flag = true;
-            break;
-        }
-    }
-
-    return flag;
-}
-
-void clearSymbol(List<char>::Node*& head) {
-    if (!checkChar(head)) {
-        return;
-    }
-
-    List<char> list;
-    List<char>::Node* new_head = nullptr;
-
-    for (List<char>::Node* p = head; p; p = p->next) {
-        char c = p->data;
-        if (c != '!' && c != ',' && c != '.' && c != '?' && c != ':' && c != ';' &&
-            c != '-' && c != '\'' && c != '\"' && c != '(' && c != ')') {
-            list.AddLast(new_head, c);
-        }
-    }
-
-    while (head) {
-        list.DelLast(head);
-    }
-
-    for (List<char>::Node* p = new_head; p; p = p->next) {
-        list.AddLast(head, p->data);
-    }
-
-    while (new_head) {
-        list.DelLast(new_head);
-    }
-}
-
-int GetSize(List<int>::Node* head) {
-    int count = 0;
-    List<int>::Node* current = head;
-    while (current) {
-        count++;
-        current = current->next;
-    }
-    return count;
-}
-
-int& GetAt(List<int>::Node* head, int index) {
-    if (index < 0) throw std::out_of_range("Negative index");
-    List<int>::Node* current = head;
-    for (int i = 0; i < index && current; i++) {
-        current = current->next;
-    }
-    if (!current) throw std::out_of_range("Index out of range");
-    return current->data;
-}
-
-int GetSize(List<char>::Node* head) {
-    int count = 0;
-    List<char>::Node* current = head;
-    while (current) {
-        count++;
-        current = current->next;
-    }
-    return count;
-}
-
-char& GetAt(List<char>::Node* head, int index) {
-    if (index < 0) throw std::out_of_range("Negative index");
-    List<char>::Node* current = head;
-    for (int i = 0; i < index && current; i++) {
-        current = current->next;
-    }
-    if (!current) throw std::out_of_range("Index out of range");
-    return current->data;
-}
-
-List<int>::Node* Concat(List<int>::Node* head1, List<int>::Node* head2) {
-    List<int> list;
-    List<int>::Node* result = nullptr;
-    List<int>::Node* current = head1;
-    while (current) {
-        list.AddLast(result, current->data);
-        current = current->next;
-    }
-    current = head2;
-    while (current) {
-        list.AddLast(result, current->data);
-        current = current->next;
-    }
-    return result;
-}
-
-List<char>::Node* Concat(List<char>::Node* head1, List<char>::Node* head2) {
-    List<char> list;
-    List<char>::Node* result = nullptr;
-    List<char>::Node* current = head1;
-    while (current) {
-        list.AddLast(result, current->data);
-        current = current->next;
-    }
-    current = head2;
-    while (current) {
-        list.AddLast(result, current->data);
-        current = current->next;
-    }
-    return result;
-}
+#include "ListInt.h"
+#include "ListChar.h"
+#include "QueueChar.h"
+#include "QueueInt.h"
 
 int main(){
     std::cout << "List =================================" << std::endl;
 
-    List<int>::Node* head = nullptr;
-    List<int> list;
+    IntList::Node* head = nullptr;
+    IntList list;
 
     list.AddLast(head, 1);
     list.AddLast(head, 2);
@@ -185,25 +19,25 @@ int main(){
     list.DelLast(head);
     list.DelFirst(head);
     list.Print(head);
-    std::cout << "Size: " << GetSize(head) << " First: " << list.GetFirst(head) << " Last: " << list.GetLast(head) << std::endl;
+    std::cout << "Size: " << list.GetSize(head) << " First: " << list.GetFirst(head) << " Last: " << list.GetLast(head) << std::endl;
 
     list.AddLast(head, 7);
     list.AddLast(head, 90);
     list.DelLast(head);
     list.Print(head);
 
-    List<int>::Node* head2 = nullptr;
+    IntList::Node* head2 = nullptr;
     list.AddLast(head2, 1);
     list.AddLast(head2, 2);
     list.AddLast(head2, 3);
 
-    List<int>::Node* head3 = Concat(head, head2);
+    IntList::Node* head3 = list.Concat(head, head2);
     list.AddLast(head3, 10);
     std::cout << head3;
-    std::cout << "Element at index 4: " << GetAt(head3, 4) << std::endl;
+    std::cout << "Element at index 4: " << list.GetAt(head3, 4) << std::endl;
 
     try{
-        int a = GetAt(head3, 100);
+        int a = list.GetAt(head3, 100);
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
@@ -215,7 +49,7 @@ int main(){
     std::cout << "======================================" << std::endl;
 
     std::cout << "Queue ================================" << std::endl;
-    Queue<int> interqueue, interqueue2, interqueue3;
+    QueueInt interqueue, interqueue2, interqueue3;
     interqueue += 1;
     interqueue += 2;
     interqueue += 3;
@@ -225,7 +59,7 @@ int main(){
     --interqueue;
     --interqueue;
     interqueue.Print();
-    std::cout << "First: " << *interqueue << " Last: " << interqueue[GetQueueSize(interqueue)-1] << std::endl;
+    std::cout << "First: " << *interqueue << std::endl;
     interqueue += 7;
     interqueue += 90;
     --interqueue;
@@ -240,8 +74,8 @@ int main(){
     std::cout << "======================================" << std::endl;
 
     std::cout << "List =================================" << std::endl;
-    List<char> charlist;
-    List<char>::Node* char_head = nullptr;
+    CharList charlist;
+    CharList::Node* char_head = nullptr;
 
     charlist.AddLast(char_head, 'a');
     charlist.AddLast(char_head, '2');
@@ -252,24 +86,24 @@ int main(){
     charlist.DelLast(char_head);
     charlist.DelFirst(char_head);
     charlist.Print(char_head);
-    std::cout << "Size: " << GetSize(char_head) << " First: " << charlist.GetFirst(char_head) << " Last: " << charlist.GetLast(char_head) << std::endl;
+    std::cout << "Size: " << charlist.GetSize(char_head) << " First: " << charlist.GetFirst(char_head) << " Last: " << charlist.GetLast(char_head) << std::endl;
     charlist.AddLast(char_head, '7');
     charlist.AddLast(char_head, 'j');
     charlist.DelLast(char_head);
     charlist.Print(char_head);
 
-    List<char>::Node* char_head2 = nullptr;
+    CharList::Node* char_head2 = nullptr;
     charlist.AddLast(char_head2, '1');
     charlist.AddLast(char_head2, 'h');
     charlist.AddLast(char_head2, 'u');
 
-    List<char>::Node* char_head3 = Concat(char_head, char_head2);
+    CharList::Node* char_head3 = charlist.Concat(char_head, char_head2);
     charlist.AddLast(char_head3, '[');
     std::cout << char_head3;
-    std::cout << "Element at index 4: " << GetAt(char_head3, 4) << std::endl;
+    std::cout << "Element at index 4: " << charlist.GetAt(char_head3, 4) << std::endl;
 
     try{
-        char b = GetAt(char_head3, 100);
+        char b = charlist.GetAt(char_head3, 100);
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
@@ -281,7 +115,7 @@ int main(){
     std::cout << "======================================" << std::endl;
 
     std::cout << "Queue ================================" << std::endl;
-    Queue<char> charqueue, charqueue2, charqueue3;
+    QueueChar charqueue, charqueue2, charqueue3;
     charqueue += 'a';
     charqueue += 'b';
     charqueue += 'c';
@@ -291,7 +125,7 @@ int main(){
     --charqueue;
     --charqueue;
     charqueue.Print();
-    std::cout << "First: " << *charqueue << " Last: " << charqueue[GetQueueSize(charqueue)-1] << std::endl;
+    std::cout << "First: " << *charqueue << std::endl;
     charqueue += '!';
     charqueue += ']';
     --charqueue;
@@ -301,14 +135,15 @@ int main(){
     charqueue2 += 'g';
     charqueue2 += '3';
 
-    charqueue3 = charqueue + charqueue2;
+    charqueue3 =  charqueue2;
     charqueue3 += '1';
     std::cout << charqueue3 << std::endl;
+
     std::cout << "======================================" << std::endl;
 
     std::cout << "List(cleared) =================================" << std::endl;
-    List<char> char1list;
-    List<char>::Node* char1_head = nullptr;
+    CharList char1list;
+    CharList::Node* char1_head = nullptr;
 
     char1list.AddLast(char1_head, 'a');
     char1list.AddLast(char1_head, '2');
@@ -319,34 +154,33 @@ int main(){
     char1list.DelLast(char1_head);
     char1list.DelFirst(char1_head);
     char1list.Print(char1_head);
-    std::cout << "Size: " << GetSize(char1_head) << " First: " << char1list.GetFirst(char1_head) << " Last: " << char1list.GetLast(char1_head) << std::endl;
+    std::cout << "Size: " << char1list.GetSize(char1_head) << " First: " << char1list.GetFirst(char1_head) << " Last: " << char1list.GetLast(char1_head) << std::endl;
     char1list.AddLast(char1_head, '7');
     char1list.AddLast(char1_head, 'j');
     char1list.DelLast(char1_head);
     char1list.Print(char1_head);
 
-    List<char>::Node* char1_head2 = nullptr;
+    CharList::Node* char1_head2 = nullptr;
     char1list.AddLast(char1_head2, '1');
     char1list.AddLast(char1_head2, 'h');
     char1list.AddLast(char1_head2, 'u');
 
-    List<char>::Node* char1_head3 = Concat(char1_head, char1_head2);
+    CharList::Node* char1_head3 = char1list.Concat(char1_head, char1_head2);
     char1list.AddLast(char1_head3, '[');
     std::cout << char1_head3;
-    std::cout << "Element at index 4: " << GetAt(char1_head3, 4) << std::endl;
+    std::cout << "Element at index 4: " << char1list.GetAt(char1_head3, 4) << std::endl;
 
     try{
-        char b = GetAt(char1_head3, 100);
+        char b = char1list.GetAt(char1_head3, 100);
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
 
-    std::cout << "\n";
     char1list.AddLast(char1_head, '!');
     std::cout << char1_head << std::endl;
 
-    if (checkChar(char1_head)){
-        clearSymbol(char1_head);
+    if (char1list.checkChar(char1_head)){
+        char1list.clearSymbol(char1_head);
     }
     std::cout << "cleared" << std::endl;
     std::cout << char1_head << std::endl;
@@ -358,7 +192,7 @@ int main(){
     std::cout << "======================================" << std::endl;
 
     std::cout << "Queue(cleared) ================================" << std::endl;
-    Queue<char> char1queue, char1queue2, char1queue3;
+    QueueChar char1queue, char1queue2, char1queue3;
     char1queue += 'a';
     char1queue += 'b';
     char1queue += 'c';
@@ -368,7 +202,7 @@ int main(){
     --char1queue;
     --char1queue;
     char1queue.Print();
-    std::cout << "First: " << *char1queue << " Last: " << char1queue[GetQueueSize(char1queue)-1] << std::endl;
+    std::cout << "First: " << *char1queue << std::endl;
     char1queue += '!';
     char1queue += ']';
     --char1queue;
@@ -378,14 +212,14 @@ int main(){
     char1queue2 += 'g';
     char1queue2 += '3';
 
-    char1queue3 = char1queue + char1queue2;
+    char1queue3 = char1queue2;
     char1queue3 += '1';
     std::cout << char1queue3;
     std::cout << std::endl;
-    std::cout << "\n";
     std::cout << char1queue << std::endl;
-    if (checkChar(char1queue)){
-        clearSymbol(char1queue);
+
+    if (char1queue.checkChar()){
+        char1queue.clearSymbol();
     }
     std::cout << "cleared" << std::endl;
     std::cout << char1queue << std::endl;
@@ -393,4 +227,3 @@ int main(){
     std::cout << "======================================" << std::endl;
     return 0;
 }
-

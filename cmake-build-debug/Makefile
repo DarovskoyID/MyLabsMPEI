@@ -129,6 +129,102 @@ untitled/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
 .PHONY : untitled/fast
 
+ListChar.o: ListChar.cpp.o
+.PHONY : ListChar.o
+
+# target to build an object file
+ListChar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ListChar.cpp.o
+.PHONY : ListChar.cpp.o
+
+ListChar.i: ListChar.cpp.i
+.PHONY : ListChar.i
+
+# target to preprocess a source file
+ListChar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ListChar.cpp.i
+.PHONY : ListChar.cpp.i
+
+ListChar.s: ListChar.cpp.s
+.PHONY : ListChar.s
+
+# target to generate assembly for a file
+ListChar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ListChar.cpp.s
+.PHONY : ListChar.cpp.s
+
+ListInt.o: ListInt.cpp.o
+.PHONY : ListInt.o
+
+# target to build an object file
+ListInt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ListInt.cpp.o
+.PHONY : ListInt.cpp.o
+
+ListInt.i: ListInt.cpp.i
+.PHONY : ListInt.i
+
+# target to preprocess a source file
+ListInt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ListInt.cpp.i
+.PHONY : ListInt.cpp.i
+
+ListInt.s: ListInt.cpp.s
+.PHONY : ListInt.s
+
+# target to generate assembly for a file
+ListInt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ListInt.cpp.s
+.PHONY : ListInt.cpp.s
+
+QueueChar.o: QueueChar.cpp.o
+.PHONY : QueueChar.o
+
+# target to build an object file
+QueueChar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/QueueChar.cpp.o
+.PHONY : QueueChar.cpp.o
+
+QueueChar.i: QueueChar.cpp.i
+.PHONY : QueueChar.i
+
+# target to preprocess a source file
+QueueChar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/QueueChar.cpp.i
+.PHONY : QueueChar.cpp.i
+
+QueueChar.s: QueueChar.cpp.s
+.PHONY : QueueChar.s
+
+# target to generate assembly for a file
+QueueChar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/QueueChar.cpp.s
+.PHONY : QueueChar.cpp.s
+
+QueueInt.o: QueueInt.cpp.o
+.PHONY : QueueInt.o
+
+# target to build an object file
+QueueInt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/QueueInt.cpp.o
+.PHONY : QueueInt.cpp.o
+
+QueueInt.i: QueueInt.cpp.i
+.PHONY : QueueInt.i
+
+# target to preprocess a source file
+QueueInt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/QueueInt.cpp.i
+.PHONY : QueueInt.cpp.i
+
+QueueInt.s: QueueInt.cpp.s
+.PHONY : QueueInt.s
+
+# target to generate assembly for a file
+QueueInt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/QueueInt.cpp.s
+.PHONY : QueueInt.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -162,6 +258,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... untitled"
+	@echo "... ListChar.o"
+	@echo "... ListChar.i"
+	@echo "... ListChar.s"
+	@echo "... ListInt.o"
+	@echo "... ListInt.i"
+	@echo "... ListInt.s"
+	@echo "... QueueChar.o"
+	@echo "... QueueChar.i"
+	@echo "... QueueChar.s"
+	@echo "... QueueInt.o"
+	@echo "... QueueInt.i"
+	@echo "... QueueInt.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
