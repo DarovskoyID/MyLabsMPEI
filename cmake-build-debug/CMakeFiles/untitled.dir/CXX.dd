@@ -1,0 +1,11 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles\untitled.dir\main.cpp.obj: dyndep
+
+build CMakeFiles\untitled.dir\ListChar.cpp.obj: dyndep
+
+build CMakeFiles\untitled.dir\ListInt.cpp.obj: dyndep
+
+build CMakeFiles\untitled.dir\QueueChar.cpp.obj: dyndep
+
+build CMakeFiles\untitled.dir\QueueInt.cpp.obj: dyndep
+
