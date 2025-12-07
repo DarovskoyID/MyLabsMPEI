@@ -36,9 +36,13 @@ protected:
 public:
     QueueBase(int L = 5, int D = 5) : n(0), l(L), d(D) { X = new T[l + d]; }
     QueueBase(const T& value) : n(1), l(1), d(1) { X = new T[l + d]; X[l] = value; }
-    QueueBase(const QueueBase& other) : n(other.n), l(other.l), d(other.d) {
-        X = new T[l + d];
-        for (int i = 0; i < l + d; i++) X[i] = other.X[i];
+    QueueBase(const QueueBase& other) {
+        n = other.n;
+        l = 0;
+        d = other.n;
+        X = new T[n];
+        for (int i = 0; i < n; i++)
+            X[i] = other.X[other.l + i];
     }
 
      ~QueueBase() { delete[] X; }
@@ -96,20 +100,16 @@ public:
     }
 
      QueueBase& operator=(QueueBase& other) {
-        if (this == &other) return *this;
-        delete[] X;
-        n = other.n;
-        l = other.l;
-        d = other.d;
-        X = new T[l + d];
-
-        for (int i = 0; i < l + d; i++)
-            X[i] = T();
-
-        for (int i = 0; i < n; i++)
-            X[l + i] = other.X[other.l + i];
-
-        return *this;
+         if (this != &other) {
+             delete[] X;
+             n = other.n;
+             l = 0;
+             d = other.n;
+             X = new char[n];
+             for (int i = 0; i < n; i++)
+                 X[i] = other.X[other.l + i];
+         }
+         return *this;
     }
 
     QueueBase operator+(const QueueBase& other) {
@@ -128,7 +128,7 @@ public:
         os << "}";
         return os;
     }
-    
+
 };
 
 

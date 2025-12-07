@@ -135,7 +135,6 @@ int main(){
     charqueue2 += 'g';
     charqueue2 += '3';
 
-    charqueue3 =  charqueue2;
     charqueue3 += '1';
     std::cout << charqueue3 << std::endl;
 
@@ -212,7 +211,6 @@ int main(){
     char1queue2 += 'g';
     char1queue2 += '3';
 
-    char1queue3 = char1queue2;
     char1queue3 += '1';
     std::cout << char1queue3;
     std::cout << std::endl;
