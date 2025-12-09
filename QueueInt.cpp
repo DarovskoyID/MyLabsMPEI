@@ -39,9 +39,9 @@ void QueueInt::Sort() {
 
 void QueueInt::Sort() {
     QueueInt q(*this);
-    n = 0;  // очищаем текущую очередь
-    d = 0;  // всё место освобождено
-    // после обнуления q содержит копию, а *this будет заполняться отсортированно
+    n = 0;
+    d = 0;
+    
 
     while (!(!q)) {
         int minVal = *q;
