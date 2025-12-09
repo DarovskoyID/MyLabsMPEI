@@ -6,7 +6,7 @@
 #define UNTITLED_QUEUEINT_H
 #include "Queue.h"
 class QueueInt : public QueueBase<int> {
-
+public:
     int& GetAt(int index);
 
     int GetSize();
