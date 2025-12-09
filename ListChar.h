@@ -17,5 +17,7 @@ public:
     int GetSize(Node* head);
 
     Node* Concat(Node* head1, Node* head2);
+
+    void Sort(Node* head);
 };
 #endif //UNTITLED_LISTCHAR_H

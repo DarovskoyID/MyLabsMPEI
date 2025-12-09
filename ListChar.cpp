@@ -41,6 +41,7 @@ char CharList::GetAt(Node* head, int index) {
     return current->data;
 }
 
+
 CharList::Node* CharList::Concat(Node* head1, Node* head2) {
     Node* result = nullptr;
     Node* current = head1;
@@ -64,4 +65,26 @@ int CharList::GetSize(Node* head) {
         current = current->next;
     }
     return count;
+}
+
+void CharList::Sort(Node* head) {
+    if (!head || !head->next) return;
+
+    bool swapped;
+
+    do {
+        swapped = false;
+        Node* cur = head;
+
+        while (cur->next) {
+            if (cur->data > cur->next->data) {
+                char tmp = cur->data;
+                cur->data = cur->next->data;
+                cur->next->data = tmp;
+                swapped = true;
+            }
+            cur = cur->next;
+        }
+
+    } while (swapped);
 }

@@ -7,10 +7,13 @@
 #include "Queue.h"
 class QueueInt : public QueueBase<int> {
 
+public:
     int& GetAt(int index);
 
     int GetSize();
 
     QueueInt Concat(const QueueInt& q1, const QueueInt& q2);
+
+    void Sort();
 };
 #endif //UNTITLED_QUEUEINT_H

@@ -13,5 +13,7 @@ public:
     bool checkChar();
 
     void clearSymbol();
+
+    void Sort();
 };
 #endif //UNTITLED_QUEUECHAR_H

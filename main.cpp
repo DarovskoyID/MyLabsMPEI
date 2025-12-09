@@ -42,6 +42,13 @@ int main(){
         std::cout << e.what() << std::endl;
     }
 
+    std::cout << "non sorted"<< std::endl;
+    std::cout << head3<< std::endl;
+    list.Sort(head3);
+
+    std::cout << "sorted"<< std::endl;
+    std::cout << head3 << std::endl;
+
     while (head) list.DelLast(head);
     while (head2) list.DelLast(head2);
     while (head3) list.DelLast(head3);
@@ -65,12 +72,20 @@ int main(){
     --interqueue;
     interqueue.Print();
 
+    interqueue2 += 3;
     interqueue2 += 1;
     interqueue2 += 2;
-    interqueue2 += 3;
+
+    interqueue2 += -1;
+    interqueue2 += -5;
 
     interqueue3 += 10;
-    std::cout << interqueue3;
+    std::cout << "non sorted"<< std::endl;
+    std::cout << interqueue2<< std::endl;
+    interqueue2.Sort();
+
+    std::cout << "sorted"<< std::endl;
+    std::cout << interqueue2 << std::endl;
     std::cout << "======================================" << std::endl;
 
     std::cout << "List =================================" << std::endl;
@@ -108,6 +123,13 @@ int main(){
         std::cout << e.what() << std::endl;
     }
 
+    std::cout << "non sorted"<< std::endl;
+    std::cout << char_head3<< std::endl;
+    charlist.Sort(char_head3);
+
+    std::cout << "sorted"<< std::endl;
+    std::cout << char_head3 << std::endl;
+
     while (char_head) charlist.DelLast(char_head);
     while (char_head2) charlist.DelLast(char_head2);
     while (char_head3) charlist.DelLast(char_head3);
@@ -137,6 +159,13 @@ int main(){
 
     charqueue3 += '1';
     std::cout << charqueue3 << std::endl;
+
+    std::cout << "non sorted"<< std::endl;
+    std::cout << charqueue<< std::endl;
+    charqueue.Sort();
+
+    std::cout << "sorted"<< std::endl;
+    std::cout << charqueue << std::endl;
 
     std::cout << "======================================" << std::endl;
 

@@ -30,3 +30,25 @@ IntList::Node* IntList::Concat(Node* head1, Node* head2) {
     }
     return result;
 }
+
+void IntList::Sort(Node* head) {
+    if (!head || !head->next) return;
+
+    bool swapped;
+
+    do {
+        swapped = false;
+        Node* cur = head;
+
+        while (cur->next) {
+            if (cur->data > cur->next->data) {
+                int tmp = cur->data;
+                cur->data = cur->next->data;
+                cur->next->data = tmp;
+                swapped = true;
+            }
+            cur = cur->next;
+        }
+
+    } while (swapped);
+}
