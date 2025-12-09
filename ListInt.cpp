@@ -52,3 +52,39 @@ void IntList::Sort(Node* head) {
 
     } while (swapped);
 }
+
+void IntList::Sort(Node*& head) {
+    if (!head || !head->next) return;
+
+    Node* sorted = nullptr;
+
+    while (head) {
+        int minVal = GetFirst(head);
+
+        Node* temp = nullptr;
+
+        while (head) {
+            int val = GetFirst(head);
+            DelFirst(head);
+            if (val < minVal)
+                minVal = val;
+            AddLast(temp, val);
+        }
+
+        bool removedMin = false;
+        while (temp) {
+            int val = GetFirst(temp);
+            DelFirst(temp);
+
+            if (!removedMin && val == minVal) {
+                removedMin = true;
+            } else {
+                AddLast(head, val);
+            }
+        }
+
+        AddLast(sorted, minVal);
+    }
+
+    head = sorted;
+}
