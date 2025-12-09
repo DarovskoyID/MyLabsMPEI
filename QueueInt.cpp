@@ -36,3 +36,34 @@ void QueueInt::Sort() {
         }
     }
 }
+
+void QueueInt::Sort() {
+    QueueInt q(*this);
+    n = 0;  // очищаем текущую очередь
+    d = 0;  // всё место освобождено
+    // после обнуления q содержит копию, а *this будет заполняться отсортированно
+
+    while (!(!q)) {
+        int minVal = *q;
+        int n0 = q.size();
+
+        for (int i = 0; i < n0; i++) {
+            int v = *q;
+            if (v < minVal) minVal = v;
+            q.TopToBottom();
+        }
+
+        bool removed = false;
+        for (int i = 0; i < n0; i++) {
+            int v = *q;
+            --q;
+            if (!removed && v == minVal) {
+                removed = true;
+            } else {
+                q += v;
+            }
+        }
+
+        *this += minVal;
+    }
+}
