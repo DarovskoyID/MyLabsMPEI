@@ -12,5 +12,12 @@ public:
     int GetSize();
 
     QueueInt Concat(const QueueInt& q1, const QueueInt& q2);
+
+    bool checkDiv7();
+    void clearEven();
+
+    bool checkRange(int a, int b);
+    void clearForRange(int a, int b);
+
 };
 #endif //UNTITLED_QUEUEINT_H

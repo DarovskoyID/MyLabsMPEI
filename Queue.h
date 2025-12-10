@@ -108,7 +108,7 @@ public:
              n = other.n;
              l = 0;
              d = other.n;
-             X = new char[n];
+             X = new T[n];
              for (int i = 0; i < n; i++)
                  X[i] = other.X[other.l + i];
          }

@@ -13,5 +13,8 @@ public:
     bool checkChar();
 
     void clearSymbol();
+
+    bool checkRange(char a, char b);
+    void clearForRange(char a, char b);
 };
 #endif //UNTITLED_QUEUECHAR_H

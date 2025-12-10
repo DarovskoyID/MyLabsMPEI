@@ -18,7 +18,7 @@ public:
         Node() : data(T()), prev(nullptr), next(nullptr) {}
     };
 
-    void AddFirst(Node*& head, const T& value) {
+    void AddFirst(Node*& head, Node*& tail, const T& value) {
         Node* n = new Node(value);
         if (!head) {
             head = n;
@@ -29,7 +29,7 @@ public:
         }
     }
 
-    void AddLast(Node*& head, const T& value) {
+    void AddLast(Node*& head, Node*& tail, const T& value) {
         Node* n = new Node(value);
         if (!head) {
             head = n;
@@ -43,7 +43,7 @@ public:
 
     }
 
-    void DelFirst(Node*& head) {
+    void DelFirst(Node*& head, Node*& tail) {
         if (head) {
             Node *t = head;
             head = head->next;
@@ -52,7 +52,7 @@ public:
         }
     }
 
-    void DelLast(Node*& head) {
+    void DelLast(Node*& head, Node*& tail) {
         if (head) {
             Node *cur = head;
             while (cur->next) cur = cur->next;
@@ -65,19 +65,19 @@ public:
         }
     }
 
-    T& GetFirst(Node* head) {
+    T& GetFirst(Node* head, Node*& tail) {
         if (!head) throw out_of_range("GetFirst");
         return head->data;
     }
 
-    T& GetLast(Node* head) {
+    T& GetLast(Node* head, Node*& tail) {
         if (!head) throw out_of_range("GetLast");
         Node* cur = head;
         while (cur->next) cur = cur->next;
         return cur->data;
     }
 
-    void Print(Node* head) {
+    void Print(Node* head, Node*& tail) {
         cout << head << endl;
     }
 
@@ -90,6 +90,10 @@ public:
         }
         os << "}";
         return os;
+    }
+
+    void Clean(Node* head, Node*& tail){
+        while (head) this->DelLast(head, tail);
     }
 
     virtual ~BaseList() {}
