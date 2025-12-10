@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "CMakeFiles\\untitled.dir\\ListInt.cpp.obj",
+            "outputs": [
+                "C:\\Users\\BottomWeb\\MyLabsMPEI\\cmake-build-debug\\vc140.pdb",
+                "CMakeFiles\\untitled.dir\\ListInt.cpp.obj.ddi"
+            ],
+            "requires": []
+        }
+    ]
+}
